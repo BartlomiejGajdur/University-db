@@ -4,7 +4,6 @@ Academic database
 
 Wymagania (16 XP):
   Przechowywanie rekordów studentów o strukturze: Imię, nazwisko, adres, nr indeksu, PESEL, płeć
-  
   Dodawanie nowych studentów
   Wyświetlanie całej bazy danych
   Wyszukiwanie po nazwisku
@@ -12,6 +11,7 @@ Wymagania (16 XP):
   Sortowanie po numerze PESEL
   Sortowanie po nazwisku
   Usuwanie po numerze indeksu
+  
 
 
 Opcjonalne wymagania (12 XP):
