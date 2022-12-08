@@ -1,5 +1,5 @@
 #pragma once
-
+#include <ostream>
 #include <string>
 
 enum class Gender {Male,Female};
@@ -18,7 +18,17 @@ class Student{
                              pesel_(pesel),
                              gender_(gender) {}
         
-    
+    //Getters
+    std::string getName()   const {return name_;};
+    std::string getSurname()const {return surname_;};
+    std::string getAdress() const {return adress_;};
+    size_t getIndex()       const {return index_;};
+    std::string getPesel()  const {return pesel_;};
+    Gender getGender()      const {return gender_;};
+    std::string getGenderInString() const;
+
+    //Operators 
+    friend std::ostream& operator<<(std::ostream& os, const Student& student);
 
     private:
         std::string name_;
@@ -29,3 +39,4 @@ class Student{
         Gender gender_;
 
 };
+

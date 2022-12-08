@@ -1,8 +1,18 @@
 #include <iostream>
+#include "../Include/Database.hpp"
+#include "../Include/Student.hpp"
+int main(){ 
 
-int main(){
-
-    std::cout<<"Hello World! New Database project";
+    Student adam{
+        "Adam",
+        "Kowalski",
+        "Krakow 21",
+        0,
+        "000000000",
+        Gender::Male
+    };
+    std::cout<<adam;
+    
 
     return 0;
 }
