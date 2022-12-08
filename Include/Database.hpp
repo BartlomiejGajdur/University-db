@@ -16,6 +16,7 @@ class Database{
 
         //Functions
         void add(const std::shared_ptr<Student>& student);
+        void printDatabase();
 
 
     private:
