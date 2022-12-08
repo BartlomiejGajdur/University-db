@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 enum class Gender {Male,Female};
@@ -16,7 +18,7 @@ class Student{
                              pesel_(pesel),
                              gender_(gender) {}
         
-
+    
 
     private:
         std::string name_;
