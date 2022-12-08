@@ -4,7 +4,7 @@
   
   
 
-**Wymagania (16 XP):**
+**Wymagania:**
 
  - [ ] Przechowywanie rekordów studentów o strukturze: Imię, nazwisko,
        adres, nr indeksu, PESEL, płeć,
@@ -26,7 +26,7 @@
   
   
 
-**Opcjonalne wymagania (12 XP):**
+**Opcjonalne wymagania:**
 
  - [ ] Walidacja czy numer PESEL jest poprawny Wiki - poprawność PESEL,
  - [ ] Wczytywanie z pliku i zapisywanie całej bazy w pliku,
