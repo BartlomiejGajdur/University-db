@@ -19,12 +19,12 @@ std::string Student::getGenderInString() const{
 
 std::ostream& operator<<(std::ostream& os, const Student& student){
 
-    os<<std::setw(10)<<std::left<<student.getName()
-      <<std::setw(10)<<std::left<<student.getSurname()
+    os<<std::setw(15)<<std::left<<student.getName()
+      <<std::setw(15)<<std::left<<student.getSurname()
       <<std::setw(15)<<std::left<<student.getAdress()
-      <<std::setw(10)<<std::left<<student.getIndex()
-      <<std::setw(10)<<std::left<<student.getPesel()
-      <<std::setw(10)<<std::left<<student.getGenderInString();
+      <<std::setw(15)<<std::left<<student.getIndex()
+      <<std::setw(15)<<std::left<<student.getPesel()
+      <<std::setw(15)<<std::left<<student.getGenderInString();
 
     return os;
 }
