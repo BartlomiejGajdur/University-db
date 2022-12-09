@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include "../Include/Database.hpp"
 #include "../Include/Student.hpp"
@@ -5,7 +6,7 @@ int main(){
 
      Student Adam{
         "Adam",
-        "Kowalski",
+        "bowalski",
         "Krakow 21",
         0,
         "000000000",
@@ -14,7 +15,7 @@ int main(){
 
     Student Kasia{
         "Kasia",
-        "Malkowski",
+        "calkowski",
         "Krakow 21dd",
         0,
         "000011000",
@@ -38,23 +39,12 @@ int main(){
 
     db.printDatabase();
 
-    // std::vector<Student> expected{Kasia,Bartek};
-    // std::vector<Student> value{Kasia,Bartek};
-    // std::vector<std::shared_ptr<Student>> expected{std::make_shared<Student>(Kasia),std::make_shared<Student>(Bartek)};
-    // std::vector<std::shared_ptr<Student>> value{std::make_shared<Student>(Kasia),std::make_shared<Student>(Bartek)};
-    // if(std::equal(expected.begin(),expected.end(),value.begin())){
-    //     std::cout<< "jea";
-    // }else std::cout<< "noo";
-    Student Maciek{
-        "Kasia",
-        "Malkowski",
-        "Krakow 21dd",
-        0,
-        "000011000",
-        Gender::Female
-    };
-     Student expected = Maciek;
-     Student findByPesel = db.findByPesel("0000131000");
-    
+    db.sortBySurname(Order::Ascending);
+    db.printDatabase();
+
+    db.sortBySurname(Order::Descending);
+    db.printDatabase();
+
+
     return 0;
 }

@@ -46,3 +46,20 @@ Student Database::findByPesel(const std::string& pesel){
     }
     return foundStudent;
 }
+
+void Database::sortBySurname(const Order& order){
+    switch(order){
+        case Order::Ascending:
+        std::sort(vectorOfStudents_.begin(),vectorOfStudents_.end(),[](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>& rhs)
+                                                                    {return lhs->getSurname()<rhs->getSurname();});
+        break;
+        case Order::Descending:
+        std::sort(vectorOfStudents_.begin(),vectorOfStudents_.end(),[](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>& rhs)
+                                                                    {return lhs->getSurname()>rhs->getSurname();});
+        break;
+        default:
+        std::cout<<"ERROR! Wrong Order";
+        break;
+    }
+}
+

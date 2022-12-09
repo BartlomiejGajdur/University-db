@@ -14,11 +14,11 @@
        
 - [x]       Wyszukiwanie po nazwisku
        
-- [ ]       Wyszukiwanie po numerze PESEL
+- [x]       Wyszukiwanie po numerze PESEL
        
 - [ ]       Sortowanie po numerze PESEL
       
-- [ ]       Sortowanie po nazwisku
+- [x]       Sortowanie po nazwisku
        
 - [ ]       Usuwanie po numerze indeksu
 
