@@ -30,6 +30,8 @@ class Student{
     //Operators 
     friend std::ostream& operator<<(std::ostream& os, const Student& student);
 
+    bool operator==(const Student& other);
+
     private:
         std::string name_;
         std::string surname_;

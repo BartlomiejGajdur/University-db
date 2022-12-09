@@ -3,7 +3,7 @@
 #include "../Include/Student.hpp"
 int main(){ 
 
-    Student adam{
+     Student Adam{
         "Adam",
         "Kowalski",
         "Krakow 21",
@@ -12,30 +12,38 @@ int main(){
         Gender::Male
     };
 
-    Student adam1{
-        "Adaddm",
-        "Kowalskdddi",
+    Student Kasia{
+        "Kasia",
+        "Malkowski",
         "Krakow 21dd",
         0,
         "000011000",
         Gender::Female
     };
 
-    Student adam2{
-        "Adamaa",
-        "Kowal",
-        "Markowska 21",
+    Student Bartek{
+        "Kasia",
+        "Malkowski",
+        "Krakow 21dd",
         0,
-        "000220000",
-        Gender::Male
+        "000011000",
+        Gender::Female
     };
-    Database db;
 
-    db.add(std::make_shared<Student>(adam));
-    db.add(std::make_shared<Student>(adam1));
-    db.add(std::make_shared<Student>(adam2));
+    // Database db;
 
-    db.printDatabase();
+    // db.add(std::make_shared<Student>(Adam));
+    // db.add(std::make_shared<Student>(Kasia));
+    // db.add(std::make_shared<Student>(Bartek)); 
 
+    // db.printDatabase();
+
+    std::vector<Student> expected{Kasia,Bartek};
+    std::vector<Student> value{Kasia,Bartek};
+    // std::vector<std::shared_ptr<Student>> expected{std::make_shared<Student>(Kasia),std::make_shared<Student>(Bartek)};
+    // std::vector<std::shared_ptr<Student>> value{std::make_shared<Student>(Kasia),std::make_shared<Student>(Bartek)};
+    if(std::equal(expected.begin(),expected.end(),value.begin())){
+        std::cout<< "jea";
+    }else std::cout<< "noo";
     return 0;
 }

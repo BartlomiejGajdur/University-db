@@ -28,3 +28,9 @@ std::ostream& operator<<(std::ostream& os, const Student& student){
 
     return os;
 }
+
+bool Student::operator==(const Student& other){
+        return this->name_ == other.getName() && this->surname_ == other.getSurname() &&
+               this->adress_ == other.getAdress() && this->index_ == other.getIndex() &&
+               this->pesel_ == other.getPesel() && this->gender_ == other.getGender();
+    }

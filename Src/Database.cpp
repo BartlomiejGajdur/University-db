@@ -25,3 +25,14 @@ void Database::printDatabase(){
                                                                             {std::cout<<*student<<"\n";});
     std::cout<<"------------------------------------------------------------------------------------------\n";
 }
+
+std::vector<Student> Database::findBySurname(const std::string& surname){
+    std::vector<Student> findCorrectSurname;
+    std::for_each(vectorOfStudents_.begin(),vectorOfStudents_.end(),
+                                                                    [&surname,&findCorrectSurname](std::shared_ptr<Student> student)
+                                                                    {
+                                                                        if(student->getSurname() == surname)
+                                                                            findCorrectSurname.push_back(*student);
+                                                                    });
+    return findCorrectSurname;
+}
