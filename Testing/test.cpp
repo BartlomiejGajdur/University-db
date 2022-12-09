@@ -8,7 +8,7 @@
 #include "gtest/gtest.h"
 
 struct DatabaseUnderTestFixture : public ::testing::Test{
-    Database db{};
+    Database db;
     Student Adam{
         "Adam",
         "Kowalski",
@@ -35,8 +35,7 @@ struct DatabaseUnderTestFixture : public ::testing::Test{
         "000220000",
         Gender::Male
     };
-
-
+ 
 };
 
 TEST_F(DatabaseUnderTestFixture, CanAddStudentToDb){
@@ -47,6 +46,7 @@ TEST_F(DatabaseUnderTestFixture, CanAddStudentToDb){
 
     EXPECT_EQ(sizeBeforeAdd,sizeAfterAdd-1);
 }
+
 TEST_F(DatabaseUnderTestFixture, FindBySurname){
     db.add(std::make_shared<Student>(Adam));
     db.add(std::make_shared<Student>(Kasia));
@@ -56,5 +56,27 @@ TEST_F(DatabaseUnderTestFixture, FindBySurname){
     std::vector<Student> findBySurname = db.findBySurname("Malkowski");
 
     ASSERT_TRUE(std::equal(findBySurname.begin(),findBySurname.end(),expected.begin()));
+}
+
+TEST_F(DatabaseUnderTestFixture, FindByPesel_INCLUDE){
+    db.add(std::make_shared<Student>(Adam));
+    db.add(std::make_shared<Student>(Kasia));
+    db.add(std::make_shared<Student>(Bartek)); 
+
+    Student expected{Bartek};
+    Student findByPesel = db.findByPesel("000220000");
+
+    ASSERT_TRUE(expected == findByPesel);
+}
+
+TEST_F(DatabaseUnderTestFixture, FindByPesel_NOT_INCLUDE){
+    db.add(std::make_shared<Student>(Adam));
+    db.add(std::make_shared<Student>(Kasia));
+    db.add(std::make_shared<Student>(Bartek)); 
+
+    Student expected{Bartek};
+    Student findByPesel = db.findByPesel("00022000011111111");
+
+    ASSERT_FALSE(expected == findByPesel);
 }
     
