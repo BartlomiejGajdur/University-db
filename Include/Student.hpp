@@ -17,6 +17,7 @@ class Student{
                              index_(index),
                              pesel_(pesel),
                              gender_(gender) {}
+        Student(){};
         
     //Getters
     std::string getName()   const {return name_;};

@@ -36,3 +36,13 @@ std::vector<Student> Database::findBySurname(const std::string& surname){
                                                                     });
     return findCorrectSurname;
 }
+
+Student Database::findByPesel(const std::string& pesel){
+    Student foundStudent{};
+    auto it = std::find_if(vectorOfStudents_.begin(),vectorOfStudents_.end(),[&pesel](std::shared_ptr<Student> Student){return Student->getPesel() == pesel; });
+    if(it!=vectorOfStudents_.end()){
+        foundStudent = **it;
+        return foundStudent;
+    }
+    return foundStudent;
+}

@@ -30,20 +30,31 @@ int main(){
         Gender::Female
     };
 
-    // Database db;
+    Database db;
 
-    // db.add(std::make_shared<Student>(Adam));
-    // db.add(std::make_shared<Student>(Kasia));
-    // db.add(std::make_shared<Student>(Bartek)); 
+    db.add(std::make_shared<Student>(Adam));
+    db.add(std::make_shared<Student>(Kasia));
+    db.add(std::make_shared<Student>(Bartek)); 
 
-    // db.printDatabase();
+    db.printDatabase();
 
-    std::vector<Student> expected{Kasia,Bartek};
-    std::vector<Student> value{Kasia,Bartek};
+    // std::vector<Student> expected{Kasia,Bartek};
+    // std::vector<Student> value{Kasia,Bartek};
     // std::vector<std::shared_ptr<Student>> expected{std::make_shared<Student>(Kasia),std::make_shared<Student>(Bartek)};
     // std::vector<std::shared_ptr<Student>> value{std::make_shared<Student>(Kasia),std::make_shared<Student>(Bartek)};
-    if(std::equal(expected.begin(),expected.end(),value.begin())){
-        std::cout<< "jea";
-    }else std::cout<< "noo";
+    // if(std::equal(expected.begin(),expected.end(),value.begin())){
+    //     std::cout<< "jea";
+    // }else std::cout<< "noo";
+    Student Maciek{
+        "Kasia",
+        "Malkowski",
+        "Krakow 21dd",
+        0,
+        "000011000",
+        Gender::Female
+    };
+     Student expected = Maciek;
+     Student findByPesel = db.findByPesel("0000131000");
+    
     return 0;
 }
