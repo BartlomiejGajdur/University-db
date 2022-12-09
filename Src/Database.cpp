@@ -70,7 +70,6 @@ void Database::sortByPesel(const Order& order){
                                                                             return Student->getPesel()<="23";
                                                                             
                                                                         });
-    std::cout<<counter;
 
     switch(order){
         case Order::Ascending:
@@ -87,7 +86,7 @@ void Database::sortByPesel(const Order& order){
         std::rotate(vectorOfStudents_.begin(),vectorOfStudents_.begin()+(vectorOfStudents_.size()-counter),vectorOfStudents_.end());
         break;
         default:
-        std::cout<<"ERROR! Wrong Order";
+        std::cout<<"ERROR! Wrong Order Code";
         break;
     }
 }

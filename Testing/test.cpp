@@ -13,7 +13,6 @@ struct DatabaseUnderTestFixture : public ::testing::Test{
         "Adam",
         "Kowalski",
         "Krakow 21",
-        0,
         "000000000",
         Gender::Male
     };
@@ -22,7 +21,6 @@ struct DatabaseUnderTestFixture : public ::testing::Test{
         "Kasia",
         "Malkowski",
         "Krakow 21dd",
-        0,
         "000011000",
         Gender::Female
     };
@@ -31,7 +29,6 @@ struct DatabaseUnderTestFixture : public ::testing::Test{
         "Bartek",
         "Malkowski",
         "Markowska 21",
-        0,
         "000220000",
         Gender::Male
     };

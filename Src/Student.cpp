@@ -4,6 +4,8 @@
 
 #include "../Include/Student.hpp"
 
+size_t Student::counter = 0;
+
 std::string Student::getGenderInString() const{
     switch(gender_){
         case Gender::Male:

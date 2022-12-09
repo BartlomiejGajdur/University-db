@@ -9,14 +9,12 @@ class Student{
         Student(const std::string& name,
                  const std::string& surname,
                  const std::string& adress,
-                 const size_t& index,
                  const std::string& pesel,
                  Gender gender) : name_(name),
                              surname_(surname),
                              adress_(adress),
-                             index_(index),
                              pesel_(pesel),
-                             gender_(gender) {}
+                             gender_(gender) {index_ = counter++;}
         Student(){};
         
     //Getters
@@ -40,6 +38,7 @@ class Student{
         size_t index_;
         std::string pesel_;
         Gender gender_;
+        static size_t counter;
 
 };
 

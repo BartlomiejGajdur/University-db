@@ -8,7 +8,6 @@ int main(){
         "Adam",
         "bowalski",
         "Krakow 21",
-        0,
         "95081685721",
         Gender::Male
     };
@@ -17,7 +16,6 @@ int main(){
         "Kasia",
         "calkowski",
         "Krakow 21dd",
-        0,
         "89032892537",
         Gender::Female
     };
@@ -26,15 +24,13 @@ int main(){
         "Kasia",
         "Malkowski",
         "Krakow 21dd",
-        0,
-        "67041681881",
+        "05041681881",
         Gender::Female
     };
      Student Adam1{
         "Adam",
         "bowalski",
         "Krakow 21",
-        0,
         "53050719156",
         Gender::Male
     };
@@ -43,8 +39,7 @@ int main(){
         "Kasia",
         "calkowski",
         "Krakow 21dd",
-        0,
-        "55111555121",
+        "00111555121",
         Gender::Female
     };
 
@@ -52,7 +47,6 @@ int main(){
         "Kasia",
         "Malkowski",
         "Krakow 21dd",
-        0,
         "53081891465",
         Gender::Female
     };
