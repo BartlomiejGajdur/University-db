@@ -123,3 +123,16 @@ TEST_F(DatabaseUnderTestFixture, SortingByPesel_Descending){
                                                                         [](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>&rhs)
                                                                             {return *lhs == *rhs;}));
 }
+
+TEST_F(DatabaseUnderTestFixture, RemovingByIndex){
+
+    std::vector<std::shared_ptr<Student>> expected{std::make_shared<Student>(Adam),
+                                                   std::make_shared<Student>(Bartek)};
+    //Student Kasia -> Index = 25
+    db.removeByIndex(25);
+    std::vector<std::shared_ptr<Student>> value = db.getVectorOfStudents();
+
+    ASSERT_TRUE(std::equal(expected.begin(),expected.end(),value.begin(),
+                                                                        [](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>&rhs)
+                                                                            {return *lhs == *rhs;}));
+}
