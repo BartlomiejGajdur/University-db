@@ -91,4 +91,11 @@ void Database::sortByPesel(const Order& order){
     }
 }
 
+void Database::removeByIndex(const size_t index){
+
+    vectorOfStudents_.erase(remove_if(vectorOfStudents_.begin(),vectorOfStudents_.end(),
+                                                                                        [&index](const std::shared_ptr<Student>& lhs)
+                                                                                        {return lhs->getIndex() == index;})
+                                                                                        ,vectorOfStudents_.end());
+}
 

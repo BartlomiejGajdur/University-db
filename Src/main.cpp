@@ -75,7 +75,11 @@ int main(){
 
     db.sortByPesel(Order::Descending);
     db.printDatabase();
-
+    std::cout<<"\n\nREMOVING@@@@@@@@@@@@@@@@@@@n\n";
+    db.removeByIndex(2);
+    db.removeByIndex(5);
+    db.removeByIndex(8);
+    db.printDatabase();
 
     return 0;
 }
