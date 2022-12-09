@@ -12,7 +12,7 @@
        
 - [x]       Wyświetlanie całej bazy danych
        
-- [ ]       Wyszukiwanie po nazwisku
+- [x]       Wyszukiwanie po nazwisku
        
 - [ ]       Wyszukiwanie po numerze PESEL
        
