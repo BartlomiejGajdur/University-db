@@ -22,7 +22,7 @@ class Database{
         std::vector<Student> findBySurname(const std::string& surname);
         Student findByPesel(const std::string& pesel);
         void sortBySurname(const Order& order);
-
+        void sortByPesel(const Order& order);
     private:
         std::vector<std::shared_ptr<Student>> vectorOfStudents_;
 

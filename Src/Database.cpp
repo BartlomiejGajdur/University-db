@@ -63,3 +63,33 @@ void Database::sortBySurname(const Order& order){
     }
 }
 
+void Database::sortByPesel(const Order& order){
+
+    int counter = std::count_if(vectorOfStudents_.begin(),vectorOfStudents_.end(),[](const std::shared_ptr<Student>& Student)
+                                                                        { 
+                                                                            return Student->getPesel()<="23";
+                                                                            
+                                                                        });
+    std::cout<<counter;
+
+    switch(order){
+        case Order::Ascending:
+        std::sort(vectorOfStudents_.begin(),vectorOfStudents_.end(),[](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>& rhs)
+                                                                    {return lhs->getPesel()<rhs->getPesel();});
+        
+        std::rotate(vectorOfStudents_.begin(),vectorOfStudents_.begin()+counter,vectorOfStudents_.end());
+
+        break;
+        case Order::Descending:
+        std::sort(vectorOfStudents_.begin(),vectorOfStudents_.end(),[](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>& rhs)
+                                                                    {return lhs->getPesel()>rhs->getPesel();});
+
+        std::rotate(vectorOfStudents_.begin(),vectorOfStudents_.begin()+(vectorOfStudents_.size()-counter),vectorOfStudents_.end());
+        break;
+        default:
+        std::cout<<"ERROR! Wrong Order";
+        break;
+    }
+}
+
+
