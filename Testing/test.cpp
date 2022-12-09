@@ -8,7 +8,6 @@
 #include "gtest/gtest.h"
 
 struct DatabaseUnderTestFixture : public ::testing::Test{
-    Database db;
     Student Adam{
         "Adam",
         "cwalski",
@@ -32,7 +31,11 @@ struct DatabaseUnderTestFixture : public ::testing::Test{
         "000220000",
         Gender::Male
     };
- 
+    
+    std::vector<std::shared_ptr<Student>> vectorOfStudents{std::make_shared<Student>(Adam),
+                                                           std::make_shared<Student>(Kasia),   
+                                                           std::make_shared<Student>(Bartek)};
+    Database db{vectorOfStudents};
 };
 
 TEST_F(DatabaseUnderTestFixture, CanAddStudentToDb){
@@ -45,9 +48,6 @@ TEST_F(DatabaseUnderTestFixture, CanAddStudentToDb){
 }
 
 TEST_F(DatabaseUnderTestFixture, FindBySurname){
-    db.add(std::make_shared<Student>(Adam));
-    db.add(std::make_shared<Student>(Kasia));
-    db.add(std::make_shared<Student>(Bartek));  
 
     std::vector<Student> expected{Kasia,Bartek};
     std::vector<Student> findBySurname = db.findBySurname("Malkowski");
@@ -56,10 +56,7 @@ TEST_F(DatabaseUnderTestFixture, FindBySurname){
 }
 
 TEST_F(DatabaseUnderTestFixture, FindByPesel_INCLUDE){
-    db.add(std::make_shared<Student>(Adam));
-    db.add(std::make_shared<Student>(Kasia));
-    db.add(std::make_shared<Student>(Bartek)); 
-
+    
     Student expected{Bartek};
     Student findByPesel = db.findByPesel("000220000");
 
@@ -67,9 +64,6 @@ TEST_F(DatabaseUnderTestFixture, FindByPesel_INCLUDE){
 }
 
 TEST_F(DatabaseUnderTestFixture, FindByPesel_NOT_INCLUDE){
-    db.add(std::make_shared<Student>(Adam));
-    db.add(std::make_shared<Student>(Kasia));
-    db.add(std::make_shared<Student>(Bartek)); 
 
     Student expected{Bartek};
     Student findByPesel = db.findByPesel("00022000011111111");
@@ -78,9 +72,6 @@ TEST_F(DatabaseUnderTestFixture, FindByPesel_NOT_INCLUDE){
 }
 
 TEST_F(DatabaseUnderTestFixture, SortingBySurname_Ascending){
-    db.add(std::make_shared<Student>(Adam));
-    db.add(std::make_shared<Student>(Kasia));
-    db.add(std::make_shared<Student>(Bartek)); 
 
     std::vector<std::shared_ptr<Student>> expected{std::make_shared<Student>(Kasia),
                                                    std::make_shared<Student>(Bartek),
@@ -94,9 +85,6 @@ TEST_F(DatabaseUnderTestFixture, SortingBySurname_Ascending){
 }
 
 TEST_F(DatabaseUnderTestFixture, SortingBySurname_Descending){
-    db.add(std::make_shared<Student>(Adam));
-    db.add(std::make_shared<Student>(Kasia));
-    db.add(std::make_shared<Student>(Bartek)); 
 
     std::vector<std::shared_ptr<Student>> expected{std::make_shared<Student>(Adam),
                                                    std::make_shared<Student>(Kasia),
