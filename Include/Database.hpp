@@ -10,6 +10,7 @@ enum class Order {Ascending, Descending};
 class Database{
     public:
         Database();
+        Database(const std::vector<std::shared_ptr<Student>>& vectorOfStudents): vectorOfStudents_(vectorOfStudents){};
         
 
         //Getters
