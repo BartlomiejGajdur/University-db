@@ -11,7 +11,7 @@ struct DatabaseUnderTestFixture : public ::testing::Test{
     Database db;
     Student Adam{
         "Adam",
-        "Kowalski",
+        "cwalski",
         "Krakow 21",
         "000000000",
         Gender::Male
@@ -19,7 +19,7 @@ struct DatabaseUnderTestFixture : public ::testing::Test{
 
     Student Kasia{
         "Kasia",
-        "Malkowski",
+        "aalkowski",
         "Krakow 21dd",
         "000011000",
         Gender::Female
@@ -27,7 +27,7 @@ struct DatabaseUnderTestFixture : public ::testing::Test{
 
     Student Bartek{
         "Bartek",
-        "Malkowski",
+        "aalkowski",
         "Markowska 21",
         "000220000",
         Gender::Male
@@ -76,4 +76,36 @@ TEST_F(DatabaseUnderTestFixture, FindByPesel_NOT_INCLUDE){
 
     ASSERT_FALSE(expected == findByPesel);
 }
-    
+
+TEST_F(DatabaseUnderTestFixture, SortingBySurname_Ascending){
+    db.add(std::make_shared<Student>(Adam));
+    db.add(std::make_shared<Student>(Kasia));
+    db.add(std::make_shared<Student>(Bartek)); 
+
+    std::vector<std::shared_ptr<Student>> expected{std::make_shared<Student>(Kasia),
+                                                   std::make_shared<Student>(Bartek),
+                                                   std::make_shared<Student>(Adam)};
+    db.sortBySurname(Order::Ascending);
+    std::vector<std::shared_ptr<Student>> value = db.getVectorOfStudents();
+
+    ASSERT_TRUE(std::equal(expected.begin(),expected.end(),value.begin(),
+                                                                        [](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>&rhs)
+                                                                            {return *lhs == *rhs;}));
+}
+
+TEST_F(DatabaseUnderTestFixture, SortingBySurname_Descending){
+    db.add(std::make_shared<Student>(Adam));
+    db.add(std::make_shared<Student>(Kasia));
+    db.add(std::make_shared<Student>(Bartek)); 
+
+    std::vector<std::shared_ptr<Student>> expected{std::make_shared<Student>(Adam),
+                                                   std::make_shared<Student>(Kasia),
+                                                   std::make_shared<Student>(Bartek)
+                                                   };
+    db.sortBySurname(Order::Descending);
+    std::vector<std::shared_ptr<Student>> value = db.getVectorOfStudents();
+
+    ASSERT_TRUE(std::equal(expected.begin(),expected.end(),value.begin(),
+                                                                        [](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>&rhs)
+                                                                            {return *lhs == *rhs;}));
+}
