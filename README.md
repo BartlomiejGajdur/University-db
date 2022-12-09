@@ -16,7 +16,7 @@
        
 - [x]       Wyszukiwanie po numerze PESEL
        
-- [ ]       Sortowanie po numerze PESEL
+- [x]       Sortowanie po numerze PESEL
       
 - [x]       Sortowanie po nazwisku
        
