@@ -22,6 +22,8 @@ December — grudzień
 namespace PeselValidator{
 
     bool checkLength(const std::string& Pesel);
+    bool checkLeapYear(const std::string& Pesel);
+    bool checkDate(const std::string& Pesel);
 
 
 }

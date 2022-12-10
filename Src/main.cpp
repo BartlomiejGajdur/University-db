@@ -82,8 +82,8 @@ int main(){
     // db.removeByIndex(5);
     // db.removeByIndex(8);
     // db.printDatabase();
-    std::string Pesel{"53050719156"};
-    if(PeselValidator::checkLength(Pesel))
+    std::string Pesel{"92120719156"};
+    if(PeselValidator::checkLeapYear(Pesel))
         std::cout<<"Ma dobry Length";
 
     return 0;
