@@ -1,6 +1,9 @@
 #include <algorithm>
 #include <iostream>
 #include <iomanip>
+#include <fstream>
+
+
 #include "../Include/Database.hpp"
 
 Database::Database(){};
@@ -103,7 +106,7 @@ void Database::removeByIndex(const size_t index){
 std::stringstream Database::formatPrint(){
     std::stringstream stream;
 
-    stream<<"-----------------------------------------DATABASE-----------------------------------------\n";
+    stream<<"-----------------------------------------DATABASE--------------------------------\n";
     stream<<std::setw(14)<<std::left<<"Name"
       <<std::setw(14)<<std::left<<"|Surname"
       <<std::setw(14)<<std::left<<" |Adress"
@@ -111,11 +114,30 @@ std::stringstream Database::formatPrint(){
       <<std::setw(14)<<std::left<<"   |Pesel"
       <<std::setw(14)<<std::left<<"    |Gender"<<"\n";
 
-    stream<<"__________________________________________________________________________________________\n";
+    stream<<"_________________________________________________________________________________\n";
     std::for_each(vectorOfStudents_.begin(),vectorOfStudents_.end(),
                                                                         [&stream](const std::shared_ptr<Student>& student)
                                                                             {stream<<*student<<"\n";});
-    stream<<"------------------------------------------------------------------------------------------\n";
+    stream<<"---------------------------------------------------------------------------------\n";
 
     return stream;
+}
+
+void Database::saveDatabaseToFile(const std::string& fileName){
+
+    std::stringstream stream = formatPrint();
+    std::string fileName_ = fileName;
+    if(std::equal(fileName_.rbegin(),fileName_.rbegin()+4,"txt.")){
+        fileName_ = "../"+fileName_;
+    }else{
+        fileName_ = "../"+fileName_ + ".txt";
+    }
+    
+    std::fstream database(fileName_, database.out | database.trunc);
+
+    if(database.is_open()){
+        database<<stream.str();
+        std::cout<<"Data saved corectlly! :)\n";
+    }else
+        std::cout<<"Data not saved! Error :(\n";
 }

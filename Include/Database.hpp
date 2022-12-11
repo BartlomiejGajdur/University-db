@@ -26,12 +26,14 @@ class Database{
         void sortBySurname(const Order& order);
         void sortByPesel(const Order& order);
         void removeByIndex(const size_t index);
-
+        void saveDatabaseToFile(const std::string& fileName);
         
 
     private:
         std::vector<std::shared_ptr<Student>> vectorOfStudents_;
 
+
         std::stringstream formatPrint();
+        
     
 };

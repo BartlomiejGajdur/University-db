@@ -27,7 +27,7 @@ int main(){
     };
      Student Adam1{
         "Adam",
-        "bowalski",
+        "bo3232walski",
         "Krakow 21",
         "53050719156"   };
 
@@ -89,6 +89,9 @@ int main(){
 
     if(PeselValidator::validatePesel("62080697415"))
         std::cout<<"ZGADZA SIE PESEL!\n";
+
+
+    db.saveDatabaseToFile("DatabaseOfStudents");
 
     return 0;
 }
