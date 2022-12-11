@@ -2,53 +2,47 @@
 #include <iostream>
 #include "../Include/Database.hpp"
 #include "../Include/Student.hpp"
+#include "../Include/validatePesel.hpp"
+
 int main(){ 
 
      Student Adam{
         "Adam",
         "bowalski",
         "Krakow 21",
-        "95081685721",
-        Gender::Male
-    };
+        "95081685721"   };
 
     Student Kasia{
         "Kasia",
         "calkowski",
         "Krakow 21dd",
-        "89032892537",
-        Gender::Female
+        "89032892537"
     };
 
     Student Bartek{
         "Kasia",
         "Malkowski",
         "Krakow 21dd",
-        "05041681881",
-        Gender::Female
+        "05041681881"
     };
      Student Adam1{
         "Adam",
         "bowalski",
         "Krakow 21",
-        "53050719156",
-        Gender::Male
-    };
+        "53050719156"   };
 
     Student Kasia1{
         "Kasia",
         "calkowski",
         "Krakow 21dd",
-        "00111555121",
-        Gender::Female
+        "00111555121"
     };
 
     Student Bartek1{
         "Kasia",
         "Malkowski",
         "Krakow 21dd",
-        "53081891465",
-        Gender::Female
+        "53081891465"
     };
 
     Database db;
@@ -62,24 +56,39 @@ int main(){
 
     db.printDatabase();
 
-    db.sortBySurname(Order::Ascending);
-    db.printDatabase();
+    // db.sortBySurname(Order::Ascending);
+    // db.printDatabase();
 
-    db.sortBySurname(Order::Descending);
-    db.printDatabase();
+    // db.sortBySurname(Order::Descending);
+    // db.printDatabase();
 
-    std::cout<<"\n\n@@@@@\n\n";
+    // std::cout<<"\n\n@@@@@\n\n";
 
-     db.sortByPesel(Order::Ascending);
-    db.printDatabase();
+    //  db.sortByPesel(Order::Ascending);
+    // db.printDatabase();
 
-    db.sortByPesel(Order::Descending);
-    db.printDatabase();
-    std::cout<<"\n\nREMOVING@@@@@@@@@@@@@@@@@@@n\n";
-    db.removeByIndex(2);
-    db.removeByIndex(5);
-    db.removeByIndex(8);
-    db.printDatabase();
+    // db.sortByPesel(Order::Descending);
+    // db.printDatabase();
+    // std::cout<<"\n\nREMOVING@@@@@@@@@@@@@@@@@@@n\n";
+    // db.removeByIndex(2);
+    // db.removeByIndex(5);
+    // db.removeByIndex(8);
+    // db.printDatabase();
+    std::string Pesel{"92022919156"};
+    if(PeselValidator::checkLeapYear(Pesel))
+        std::cout<<"IsLeap\n";
+
+    if(PeselValidator::checkDate(Pesel))
+        std::cout<<"Dobra data\n";
+
+    if(PeselValidator::checkDigit("55030101193"))
+        std::cout<<"ZGADZA SIE PESEL!\n";
+    
+    if(PeselValidator::checkDigit("55030101230"))
+        std::cout<<"Zgadza SIe pesel!\n";
+
+    if(PeselValidator::validatePesel("62080697415"))
+        std::cout<<"ZGADZA SIE PESEL!\n";
 
     return 0;
 }

@@ -21,17 +21,17 @@
        
 - [x]  Usuwanie po numerze indeksu
 
+- [x] Walidacja czy numer PESEL jest poprawny Wiki - poprawność PESEL
   
 
 **In progress:**
 
-- [ ] Walidacja czy numer PESEL jest poprawny Wiki - poprawność PESEL
-
-- [ ] Wczytywanie z pliku i zapisywanie całej bazy w pliku
-
+- [ ] Zapis całej bazy danych do pliku
 
 
 **ToDo**
+
+- [ ] Odczyt danych z pliku
 
 - [ ]  Przechowywanie rekordów pracowników uczelni o strukturze: imię, nazwisko, PESEL, płeć, adres, zarobki
 
@@ -39,6 +39,6 @@
 
 - [ ]  Wypełnianie bazy danych sztucznymi danymi (generowanie danych)
 
-- [ ]  Modyfikacja zarobków wyszukując osobę po numerze PESEL (problematyczne)
+- [ ]  Modyfikacja zarobków wyszukując osobę po numerze PESEL 
 
-- [ ]  Sortowanie po zarobkach (problematyczne)
+- [ ]  Sortowanie po zarobkach 

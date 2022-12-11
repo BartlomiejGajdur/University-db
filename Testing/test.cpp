@@ -12,25 +12,22 @@ struct DatabaseUnderTestFixture : public ::testing::Test{
         "Adam",
         "cwalski",
         "Krakow 21",
-        "980000000",
-        Gender::Male
-    };
+        "980000000"   
+        };
 
     Student Kasia{
         "Kasia",
         "aalkowski",
         "Krakow 21dd",
-        "000011000",
-        Gender::Female
-    };
+        "000011000"
+        };
 
     Student Bartek{
         "Bartek",
         "aalkowski",
         "Markowska 21",
-        "010220000",
-        Gender::Male
-    };
+        "010220000"   
+        };
     
     std::vector<std::shared_ptr<Student>> vectorOfStudents{std::make_shared<Student>(Adam),
                                                            std::make_shared<Student>(Kasia),   
