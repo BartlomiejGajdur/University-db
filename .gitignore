@@ -1,4 +1,7 @@
+# Pointed by administrator
 build
+*.txt
+.vscode
 
 # Prerequisites
 *.d
