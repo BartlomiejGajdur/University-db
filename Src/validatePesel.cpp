@@ -20,8 +20,9 @@ bool PeselValidator::checkLeapYear(const std::string& Pesel){
            (yearINT % 4 == 0 && yearINT % 100 == 0 && yearINT % 400 == 0);
 }
 
+//Function shall returns true if the given data extraced from Pesel is correct
 bool PeselValidator::checkDate(const std::string& Pesel){
-    //Extract from given Pesel date in format [MMDD] -> M-Month | D-Day
+    //Extract from given Pesel date  M-Month | D-Day
     std::string month{Pesel.begin()+2,Pesel.begin()+4};
     std::string day{Pesel.begin()+4,Pesel.begin()+6};
 
@@ -41,22 +42,4 @@ bool PeselValidator::checkDate(const std::string& Pesel){
             ENUMmonth == Month::November)  && day <="30") ||
             (checkLeapYear(Pesel) && ENUMmonth == Month::February && day<="29") ||
             (!checkLeapYear(Pesel) && ENUMmonth == Month::February && day<="28");
-
-
-/*
-January — styczeń, 31
-February — luty,  28/29
-March — marzec,  31
-April — kwiecień, 30
-May — maj,        31
-June — czerwiec,  30
-July — lipiec,     31
-August — sierpień,  31
-September — wrzesień, 30
-October — październik, 31
-November — listopad, 30
-December — grudzień 31
-*/
-
-
 }
