@@ -22,16 +22,14 @@
 - [x]  Usuwanie po numerze indeksu
 
 - [x] Walidacja czy numer PESEL jest poprawny Wiki - poprawność PESEL
-  
+
+- [x] Zapis całej bazy danych do pliku
 
 **In progress:**
 
-- [ ] Zapis całej bazy danych do pliku
-
+- [ ] Odczyt danych z pliku
 
 **ToDo**
-
-- [ ] Odczyt danych z pliku
 
 - [ ]  Przechowywanie rekordów pracowników uczelni o strukturze: imię, nazwisko, PESEL, płeć, adres, zarobki
 
