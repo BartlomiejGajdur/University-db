@@ -1,20 +1,25 @@
 #pragma once
 #include <ostream>
 #include <string>
+#include <iostream>
 
 enum class Gender {Male,Female};
+
 
 class Student{
     public:
         Student(const std::string& name,
                  const std::string& surname,
                  const std::string& adress,
-                 const std::string& pesel,
-                 Gender gender) : name_(name),
+                 const std::string& pesel) : 
+                             name_(name),
                              surname_(surname),
                              adress_(adress),
-                             pesel_(pesel),
-                             gender_(gender) {index_ = counter++;}
+                             pesel_(pesel)
+                            {
+                                index_ = counter++;
+                                setGender();
+                            }
         Student(){};
         
     //Getters
@@ -28,8 +33,10 @@ class Student{
 
     //Operators 
     friend std::ostream& operator<<(std::ostream& os, const Student& student);
-
     bool operator==(const Student& other);
+
+    //Setters
+    void setGender();
 
     private:
         std::string name_;

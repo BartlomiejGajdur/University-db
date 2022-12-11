@@ -36,3 +36,13 @@ bool Student::operator==(const Student& other){
                this->adress_ == other.getAdress() && this->index_ == other.getIndex() &&
                this->pesel_ == other.getPesel() && this->gender_ == other.getGender();
     }
+
+void Student::setGender(){
+
+    int codedGender = int(pesel_[9])-48;
+    
+    if(codedGender % 2 == 0)
+        gender_ = Gender::Female;
+    else 
+        gender_ = Gender::Male;
+}
