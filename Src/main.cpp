@@ -80,5 +80,12 @@ int main(){
 
     if(PeselValidator::checkDate(Pesel))
         std::cout<<"Dobra data\n";
+
+    if(PeselValidator::checkDigit("55030101193"))
+        std::cout<<"ZGADZA SIE PESEL!\n";
+    
+    if(PeselValidator::checkDigit("55030101230"))
+        std::cout<<"Zgadza SIe pesel!\n";
+
     return 0;
 }

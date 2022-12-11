@@ -1,4 +1,7 @@
+#include <algorithm>
+#include <numeric>
 #include <iostream>
+#include <vector>
 
 #include "../Include/validatePesel.hpp"
 
@@ -42,4 +45,28 @@ bool PeselValidator::checkDate(const std::string& Pesel){
             ENUMmonth == Month::November)  && day <="30") ||
             (checkLeapYear(Pesel) && ENUMmonth == Month::February && day<="29") ||
             (!checkLeapYear(Pesel) && ENUMmonth == Month::February && day<="28");
+}
+
+bool PeselValidator::checkDigit(const std::string & Pesel){
+
+    int digitToControll = int(Pesel.back())-48;
+    std::vector<int> wages{1,3,7,9,1,3,7,9,1,3};
+
+    auto Operation = [](const int& wage, char zn){
+      return wage * (int(zn)-48);
+    };
+
+    auto digit = std::transform_reduce(wages.begin(),wages.end(),Pesel.begin(),0,std::plus<>(),Operation);
+
+    std::cout<<digit<<"\n";
+
+    digit = digit % 10;
+
+    std::cout<<digit<<"\n";
+    if(digit != 0)
+        digit=10-digit;
+    
+    std::cout<<digit<<"\n";
+    
+    return digit == digitToControll;
 }
