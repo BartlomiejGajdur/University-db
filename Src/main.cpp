@@ -87,5 +87,8 @@ int main(){
     if(PeselValidator::checkDigit("55030101230"))
         std::cout<<"Zgadza SIe pesel!\n";
 
+    if(PeselValidator::validatePesel("62080697415"))
+        std::cout<<"ZGADZA SIE PESEL!\n";
+
     return 0;
 }

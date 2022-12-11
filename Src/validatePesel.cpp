@@ -57,16 +57,14 @@ bool PeselValidator::checkDigit(const std::string & Pesel){
     };
 
     auto digit = std::transform_reduce(wages.begin(),wages.end(),Pesel.begin(),0,std::plus<>(),Operation);
-
-    std::cout<<digit<<"\n";
-
     digit = digit % 10;
 
-    std::cout<<digit<<"\n";
     if(digit != 0)
         digit=10-digit;
     
-    std::cout<<digit<<"\n";
-    
     return digit == digitToControll;
+}
+
+bool PeselValidator::validatePesel(const std::string& Pesel){
+    return PeselValidator::checkLength(Pesel) && PeselValidator::checkDate(Pesel) && PeselValidator::checkDigit(Pesel);
 }

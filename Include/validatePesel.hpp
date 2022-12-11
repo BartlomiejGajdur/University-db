@@ -3,21 +3,6 @@ constexpr size_t peselLength{11};
 
 enum class Month{January = 1,February,March,April,May,June,July,August,September,October,November,December};
 
-/*
-January — styczeń, 31
-February — luty,  28/29
-March — marzec,  31
-April — kwiecień, 30
-May — maj,        31
-June — czerwiec,  30
-July — lipiec,     31
-August — sierpień,  31
-September — wrzesień, 30
-October — październik, 31
-November — listopad, 30
-December — grudzień 31
-*/
-
 
 namespace PeselValidator{
 
@@ -26,6 +11,7 @@ namespace PeselValidator{
     bool checkDate(const std::string& Pesel);
     bool checkDigit(const std::string& Pesel);
     
-
+    
+    bool validatePesel(const std::string& Pesel);
 
 }
