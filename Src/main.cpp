@@ -77,24 +77,20 @@ int main(){
 
     db.printDatabase();
 
-    // db.sortBySurname(Order::Ascending);
-    // db.printDatabase();
+    db.sortBySurname(Order::Ascending);
+    db.printDatabase();
 
-    // db.sortBySurname(Order::Descending);
-    // db.printDatabase();
+    db.sortBySurname(Order::Descending);
+    db.printDatabase();
 
-    // std::cout<<"\n\n@@@@@\n\n";
+    std::cout<<"\n\n@@@@@\n\n";
 
-    //  db.sortByPesel(Order::Ascending);
-    // db.printDatabase();
+     db.sortByPesel(Order::Ascending);
+    db.printDatabase();
 
-    // db.sortByPesel(Order::Descending);
-    // db.printDatabase();
-    // std::cout<<"\n\nREMOVING@@@@@@@@@@@@@@@@@@@n\n";
-    // db.removeByIndex(2);
-    // db.removeByIndex(5);
-    // db.removeByIndex(8);
-    // db.printDatabase();
+    db.sortByPesel(Order::Descending);
+    db.printDatabase();
+    
     std::string Pesel{"92022919156"};
     if(PeselValidator::checkLeapYear(Pesel))
         std::cout<<"IsLeap\n";

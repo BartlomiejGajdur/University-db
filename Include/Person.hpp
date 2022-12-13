@@ -15,6 +15,7 @@ class Person{
                              pesel_(pesel)
                             {
                                 setGender();
+                                makeToUpper();
                             }
         Person(){};
         
@@ -25,6 +26,7 @@ class Person{
     std::string getPesel()  const {return pesel_;};
     Gender getGender()      const {return gender_;};
     std::string getGenderInString() const;
+    void makeToUpper();
 
     virtual size_t getIndex()          const = 0;
     virtual void print(std::ostream& os) const = 0;

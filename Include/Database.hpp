@@ -23,8 +23,8 @@ class Database{
         void printDatabase();
         std::vector<std::shared_ptr<Person>> findBySurname(const std::string& surname);
         // Student findByPesel(const std::string& pesel);
-        // void sortBySurname(const Order& order);
-        // void sortByPesel(const Order& order);
+        void sortBySurname(const Order& order);
+        void sortByPesel(const Order& order);
         void removeByIndex(const size_t index);
     private:
         std::vector<std::shared_ptr<Person>> vectorOfPeople_;

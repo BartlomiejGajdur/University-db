@@ -39,8 +39,8 @@ std::vector<std::shared_ptr<Person>> Database::findBySurname(const std::string& 
 }
 
 // Student Database::findByPesel(const std::string& pesel){
-//     Student foundStudent{};
-//     auto it = std::find_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),[&pesel](std::shared_ptr<Student> Student){return Student->getPesel() == pesel; });
+//     std::make_shared<Person>(foundStudent);
+//     auto it = std::find_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),[&pesel](std::shared_ptr<Person> Student){return Student->getPesel() == pesel; });
 //     if(it!=vectorOfPeople_.end()){
 //         foundStudent = **it;
 //         return foundStudent;
@@ -48,49 +48,49 @@ std::vector<std::shared_ptr<Person>> Database::findBySurname(const std::string& 
 //     return foundStudent;
 // }
 
-// void Database::sortBySurname(const Order& order){
-//     switch(order){
-//         case Order::Ascending:
-//         std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>& rhs)
-//                                                                     {return lhs->getSurname()<rhs->getSurname();});
-//         break;
-//         case Order::Descending:
-//         std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>& rhs)
-//                                                                     {return lhs->getSurname()>rhs->getSurname();});
-//         break;
-//         default:
-//         std::cout<<"ERROR! Wrong Order";
-//         break;
-//     }
-// }
+void Database::sortBySurname(const Order& order){
+    switch(order){
+        case Order::Ascending:
+        std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
+                                                                    {return lhs->getSurname()<rhs->getSurname();});
+        break;
+        case Order::Descending:
+        std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
+                                                                    {return lhs->getSurname()>rhs->getSurname();});
+        break;
+        default:
+        std::cout<<"ERROR! Wrong Order";
+        break;
+    }
+}
 
-// void Database::sortByPesel(const Order& order){
+void Database::sortByPesel(const Order& order){
 
-//     int counter = std::count_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Student>& Student)
-//                                                                         { 
-//                                                                             return Student->getPesel()<="23";
+    int counter = std::count_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& Student)
+                                                                        { 
+                                                                            return Student->getPesel()<="23";
                                                                             
-//                                                                         });
+                                                                        });
 
-//     switch(order){
-//         case Order::Ascending:
-//         std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>& rhs)
-//                                                                     {return lhs->getPesel()<rhs->getPesel();});
+    switch(order){
+        case Order::Ascending:
+        std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
+                                                                    {return lhs->getPesel()<rhs->getPesel();});
         
-//         std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+counter,vectorOfPeople_.end());
+        std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+counter,vectorOfPeople_.end());
 
-//         break;
-//         case Order::Descending:
-//         std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Student>& lhs, const std::shared_ptr<Student>& rhs)
-//                                                                     {return lhs->getPesel()>rhs->getPesel();});
+        break;
+        case Order::Descending:
+        std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
+                                                                    {return lhs->getPesel()>rhs->getPesel();});
 
-//         std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+(vectorOfPeople_.size()-counter),vectorOfPeople_.end());
-//         break;
-//         default:
-//         std::cout<<"ERROR! Wrong Order Code";
-//         break;
-//     }
-// }
+        std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+(vectorOfPeople_.size()-counter),vectorOfPeople_.end());
+        break;
+        default:
+        std::cout<<"ERROR! Wrong Order Code";
+        break;
+    }
+}
 
 void Database::removeByIndex(const size_t index){
 

@@ -31,3 +31,8 @@ void Person::setGender(){
     else 
         gender_ = Gender::Male;
 }
+
+void Person::makeToUpper(){
+    name_[0] = std::toupper(name_[0]);
+    surname_[0] = std::toupper(surname_[0]);
+}
