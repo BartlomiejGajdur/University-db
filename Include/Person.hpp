@@ -26,6 +26,7 @@ class Person{
     Gender getGender()      const {return gender_;};
     std::string getGenderInString() const;
 
+    virtual size_t getIndex()          const = 0;
     virtual void print(std::ostream& os) const = 0;
 
     //Operators 

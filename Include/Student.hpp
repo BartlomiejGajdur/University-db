@@ -20,7 +20,7 @@ class Student : public Person{
     void print(std::ostream& os) const override;
 
     //Getters
-    size_t getIndex()       const {return index_;};
+    size_t getIndex()       const override {return index_;};
     
     //Operators 
     friend std::ostream& operator<<(std::ostream& os,  Student& student);

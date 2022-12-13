@@ -18,7 +18,7 @@ class Employee : public Person{
 
     //Getters
     size_t getEarnings()       const {return earnings_;};
-    
+    size_t getIndex()    const override {return INT_MAX;}
     //Operators 
     friend std::ostream& operator<<(std::ostream& os,  Employee& Employee);
     bool operator==(const Person& other) override;

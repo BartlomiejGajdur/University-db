@@ -116,6 +116,7 @@ int main(){
     for (auto vec : finnaly){
         std::cout<<*vec<<"\n";
     }
-
+    db.removeByIndex(1);
+     db.printDatabase();
     return 0;
 }

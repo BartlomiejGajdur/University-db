@@ -92,11 +92,13 @@ std::vector<std::shared_ptr<Person>> Database::findBySurname(const std::string& 
 //     }
 // }
 
-// void Database::removeByIndex(const size_t index){
+void Database::removeByIndex(const size_t index){
 
-//     vectorOfPeople_.erase(remove_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),
-//                                                                                         [&index](const std::shared_ptr<Student>& lhs)
-//                                                                                         {return lhs->getIndex() == index;})
-//                                                                                         ,vectorOfPeople_.end());
-// }
+    vectorOfPeople_.erase(remove_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),
+                                                                                        [&index](const std::shared_ptr<Person>& lhs)
+                                                                                        {
+                                                                                            return lhs->getIndex() == index;  
+                                                                                        })
+                                                                                        ,vectorOfPeople_.end());
+}
 
