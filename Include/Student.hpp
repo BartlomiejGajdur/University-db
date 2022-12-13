@@ -13,7 +13,6 @@ class Student : public Person{
                              Person(name,surname,adress,pesel)
                             {
                                 index_ = counter++;
-                                setGender();
                             }
         Student(){};
         
