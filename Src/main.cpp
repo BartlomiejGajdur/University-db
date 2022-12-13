@@ -77,42 +77,44 @@ int main(){
 
     db.printDatabase();
 
-    db.sortBySurname(Order::Ascending);
-    db.printDatabase();
+    // db.sortBySurname(Order::Ascending);
+    // db.printDatabase();
 
-    db.sortBySurname(Order::Descending);
-    db.printDatabase();
+    // db.sortBySurname(Order::Descending);
+    // db.printDatabase();
 
-    std::cout<<"\n\n@@@@@\n\n";
+    // std::cout<<"\n\n@@@@@\n\n";
 
-     db.sortByPesel(Order::Ascending);
-    db.printDatabase();
+    //  db.sortByPesel(Order::Ascending);
+    // db.printDatabase();
 
-    db.sortByPesel(Order::Descending);
-    db.printDatabase();
+    // db.sortByPesel(Order::Descending);
+    // db.printDatabase();
     
-    std::string Pesel{"92022919156"};
-    if(PeselValidator::checkLeapYear(Pesel))
-        std::cout<<"IsLeap\n";
+    // std::string Pesel{"92022919156"};
+    // if(PeselValidator::checkLeapYear(Pesel))
+    //     std::cout<<"IsLeap\n";
 
-    if(PeselValidator::checkDate(Pesel))
-        std::cout<<"Dobra data\n";
+    // if(PeselValidator::checkDate(Pesel))
+    //     std::cout<<"Dobra data\n";
 
-    if(PeselValidator::checkDigit("55030101193"))
-        std::cout<<"ZGADZA SIE PESEL!\n";
+    // if(PeselValidator::checkDigit("55030101193"))
+    //     std::cout<<"ZGADZA SIE PESEL!\n";
     
-    if(PeselValidator::checkDigit("55030101230"))
-        std::cout<<"Zgadza SIe pesel!\n";
+    // if(PeselValidator::checkDigit("55030101230"))
+    //     std::cout<<"Zgadza SIe pesel!\n";
 
-    if(PeselValidator::validatePesel("62080697415"))
-        std::cout<<"ZGADZA SIE PESEL!\n";
+    // if(PeselValidator::validatePesel("62080697415"))
+    //     std::cout<<"ZGADZA SIE PESEL!\n";
 
-    std::vector<std::shared_ptr<Person>> finnaly = db.findBySurname("Malkowski");
-    //testy:
-    for (auto vec : finnaly){
-        std::cout<<*vec<<"\n";
-    }
-    db.removeByIndex(1);
-     db.printDatabase();
+    // std::vector<std::shared_ptr<Person>> finnaly = db.findBySurname("Malkowski");
+    // //testy:
+    // for (auto vec : finnaly){
+    //     std::cout<<*vec<<"\n";
+    // }
+    // db.removeByIndex(1);
+    //  db.printDatabase();
+    
+     std::cout<<*(db.findByPesel("0504123681881"));
     return 0;
 }

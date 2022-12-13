@@ -38,15 +38,15 @@ std::vector<std::shared_ptr<Person>> Database::findBySurname(const std::string& 
     return findCorrectSurname;
 }
 
-// Student Database::findByPesel(const std::string& pesel){
-//     std::make_shared<Person>(foundStudent);
-//     auto it = std::find_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),[&pesel](std::shared_ptr<Person> Student){return Student->getPesel() == pesel; });
-//     if(it!=vectorOfPeople_.end()){
-//         foundStudent = **it;
-//         return foundStudent;
-//     }
-//     return foundStudent;
-// }
+std::shared_ptr<Person> Database::findByPesel(const std::string& pesel){
+    std::shared_ptr<Person> foundPerson;
+    auto it = std::find_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),[&pesel](std::shared_ptr<Person> Student){return Student->getPesel() == pesel; });
+    if(it!=vectorOfPeople_.end()){
+        foundPerson = *it;
+        return foundPerson;
+    }
+    return nullptr;
+}
 
 void Database::sortBySurname(const Order& order){
     switch(order){
