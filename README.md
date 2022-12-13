@@ -23,17 +23,19 @@
 
 - [x] Walidacja czy numer PESEL jest poprawny Wiki - poprawność PESEL
 
+- [x]  Przechowywanie rekordów pracowników uczelni o strukturze: imię, nazwisko, PESEL, płeć, adres, zarobki
+
+- [x]  Wszystkie osoby niezależnie czy będą to pracownicy, czy studenci mają być trzymani w jednym kontenerze
+  
 - [x] Zapis całej bazy danych do pliku
 
 **In progress:**
 
-- [ ] Odczyt danych z pliku
+
 
 **ToDo**
 
-- [ ]  Przechowywanie rekordów pracowników uczelni o strukturze: imię, nazwisko, PESEL, płeć, adres, zarobki
-
-- [ ]  Wszystkie osoby niezależnie czy będą to pracownicy, czy studenci mają być trzymani w jednym kontenerze
+- [ ] Odczyt danych z pliku
 
 - [ ]  Wypełnianie bazy danych sztucznymi danymi (generowanie danych)
 
