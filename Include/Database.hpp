@@ -4,28 +4,29 @@
 #include <vector>
 
 #include "Student.hpp"
+#include "Person.hpp"
 
 enum class Order {Ascending, Descending};
 
 class Database{
     public:
         Database();
-        Database(const std::vector<std::shared_ptr<Student>>& vectorOfStudents): vectorOfStudents_(vectorOfStudents){};
+        Database(const std::vector<std::shared_ptr<Person>>& vectorOfPeople): vectorOfPeople_(vectorOfPeople){};
         
 
         //Getters
-        std::vector<std::shared_ptr<Student>> getVectorOfStudents() const {return vectorOfStudents_;};
+        std::vector<std::shared_ptr<Person>> getVectorOfPeople() const {return vectorOfPeople_;};
 
 
         //Functions
-        void add(const std::shared_ptr<Student>& student);
+        void add(const std::shared_ptr<Person>& student);
         void printDatabase();
-        std::vector<Student> findBySurname(const std::string& surname);
-        Student findByPesel(const std::string& pesel);
-        void sortBySurname(const Order& order);
-        void sortByPesel(const Order& order);
-        void removeByIndex(const size_t index);
+        std::vector<std::shared_ptr<Person>> findBySurname(const std::string& surname);
+        // Student findByPesel(const std::string& pesel);
+        // void sortBySurname(const Order& order);
+        // void sortByPesel(const Order& order);
+        // void removeByIndex(const size_t index);
     private:
-        std::vector<std::shared_ptr<Student>> vectorOfStudents_;
+        std::vector<std::shared_ptr<Person>> vectorOfPeople_;
 
 };

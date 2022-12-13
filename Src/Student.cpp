@@ -12,7 +12,8 @@ void Student::print(std::ostream& os) const{
       <<std::setw(15)<<std::left<<adress_
       <<std::setw(15)<<std::left<<index_
       <<std::setw(15)<<std::left<<pesel_
-      <<std::setw(15)<<std::left<<this->getGenderInString();
+      <<std::setw(15)<<std::left<<this->getGenderInString()
+      <<std::setw(15)<<std::left<<"-N/N-";
 }
 std::ostream& operator<<(std::ostream& os,  Student& student){
 
