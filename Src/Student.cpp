@@ -9,7 +9,7 @@ size_t Student::counter = 0;
 void Student::print(std::ostream& os) const{
      os<<std::setw(15)<<std::left<<name_
       <<std::setw(15)<<std::left<<surname_
-      <<std::setw(15)<<std::left<<adress_
+      <<std::setw(18)<<std::left<<adress_
       <<std::setw(15)<<std::left<<index_
       <<std::setw(15)<<std::left<<pesel_
       <<std::setw(15)<<std::left<<this->getGenderInString()

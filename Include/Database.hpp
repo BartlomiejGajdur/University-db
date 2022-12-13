@@ -7,6 +7,7 @@
 #include "Student.hpp"
 #include "Person.hpp"
 #include "Employee.hpp"
+#include "Generator.hpp"
 
 enum class Order {Ascending, Descending};
 
@@ -26,19 +27,22 @@ class Database{
         void add(const Employee& person);
 
         void printDatabase();
+
         std::vector<std::shared_ptr<Person>> findBySurname(const std::string& surname);
         std::shared_ptr<Person> findByPesel(const std::string& pesel);
         void sortBySurname(const Order& order);
         void sortByPesel(const Order& order);
         void removeByIndex(const size_t index);
+
         void saveDatabaseToFile(const std::string& fileName);
+        void saveDatabaseToFile();
+
+        void generateRandomPeople(const size_t& numberOfPeopleToGenerate);
+        void generateSelectedProffesion(const size_t& numberOfPeopleToGenerate, const Proffesion& proffesion);
         
 
     private:
         std::vector<std::shared_ptr<Person>> vectorOfPeople_;
 
-
         std::stringstream formatPrint();
-        
-    
 };

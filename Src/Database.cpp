@@ -2,6 +2,8 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include <vector>
+#include <memory>
 
 
 #include "../Include/Database.hpp"
@@ -25,7 +27,7 @@ void Database::printDatabase(){
     std::cout<<"-------------------------------------------------DATABASE-------------------------------------------------\n";
     std::cout<<std::setw(14)<<std::left<<"Name"
       <<std::setw(14)<<std::left<<"|Surname"
-      <<std::setw(14)<<std::left<<" |Adress"
+      <<std::setw(17)<<std::left<<" |Adress"
       <<std::setw(14)<<std::left<<"  |Index"
       <<std::setw(14)<<std::left<<"   |Pesel"
       <<std::setw(14)<<std::left<<"    |Gender"
@@ -120,7 +122,7 @@ std::stringstream Database::formatPrint(){
     stream<<"-------------------------------------------------DATABASE-------------------------------------------------\n";
     stream<<std::setw(14)<<std::left<<"Name"
       <<std::setw(14)<<std::left<<"|Surname"
-      <<std::setw(14)<<std::left<<" |Adress"
+      <<std::setw(18)<<std::left<<" |Adress"
       <<std::setw(14)<<std::left<<"  |Index"
       <<std::setw(14)<<std::left<<"   |Pesel"
       <<std::setw(14)<<std::left<<"    |Gender"
@@ -152,4 +154,35 @@ void Database::saveDatabaseToFile(const std::string& fileName){
         std::cout<<"Data saved corectlly! :)\n";
     }else
         std::cout<<"Data not saved! Error :(\n";
+}
+
+void Database::saveDatabaseToFile(){
+    this->saveDatabaseToFile("DatabaseOfStudents");
+}
+
+void Database::generateRandomPeople(const size_t& numberOfPeopleToGenerate){
+
+    int choice;
+    for(int i = 0;i<numberOfPeopleToGenerate; i++){
+
+        choice = generate::generateRandomNumber(1,2);
+        std::string pesel  = generate::generatePesel();
+
+        switch (choice)
+        {
+        case 1:
+        vectorOfPeople_.push_back(std::make_shared<Student>(generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel));
+            break;
+        
+        case 2:
+        vectorOfPeople_.push_back(std::make_shared<Employee>(generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel,generate::generateEarnings()));
+            break;
+        
+        default:
+            std::cout<<"Something bad happens!\n\n";
+            break;
+        } 
+    }
+    
+    
 }

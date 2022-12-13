@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+#include "Generator.hpp"
+
 enum class Gender {Male,Female};
 //base class
 class Person{
@@ -26,7 +28,13 @@ class Person{
     std::string getPesel()  const {return pesel_;};
     Gender getGender()      const {return gender_;};
     std::string getGenderInString() const;
-    void makeToUpper();
+
+    //Setters
+    void setName    (const std::string& name) {name_ = name;};
+    void setSurname (const std::string& surname) {surname_ = surname;};
+    void setPesel   (const std::string& pesel) {pesel_ = pesel;};
+    void setAdress  (const std::string& adress) {adress_ = adress;};
+    void setRandomData();
 
     virtual size_t getIndex()          const = 0;
     virtual void print(std::ostream& os) const = 0;
@@ -44,5 +52,7 @@ class Person{
         std::string adress_;
         std::string pesel_;
         Gender gender_;
+
+        void makeToUpper();
 
 };

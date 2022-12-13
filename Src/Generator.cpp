@@ -19,7 +19,7 @@ std::array<std::string,10> surname_{"Nowak","Kowalski","Wisniewski","Wojcik","Ko
 
 std::array<std::string,10> postCode_{"21-233","62-200","34-250","62-700","62-826","66-211","69-999","12-340","41-321","77-151"};
 
-std::array<std::string,10> cities_ ={"Warszawa","Krakow","Szczecin","Lodz","Wroclaw","Zielona Gora","Gdansk","Poznan","Swinoujwcie","Dabrowa Gornicza"};
+std::array<std::string,10> cities_ ={"Warszawa","Krakow","Szczecin","Lodz","Wroclaw","Mistrzejow","Gdansk","Poznan","Sopot","Torun"};
 
 int generate::generateRandomNumber(const int& first, const int& second){
     std::random_device rd;

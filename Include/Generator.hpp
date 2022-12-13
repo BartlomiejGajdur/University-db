@@ -2,7 +2,7 @@
 #include <array>
 #include <random>
 
-enum class Occupation {Student,Employee};
+enum class Proffesion {Student,Employee};
 
 namespace generate{
 //GenerateData 3 przeciazenia 1- dla enum Student
@@ -16,5 +16,4 @@ std::string generateName(const std::string& pesel);
 std::string generateSurname();
 std::string generateAdress();
 int generateEarnings();
-
 }
