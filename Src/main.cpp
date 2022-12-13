@@ -7,6 +7,8 @@
 #include "../Include/Employee.hpp"
 #include "../Include/Generator.hpp"
 
+
+
 int main(){ 
 
     //  Student Adam{
@@ -137,11 +139,11 @@ int main(){
     
     //  std::cout<<*(db.findByPesel("0504123681881"));
 
-   if(PeselValidator::validatePesel(generate::generatePesel())){
-        std::cout<<"Jest super ten pesel!\n";
-   }else{
-        std::cout<<"ojjj\n";
-   }
-
+     std::string pesel = generate::generatePesel();
+     for (int i = 0; i<10 ; i++){
+          pesel = generate::generatePesel();
+          std::cout<<pesel<<"   "<< generate::generateName(pesel)<<" "<<generate::generateSurname()<<" "<<generate::generateAdress()<<" "<<generate::generateEarnings()<<"\n";
+     }
+     
     return 0;
 }

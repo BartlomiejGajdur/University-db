@@ -5,6 +5,22 @@
 #include "../Include/Generator.hpp"
 #include "../Include/validatePesel.hpp"
 
+std::array<std::string,40> femaleName_{"Joanna","Zofia","Aleksandra","Monika","Teresa","Danuta","Natalia","Karolina","Marta","Beata",
+                                        "Julia","Dorota","Janina","Jadwiga","alina","Jolanta","Irena","Alicja","Grazyna","Iwona","Paulina",
+                                        "Justyna","Bozena","Zuzanna","Urszula","Wiktoria","Renata","Helena","Sylwia","Agata","Hanna","Patrycja",
+                                        "Izabela","Maja","Aneta","Emilia","Weronika","Ewelina","Marianna","Oliwia"}; 
+
+std::array<std::string,40> maleName_{"Adam","Marcel","Stanislaw","Michal","Wiktor","Leon","Piotr","Nikodem","Igor","Ignacy","Tymon","Milosz",
+                                        "Maksymilian","Oliwier","Tymoteusz","Mateusz","Bartosz","Alan","Oskar","Dawid","Krzysztof","Julian","Tomasz",
+                                        "Karol","Dominik","Maciej","Gabriel","Hubert","Fabian","Natan","Pawel","Kamil","Ksawery","Bruno","Bartlomiej",
+                                        "Patryk","Borys","Kajeta","Artur","Adrian"};    
+
+std::array<std::string,10> surname_{"Nowak","Kowalski","Wisniewski","Wojcik","Kowalczyk","Kaminski","Lewandowski","Zielinski","Szymanski","Wozniak"};                   
+
+std::array<std::string,10> postCode_{"21-233","62-200","34-250","62-700","62-826","66-211","69-999","12-340","41-321","77-151"};
+
+std::array<std::string,10> cities_ ={"Warszawa","Krakow","Szczecin","Lodz","Wroclaw","Zielona Gora","Gdansk","Poznan","Swinoujwcie","Dabrowa Gornicza"};
+
 int generate::generateRandomNumber(const int& first, const int& second){
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -112,4 +128,22 @@ std::string generate::generatePesel(){
         controlDigit=10-controlDigit;
 
     return pesel + std::to_string(controlDigit);
+}
+
+std::string generate::generateName(const std::string& pesel){
+    if((int(pesel[9])-48) % 2 == 0)
+        return femaleName_[generate::generateRandomNumber(0,39)];
+    else return maleName_[generate::generateRandomNumber(0,39)];
+}
+
+std::string generate::generateSurname(){
+        return surname_[generate::generateRandomNumber(0,9)];
+}
+
+std::string generate::generateAdress(){
+        return cities_[generate::generateRandomNumber(0,9)] + " " + postCode_[generate::generateRandomNumber(0,9)];
+}
+
+int generate::generateEarnings(){
+        return (generate::generateRandomNumber(2600,9000) / 100)*100;
 }
