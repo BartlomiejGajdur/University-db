@@ -5,10 +5,18 @@
 
 Database::Database(){};
 
-void Database::add(const std::shared_ptr<Person>& student){
+void Database::add(const std::shared_ptr<Person>& person){
 
-    vectorOfPeople_.push_back(student);
+    vectorOfPeople_.push_back(person);
 }
+
+void Database::add(const Student& person){
+             this->add(std::make_shared<Student>(person));
+        }
+        
+void Database::add(const Employee& person){
+        this->add(std::make_shared<Employee>(person));
+        }
 
 void Database::printDatabase(){
     std::cout<<"-------------------------------------------------DATABASE-------------------------------------------------\n";

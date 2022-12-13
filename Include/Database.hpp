@@ -5,6 +5,7 @@
 
 #include "Student.hpp"
 #include "Person.hpp"
+#include "Employee.hpp"
 
 enum class Order {Ascending, Descending};
 
@@ -19,7 +20,10 @@ class Database{
 
 
         //Functions
-        void add(const std::shared_ptr<Person>& student);
+        void add(const std::shared_ptr<Person>& person);
+        void add(const Student& person);
+        void add(const Employee& person);
+
         void printDatabase();
         std::vector<std::shared_ptr<Person>> findBySurname(const std::string& surname);
         std::shared_ptr<Person> findByPesel(const std::string& pesel);

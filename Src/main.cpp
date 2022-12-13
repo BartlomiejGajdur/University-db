@@ -64,6 +64,21 @@ int main(){
         2400
     };
 
+    Student Kasia5{
+        "Dodane nowe",
+        "calkowski",
+        "Krakow 21dd",
+        "00111555121"
+    };
+
+    Employee Bartek5{
+        "Krzysiek",
+        "Os323232uch",
+        "Krakow 21dd",
+        "53081891465",
+        4444
+    };
+
     Database db;
 
     db.add(std::make_shared<Student>(Adam));
@@ -74,6 +89,8 @@ int main(){
     db.add(std::make_shared<Employee>(Bartek3)); 
     db.add(std::make_shared<Student>(Kasia1));
     db.add(std::make_shared<Employee>(Bartek1)); 
+    db.add(Bartek5);
+    db.add(Kasia5);
 
     db.printDatabase();
 
