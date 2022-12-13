@@ -3,6 +3,8 @@
 #include "../Include/Database.hpp"
 #include "../Include/Student.hpp"
 #include "../Include/validatePesel.hpp"
+#include "../Include/Person.hpp"
+#include "../Include/Employee.hpp"
 
 int main(){ 
 
@@ -38,11 +40,12 @@ int main(){
         "00111555121"
     };
 
-    Student Bartek1{
+    Employee Bartek1{
         "Kasia",
         "Malkowski",
         "Krakow 21dd",
-        "53081891465"
+        "53081891465",
+        5000
     };
 
     Database db;
@@ -52,7 +55,7 @@ int main(){
     db.add(std::make_shared<Student>(Bartek)); 
     db.add(std::make_shared<Student>(Adam1));
     db.add(std::make_shared<Student>(Kasia1));
-    db.add(std::make_shared<Student>(Bartek1)); 
+    //db.add(std::make_shared<Student>(Bartek1)); 
 
     db.printDatabase();
 
@@ -90,5 +93,6 @@ int main(){
     if(PeselValidator::validatePesel("62080697415"))
         std::cout<<"ZGADZA SIE PESEL!\n";
 
+std::cout<<Bartek1;
     return 0;
 }

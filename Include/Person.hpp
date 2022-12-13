@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 enum class Gender {Male,Female};

@@ -6,10 +6,10 @@ void Employee::print(std::ostream& os) const{
      os<<std::setw(15)<<std::left<<name_
       <<std::setw(15)<<std::left<<surname_
       <<std::setw(15)<<std::left<<adress_
-      <<std::setw(15)<<std::left<<index_
+      <<std::setw(15)<<std::left<<"-"
       <<std::setw(15)<<std::left<<pesel_
       <<std::setw(15)<<std::left<<this->getGenderInString()
-      <<std::setw(15)<<std::left<<earnings_<<" PLN";
+      <<std::setw(15)<<std::left<<std::to_string(earnings_)+" PLN";
 }
 std::ostream& operator<<(std::ostream& os,  Employee& Employee){
 

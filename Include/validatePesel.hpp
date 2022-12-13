@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 constexpr size_t peselLength{11};
 

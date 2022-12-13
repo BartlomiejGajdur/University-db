@@ -1,3 +1,4 @@
+#pragma once
 #include "Person.hpp"
 
 class Employee : public Person{
@@ -9,7 +10,6 @@ class Employee : public Person{
                  const int& earnings) : 
                              Person(name,surname,adress,pesel), earnings_(earnings)
                             {
-                                index_ = counter++;
                             }
         Employee(){};
         
@@ -27,8 +27,6 @@ class Employee : public Person{
 
     private:
         
-        size_t index_;
-        static size_t counter;
         int earnings_;
 
 };
