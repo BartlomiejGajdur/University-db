@@ -117,19 +117,20 @@ void Database::removeByIndex(const size_t index){
 std::stringstream Database::formatPrint(){
     std::stringstream stream;
 
-    stream<<"-----------------------------------------DATABASE--------------------------------\n";
+    stream<<"-------------------------------------------------DATABASE-------------------------------------------------\n";
     stream<<std::setw(14)<<std::left<<"Name"
       <<std::setw(14)<<std::left<<"|Surname"
       <<std::setw(14)<<std::left<<" |Adress"
       <<std::setw(14)<<std::left<<"  |Index"
       <<std::setw(14)<<std::left<<"   |Pesel"
-      <<std::setw(14)<<std::left<<"    |Gender"<<"\n";
+      <<std::setw(14)<<std::left<<"    |Gender"
+      <<std::setw(14)<<std::left<<"     |Earnings"<<"\n";
 
-    stream<<"_________________________________________________________________________________\n";
-    std::for_each(vectorOfStudents_.begin(),vectorOfStudents_.end(),
-                                                                        [&stream](const std::shared_ptr<Student>& student)
+    stream<<"__________________________________________________________________________________________________________\n";
+    std::for_each(vectorOfPeople_.begin(),vectorOfPeople_.end(),
+                                                                        [&stream](const std::shared_ptr<Person>& student)
                                                                             {stream<<*student<<"\n";});
-    stream<<"---------------------------------------------------------------------------------\n";
+    stream<<"----------------------------------------------------------------------------------------------------------\n";
 
     return stream;
 }

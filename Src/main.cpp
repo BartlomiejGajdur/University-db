@@ -131,6 +131,8 @@ int main(){
     // }
     // db.removeByIndex(1);
     //  db.printDatabase();
+
+    db.saveDatabaseToFile("DatabaseOfStudents");
     
      std::cout<<*(db.findByPesel("0504123681881"));
     return 0;

@@ -1,7 +1,6 @@
 # University-db
 
 
-
 **Requirements:**
 
 - [x]  Przechowywanie rekordów studentów o strukturze: Imię, nazwisko,
@@ -31,13 +30,11 @@
 
 **In progress:**
 
-
+- [ ]  Wypełnianie bazy danych sztucznymi danymi (generowanie danych)
 
 **ToDo**
 
 - [ ] Odczyt danych z pliku
-
-- [ ]  Wypełnianie bazy danych sztucznymi danymi (generowanie danych)
 
 - [ ]  Modyfikacja zarobków wyszukując osobę po numerze PESEL 
 
