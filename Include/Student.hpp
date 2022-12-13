@@ -2,49 +2,36 @@
 #include <ostream>
 #include <string>
 #include <iostream>
+#include "../Include/Person.hpp"
 
-enum class Gender {Male,Female};
-
-
-class Student{
+class Student : public Person{
     public:
         Student(const std::string& name,
                  const std::string& surname,
                  const std::string& adress,
                  const std::string& pesel) : 
-                             name_(name),
-                             surname_(surname),
-                             adress_(adress),
-                             pesel_(pesel)
+                             Person(name,surname,adress,pesel)
                             {
                                 index_ = counter++;
                                 setGender();
                             }
         Student(){};
         
-    //Getters
-    std::string getName()   const {return name_;};
-    std::string getSurname()const {return surname_;};
-    std::string getAdress() const {return adress_;};
-    size_t getIndex()       const {return index_;};
-    std::string getPesel()  const {return pesel_;};
-    Gender getGender()      const {return gender_;};
-    std::string getGenderInString() const;
+    //Functions
+    void print(std::ostream& os) const override;
 
+    //Getters
+    size_t getIndex()       const {return index_;};
+    
     //Operators 
-    friend std::ostream& operator<<(std::ostream& os, const Student& student);
-    bool operator==(const Student& other);
+    friend std::ostream& operator<<(std::ostream& os,  Student& student);
+    bool operator==(const Person& other) override;
 
     //Setters
-    void setGender();
 
     private:
-        std::string name_;
-        std::string surname_;
-        std::string adress_;
+        
         size_t index_;
-        std::string pesel_;
-        Gender gender_;
         static size_t counter;
 
 };
