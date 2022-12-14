@@ -80,25 +80,42 @@ void Database::sortBySurname(const Order& order){
 // POPRAWIC
 void Database::sortByPesel(const Order& order){
 
-    int counter = std::count_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& Student)
-                                                                        { 
-                                                                            return Student->getPesel()<="23";
-                                                                            
-                                                                        });
+    std::string month;
+  
 
+     auto it = std::partition(vectorOfPeople_.begin(),vectorOfPeople_.end(),[&month](const std::shared_ptr<Person>& person)
+                                                                    {   
+                                                                        month= person->getPesel()[2];
+                                                                        month+= person->getPesel()[3];
+                                                                        return std::stoi(month) >=20;   
+                                                                    });
+    
+    int distance = std::distance(vectorOfPeople_.begin(),it);
+    int Counter = vectorOfPeople_.size()-distance;
+    
     switch(order){
         case Order::Ascending:
-        std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
+            
+        std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+distance,vectorOfPeople_.end());
+        
+        std::sort(vectorOfPeople_.begin(),vectorOfPeople_.begin()+Counter,[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
                                                                     {return lhs->getPesel()<rhs->getPesel();});
         
-        //std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+counter,vectorOfPeople_.end());
+        std::sort(vectorOfPeople_.begin()+Counter,vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
+                                                                    {return lhs->getPesel()<rhs->getPesel();});
+        
+       
 
         break;
         case Order::Descending:
-        std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
+
+        std::sort(vectorOfPeople_.begin(),vectorOfPeople_.begin()+distance,[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
+                                                                    {return lhs->getPesel()>rhs->getPesel();});
+        
+        std::sort(vectorOfPeople_.begin()+distance,vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
                                                                     {return lhs->getPesel()>rhs->getPesel();});
 
-        //std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+(vectorOfPeople_.size()-counter),vectorOfPeople_.end());
+        
         break;
         default:
         std::cout<<"ERROR! Wrong Order Code";

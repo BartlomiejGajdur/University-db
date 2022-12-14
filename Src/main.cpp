@@ -95,7 +95,7 @@ int main(){
     // db.add(Bartek5);
     // db.add(Kasia5);
 
-    db.printDatabase();
+    
 
     // // db.sortBySurname(Order::Ascending);
     // // db.printDatabase();
@@ -145,22 +145,17 @@ int main(){
     //       std::cout<<pesel<<"   "<< generate::generateName(pesel)<<" "<<generate::generateSurname()<<" "<<generate::generateAdress()<<" "<<generate::generateEarnings()<<"\n";
     //  }
 
-    db.generateRandomPeople(2);
-
-    db.printDatabase();
-
-    
-    db.saveDatabaseToFile();
 
     db.generateSelectedProffesion(5,Proffesion::Employee);
     db.generateSelectedProffesion(5,Proffesion::Student);
+    
     db.printDatabase();
-    db.saveDatabaseToFile("DatabaseOfStudentss");
-
     db.sortByPesel(Order::Descending);
+    db.printDatabase();
+    db.sortByPesel(Order::Ascending);
+    db.printDatabase();
     db.saveDatabaseToFile("DatabaseOfStudents_sorted");
      
-   std::cout<<int(std::stoi("20"));
-   
+  
     return 0;
 }
