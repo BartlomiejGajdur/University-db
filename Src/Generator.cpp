@@ -91,21 +91,35 @@ std::string generate::generatePesel(){
     std::string year,month,day,digits,pesel;
     int controlDigit;
 
-    //Generate year
-    year = std::to_string(generate::generateRandomNumber(0,99));
-    if(year.size() == 1)
-        year+=std::to_string(generate::generateRandomNumber(0,9));
-
     //Generate Month
-    month = std::to_string(generate::generateRandomNumber(1,32));
-
-    while(month>="13" && month<="20"){
+    month = std::to_string(generate::generateRandomNumber(1,32)); // tu dac na 1
+    
+    while(std::stoi(month)>12 && std::stoi(month)<20){
         month = std::to_string(generate::generateRandomNumber(1,32));
     }
     if(month.size() == 1){
         month+="0";
         reverse(month.begin(),month.end());
     }
+    
+    //Generate year
+    if(std::stoi(month)>=20){
+        year = std::to_string(generate::generateRandomNumber(0,23));
+        if(year.size() == 1)
+        {
+            year+="0";
+            reverse(year.begin(),year.end());
+        }
+
+    }else{
+         year = std::to_string(generate::generateRandomNumber(0,99));
+        if(year.size() == 1)
+        {
+            year+="0";
+            reverse(year.begin(),year.end());
+        }
+    }
+    
 
     //Generate day
     day = generate::generateDay(year+month);

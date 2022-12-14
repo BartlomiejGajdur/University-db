@@ -91,14 +91,14 @@ void Database::sortByPesel(const Order& order){
         std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
                                                                     {return lhs->getPesel()<rhs->getPesel();});
         
-        std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+counter,vectorOfPeople_.end());
+        //std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+counter,vectorOfPeople_.end());
 
         break;
         case Order::Descending:
         std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
                                                                     {return lhs->getPesel()>rhs->getPesel();});
 
-        std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+(vectorOfPeople_.size()-counter),vectorOfPeople_.end());
+        //std::rotate(vectorOfPeople_.begin(),vectorOfPeople_.begin()+(vectorOfPeople_.size()-counter),vectorOfPeople_.end());
         break;
         default:
         std::cout<<"ERROR! Wrong Order Code";
