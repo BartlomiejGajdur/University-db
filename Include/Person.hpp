@@ -28,6 +28,7 @@ class Person{
     std::string getPesel()  const {return pesel_;};
     Gender getGender()      const {return gender_;};
     std::string getGenderInString() const;
+    
 
     //Setters
     void setName    (const std::string& name) {name_ = name;};
@@ -36,6 +37,7 @@ class Person{
     void setAdress  (const std::string& adress) {adress_ = adress;};
     void setRandomData();
 
+    virtual size_t getEarnings() const = 0;
     virtual size_t getIndex()          const = 0;
     virtual void print(std::ostream& os) const = 0;
 

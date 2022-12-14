@@ -7,6 +7,7 @@
 
 
 #include "../Include/Database.hpp"
+#include "../Include/ValidatePesel.hpp"
 
 Database::Database(){};
 
@@ -181,10 +182,13 @@ void Database::saveDatabaseToFile(){
 void Database::generateRandomPeople(const size_t& numberOfPeopleToGenerate){
 
     int choice;
+    std::string pesel;
     for(int i = 0;i<numberOfPeopleToGenerate; i++){
 
         choice = generate::generateRandomNumber(1,2);
-        std::string pesel  = generate::generatePesel();
+        do{
+            pesel  = generate::generatePesel();
+        }while(!PeselValidator::validatePesel(pesel));
 
         switch (choice)
         {
@@ -204,23 +208,25 @@ void Database::generateRandomPeople(const size_t& numberOfPeopleToGenerate){
 }
 
 void Database::generateSelectedProffesion(const size_t& numberOfPeopleToGenerate, const Proffesion& proffesion){
-    switch (proffesion)
-    {
-    case Proffesion::Student:
-        for(int i = 0;i<numberOfPeopleToGenerate; i++){
-            std::string pesel  = generate::generatePesel();
-            vectorOfPeople_.push_back(std::make_shared<Student>(generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel));  
+    std::string pesel ="00000000000";
+
+    for(int i = 0;i<numberOfPeopleToGenerate; i++){
+        do{
+            pesel  = generate::generatePesel();
+        }while(!PeselValidator::validatePesel(pesel));
+        
+        switch (proffesion)
+        {
+        case Proffesion::Student:
+                vectorOfPeople_.push_back(std::make_shared<Student>(generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel));         
+            break;
+        case Proffesion::Employee:
+                vectorOfPeople_.push_back(std::make_shared<Employee>(generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel,generate::generateEarnings()));
+            break;
+        
+        default:
+            std::cout<<"ERROR! Wronrg proffesion!\n";
+            break;
         }
-        break;
-    case Proffesion::Employee:
-         for(int i = 0;i<numberOfPeopleToGenerate; i++){
-            std::string pesel  = generate::generatePesel();
-            vectorOfPeople_.push_back(std::make_shared<Employee>(generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel,generate::generateEarnings()));
-         }
-         break;
-    
-    default:
-        std::cout<<"ERROR! Wronrg proffesion!\n";
-        break;
     }
 }

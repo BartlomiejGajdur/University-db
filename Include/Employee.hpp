@@ -7,7 +7,7 @@ class Employee : public Person{
                  const std::string& surname,
                  const std::string& adress,
                  const std::string& pesel,
-                 const int& earnings) : 
+                 const size_t& earnings) : 
                              Person(name,surname,adress,pesel), earnings_(earnings)
                             {
                             }
@@ -17,11 +17,10 @@ class Employee : public Person{
     void print(std::ostream& os) const override;
 
     //Getters
-    size_t getEarnings()       const {return earnings_;};
-    size_t getIndex()    const override {return INT_MAX;}
-
+    size_t getIndex()    const override {return INT_MAX;};
+    size_t getEarnings()    const override {return earnings_;};
     //Setters
-    void setEarnigns(const int& earnigns) {earnings_ = earnigns;};
+    void setEarnigns(const size_t& earnigns) {earnings_ = earnigns;};
 
     //Operators 
     friend std::ostream& operator<<(std::ostream& os,  Employee& Employee);
@@ -31,6 +30,6 @@ class Employee : public Person{
 
     private:
         
-        int earnings_;
+        size_t earnings_;
 
 };
