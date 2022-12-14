@@ -28,14 +28,15 @@
   
 - [x] Zapis całej bazy danych do pliku
 
+- [x]  Wypełnianie bazy danych sztucznymi danymi (generowanie danych)
+
 **In progress:**
 
-- [ ]  Wypełnianie bazy danych sztucznymi danymi (generowanie danych)
+- [ ]  Modyfikacja zarobków wyszukując osobę po numerze PESEL 
+
+- [ ]  Sortowanie po zarobkach 
 
 **ToDo**
 
 - [ ] Odczyt danych z pliku
 
-- [ ]  Modyfikacja zarobków wyszukując osobę po numerze PESEL 
-
-- [ ]  Sortowanie po zarobkach 
