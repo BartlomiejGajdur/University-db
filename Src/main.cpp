@@ -156,6 +156,10 @@ int main(){
     db.printDatabase();
     db.saveDatabaseToFile("DatabaseOfStudents_sorted");
      
-  
+    db.sortBySalary(Order::Ascending);
+    db.printDatabase();
+
+    db.sortBySalary(Order::Descending);
+    db.printDatabase();
     return 0;
 }

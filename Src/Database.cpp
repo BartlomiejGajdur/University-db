@@ -25,7 +25,7 @@ void Database::add(const Employee& person){
         }
 
 void Database::printDatabase(){
-    std::cout<<"-------------------------------------------------DATABASE-------------------------------------------------\n";
+    std::cout<<"----------------------------------------------DATABASE-------------------------------------------------\n";
     std::cout<<std::setw(14)<<std::left<<"Name"
       <<std::setw(14)<<std::left<<"|Surname"
       <<std::setw(17)<<std::left<<" |Adress"
@@ -34,11 +34,11 @@ void Database::printDatabase(){
       <<std::setw(14)<<std::left<<"    |Gender"
       <<std::setw(14)<<std::left<<"     |Earnings"<<"\n";
 
-    std::cout<<"__________________________________________________________________________________________________________\n";
+    std::cout<<"_______________________________________________________________________________________________________\n";
     std::for_each(vectorOfPeople_.begin(),vectorOfPeople_.end(),
                                                                         [](const std::shared_ptr<Person>& student)
                                                                             {std::cout<<*student<<"\n";});
-    std::cout<<"----------------------------------------------------------------------------------------------------------\n";
+    std::cout<<"-------------------------------------------------------------------------------------------------------\n";
 }
 
 std::vector<std::shared_ptr<Person>> Database::findBySurname(const std::string& surname){
@@ -71,6 +71,22 @@ void Database::sortBySurname(const Order& order){
         case Order::Descending:
         std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
                                                                     {return lhs->getSurname()>rhs->getSurname();});
+        break;
+        default:
+        std::cout<<"ERROR! Wrong Order";
+        break;
+    }
+}
+
+void Database::sortBySalary(const Order& order){
+    switch(order){
+        case Order::Ascending:
+        std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
+                                                                    {return lhs->getEarnings()<rhs->getEarnings();});
+        break;
+        case Order::Descending:
+        std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
+                                                                    {return lhs->getEarnings()>rhs->getEarnings();});
         break;
         default:
         std::cout<<"ERROR! Wrong Order";
@@ -138,7 +154,7 @@ void Database::removeByIndex(const size_t index){
 std::stringstream Database::formatPrint(){
     std::stringstream stream;
 
-    stream<<"-------------------------------------------------DATABASE-------------------------------------------------\n";
+    stream<<"----------------------------------------------DATABASE-------------------------------------------------\n";
     stream<<std::setw(14)<<std::left<<"Name"
       <<std::setw(14)<<std::left<<"|Surname"
       <<std::setw(18)<<std::left<<" |Adress"
@@ -147,11 +163,11 @@ std::stringstream Database::formatPrint(){
       <<std::setw(14)<<std::left<<"    |Gender"
       <<std::setw(14)<<std::left<<"     |Earnings"<<"\n";
 
-    stream<<"__________________________________________________________________________________________________________\n";
+    stream<<"_______________________________________________________________________________________________________\n";
     std::for_each(vectorOfPeople_.begin(),vectorOfPeople_.end(),
                                                                         [&stream](const std::shared_ptr<Person>& student)
                                                                             {stream<<*student<<"\n";});
-    stream<<"----------------------------------------------------------------------------------------------------------\n";
+    stream<<"-------------------------------------------------------------------------------------------------------\n";
 
     return stream;
 }

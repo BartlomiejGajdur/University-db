@@ -32,6 +32,7 @@ class Database{
         std::shared_ptr<Person> findByPesel(const std::string& pesel);
         void sortBySurname(const Order& order);
         void sortByPesel(const Order& order);
+        void sortBySalary(const Order& order);
         void removeByIndex(const size_t index);
 
         void saveDatabaseToFile(const std::string& fileName);
