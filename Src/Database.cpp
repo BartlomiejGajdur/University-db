@@ -77,6 +77,7 @@ void Database::sortBySurname(const Order& order){
     }
 }
 
+// POPRAWIC
 void Database::sortByPesel(const Order& order){
 
     int counter = std::count_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& Student)
@@ -179,10 +180,30 @@ void Database::generateRandomPeople(const size_t& numberOfPeopleToGenerate){
             break;
         
         default:
-            std::cout<<"Something bad happens!\n\n";
+            std::cout<<"Something bad happened!\n\n";
             break;
         } 
     }
+}
+
+void Database::generateSelectedProffesion(const size_t& numberOfPeopleToGenerate, const Proffesion& proffesion){
+    switch (proffesion)
+    {
+    case Proffesion::Student:
+        for(int i = 0;i<numberOfPeopleToGenerate; i++){
+            std::string pesel  = generate::generatePesel();
+            vectorOfPeople_.push_back(std::make_shared<Student>(generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel));  
+        }
+        break;
+    case Proffesion::Employee:
+         for(int i = 0;i<numberOfPeopleToGenerate; i++){
+            std::string pesel  = generate::generatePesel();
+            vectorOfPeople_.push_back(std::make_shared<Employee>(generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel,generate::generateEarnings()));
+         }
+         break;
     
-    
+    default:
+        std::cout<<"ERROR! Wronrg proffesion!\n";
+        break;
+    }
 }

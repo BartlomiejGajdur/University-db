@@ -149,8 +149,16 @@ int main(){
 
     db.printDatabase();
 
-    db.saveDatabaseToFile("DatabaseOfStudents");
+    
     db.saveDatabaseToFile();
+
+    db.generateSelectedProffesion(20,Proffesion::Employee);
+    db.generateSelectedProffesion(5,Proffesion::Student);
+    db.printDatabase();
+    db.saveDatabaseToFile("DatabaseOfStudentss");
+
+    db.sortByPesel(Order::Descending);
+    db.saveDatabaseToFile("DatabaseOfStudents_sorted");
      
      
     return 0;
