@@ -13,6 +13,7 @@ class Student : public Person{
                              Person(name,surname,adress,pesel)
                             {
                                 index_ = counter++;
+                                earnings_ = 0;
                             }
         Student(){};
         
@@ -22,11 +23,13 @@ class Student : public Person{
     //Getters
     size_t getIndex()  const override {return index_;};
     size_t getEarnings()  const override {return 0;};
+
     //Operators 
     friend std::ostream& operator<<(std::ostream& os,  Student& student);
     bool operator==(const Person& other) override;
 
     //Setters
+    void setEarnings(const size_t& earnigns) override {std::cout<<"ERROR! Cannot modify student earnings!\n";};
 
     private:
         

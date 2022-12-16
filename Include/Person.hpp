@@ -37,9 +37,10 @@ class Person{
     void setAdress  (const std::string& adress) {adress_ = adress;};
     void setRandomData();
 
-    virtual size_t getEarnings() const = 0;
-    virtual size_t getIndex()          const = 0;
+    virtual size_t getEarnings()         const = 0;
+    virtual size_t getIndex()            const = 0;
     virtual void print(std::ostream& os) const = 0;
+    virtual void setEarnings(const size_t& earnigns) = 0;
 
     //Operators 
     friend std::ostream& operator<<(std::ostream& os, const Person& Person);
@@ -54,6 +55,8 @@ class Person{
         std::string adress_;
         std::string pesel_;
         Gender gender_;
+
+        size_t earnings_;
 
         void makeToUpper();
 
