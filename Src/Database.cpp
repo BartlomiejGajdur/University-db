@@ -257,3 +257,14 @@ void Database::generateSelectedProffesion(const size_t& numberOfPeopleToGenerate
         }
     }
 }
+
+void Database::modifyEarnings(const std::string& pesel,const size_t& earnings){
+
+    std::shared_ptr<Person> person = this->findByPesel(pesel);
+    if(person != nullptr){
+        person->setEarnings(earnings);
+    }else{
+        std::cout<<"Cannot find the person by the given pesel!\n";
+    }
+    
+}

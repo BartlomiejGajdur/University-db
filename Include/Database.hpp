@@ -9,7 +9,6 @@
 #include "Person.hpp"
 #include "Student.hpp"
 
-
 enum class Order {Ascending, Descending};
 
 class Database{
@@ -33,6 +32,7 @@ class Database{
         void sortByPesel(const Order& order);
         void sortBySalary(const Order& order);
         void removeByIndex(const size_t index);
+        void modifyEarnings(const std::string& pesel,const size_t& earnings);
 
         void saveDatabaseToFile(const std::string& fileName);
         void saveDatabaseToFile();
