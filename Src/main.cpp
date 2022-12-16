@@ -33,11 +33,20 @@ int main(){
     db.generateRandomPeople(3);
     db.generateSelectedProffesion(5,Proffesion::Employee);
     db.generateSelectedProffesion(5,Proffesion::Student);
-    db.printDatabase();
+    //db.printDatabase();
 
     db.modifyEarnings("53081891465",12000);
-    db.modifyEarnings("95081685721",12000);
+   // db.modifyEarnings("95081685721",12000);
+   // db.printDatabase();
+
+    db.generateRandomPeople(20);
+    
     db.printDatabase();
+    db.loadDataFromFile();
+    db.saveDatabaseToFile();
+    db.printDatabase();
+
+    
 
     return 0;
 }

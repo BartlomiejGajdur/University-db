@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cstdlib>
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -195,13 +196,14 @@ void Database::saveDatabaseToFile(const std::string& fileName){
     if(database.is_open()){
         database<<stream.str();
         std::cout<<"Data saved corectlly! :)\n";
+        database.close();
     }else
         std::cout<<"Data not saved! Error :(\n";
 }
 
 void Database::saveDatabaseToFile(){
 
-    this->saveDatabaseToFile("DatabaseOfStudents");
+    this->saveDatabaseToFile("DatabaseOfStudentsOUTPUT");
 }
 
 void Database::generateRandomPeople(const size_t& numberOfPeopleToGenerate){
@@ -267,4 +269,58 @@ void Database::modifyEarnings(const std::string& pesel,const size_t& earnings){
         std::cout<<"Cannot find the person by the given pesel!\n";
     }
     
+}
+
+void Database::loadDataFromFile(const std::string& fileName){
+
+    std::string linia,fileName_;
+    char znak; 
+    std::fstream plik;
+    std::vector<std::string> vec;
+    int liczba;
+
+    fileName_="../"+fileName;
+
+    plik.open(fileName_, plik.in);
+    
+    if(plik.is_open())
+    {
+        
+        while(!plik.eof())
+        {       
+           znak = plik.get();
+           
+           if(znak!=';')
+           {
+            linia+=znak;
+           }else
+           {
+            vec.push_back(linia);
+            linia.clear();
+            plik.seekg(1,std::ios::cur);
+           }   
+        }
+
+        plik.close();
+        
+        for(int i = 0;i<vec.size();i+=4){
+            try
+            {
+                liczba = std::stoi(vec[i + 4]);
+                if(liczba > 1 && liczba < 200000)
+                {
+                    this->add(std::make_shared<Employee>(vec[i],vec[i+1],vec[i+2],vec[i+3],std::stoi(vec[i+4])));
+                    ++i;
+                }
+            }catch(...)
+            {
+                this->add(std::make_shared<Student>(vec[i],vec[i+1],vec[i+2],vec[i+3]));
+            }
+        }    
+    }
+}
+
+void Database::loadDataFromFile(){
+
+    this->loadDataFromFile( "DatabaseOfStudentsINPUT.txt");
 }

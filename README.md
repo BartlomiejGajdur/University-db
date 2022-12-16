@@ -41,3 +41,4 @@
 
 - [ ] Update tests -> PeselValidator
 
+Remove duplicates -> sortowanie po nazwisku i wtedy chyba funckja unique.

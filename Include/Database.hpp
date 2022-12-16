@@ -34,11 +34,15 @@ class Database{
         void removeByIndex(const size_t index);
         void modifyEarnings(const std::string& pesel,const size_t& earnings);
 
+        void generateRandomPeople(const size_t& numberOfPeopleToGenerate);
+        void generateSelectedProffesion(const size_t& numberOfPeopleToGenerate, const Proffesion& proffesion);
+
         void saveDatabaseToFile(const std::string& fileName);
         void saveDatabaseToFile();
 
-        void generateRandomPeople(const size_t& numberOfPeopleToGenerate);
-        void generateSelectedProffesion(const size_t& numberOfPeopleToGenerate, const Proffesion& proffesion);
+        void loadDataFromFile(const std::string& fileName);
+        void loadDataFromFile();
+        //dodac usuwanie zakresu, np podaj liczbe od ktorej powinno usuwac ludzi do ktorego i ne moga te liczby przekroczyc zakresu
         
 
     private:
