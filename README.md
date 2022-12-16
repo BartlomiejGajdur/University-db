@@ -31,13 +31,13 @@
 
 - [x]  Sortowanie po zarobkach 
 
+- [x]  Modyfikacja zarobków wyszukując osobę po numerze PESEL 
+
 **In progress:**
 
-- [ ]  Modyfikacja zarobków wyszukując osobę po numerze PESEL 
+- [ ] Odczyt danych z pliku
 
 **ToDo**
-
-- [ ] Odczyt danych z pliku
 
 - [ ] Update tests -> PeselValidator
 
