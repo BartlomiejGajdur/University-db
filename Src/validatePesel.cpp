@@ -1,6 +1,6 @@
 #include <algorithm>
-#include <numeric>
 #include <iostream>
+#include <numeric>
 #include <vector>
 
 #include "../Include/validatePesel.hpp"
@@ -66,5 +66,6 @@ bool PeselValidator::checkDigit(const std::string & Pesel){
 }
 
 bool PeselValidator::validatePesel(const std::string& Pesel){
+    
     return PeselValidator::checkLength(Pesel) && PeselValidator::checkDate(Pesel) && PeselValidator::checkDigit(Pesel);
 }

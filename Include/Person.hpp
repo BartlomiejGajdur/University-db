@@ -4,7 +4,7 @@
 #include "Generator.hpp"
 
 enum class Gender {Male,Female};
-//base class
+
 class Person{
     public:
         Person(const std::string& name,
@@ -35,19 +35,18 @@ class Person{
     void setSurname (const std::string& surname) {surname_ = surname;};
     void setPesel   (const std::string& pesel) {pesel_ = pesel;};
     void setAdress  (const std::string& adress) {adress_ = adress;};
+    void setGender();
     void setRandomData();
-
-    virtual size_t getEarnings()         const = 0;
-    virtual size_t getIndex()            const = 0;
-    virtual void print(std::ostream& os) const = 0;
-    virtual void setEarnings(const size_t& earnigns) = 0;
 
     //Operators 
     friend std::ostream& operator<<(std::ostream& os, const Person& Person);
     virtual bool operator==(const Person& other) = 0;
 
-    //Setters
-    void setGender();
+    //Virtual Functions 
+    virtual size_t getEarnings()         const = 0;
+    virtual size_t getIndex()            const = 0;
+    virtual void print(std::ostream& os) const = 0;
+    virtual void setEarnings(const size_t& earnigns) = 0;
 
     protected:
         std::string name_;
@@ -55,9 +54,7 @@ class Person{
         std::string adress_;
         std::string pesel_;
         Gender gender_;
-
         size_t earnings_;
 
         void makeToUpper();
-
 };

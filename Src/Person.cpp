@@ -1,7 +1,10 @@
-#include "../Include/Person.hpp"
 #include <iomanip>
+
+#include "../Include/Person.hpp"
+
 //Function shall convert Enum class Gender into string 
 std::string Person::getGenderInString() const{
+
     switch(gender_){
         case Gender::Male:
             return "Male";
@@ -33,11 +36,13 @@ void Person::setGender(){
 }
 
 void Person::makeToUpper(){
+
     name_[0] = std::toupper(name_[0]);
     surname_[0] = std::toupper(surname_[0]);
 }
 
 void Person::setRandomData(){
+    
     pesel_  = generate::generatePesel();
     name_   = generate::generateName(pesel_);
     surname_= generate::generateSurname();

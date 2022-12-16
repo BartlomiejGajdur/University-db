@@ -17,14 +17,17 @@ void Database::add(const std::shared_ptr<Person>& person){
 }
 
 void Database::add(const Student& person){
-             this->add(std::make_shared<Student>(person));
-        }
+
+    this->add(std::make_shared<Student>(person));
+}
         
 void Database::add(const Employee& person){
-        this->add(std::make_shared<Employee>(person));
-        }
+
+    this->add(std::make_shared<Employee>(person));
+}
 
 void Database::printDatabase(){
+
     std::cout<<"----------------------------------------------DATABASE-------------------------------------------------\n";
     std::cout<<std::setw(14)<<std::left<<"Name"
       <<std::setw(14)<<std::left<<"|Surname"
@@ -42,6 +45,7 @@ void Database::printDatabase(){
 }
 
 std::vector<std::shared_ptr<Person>> Database::findBySurname(const std::string& surname){
+
     std::vector<std::shared_ptr<Person>> findCorrectSurname;
     std::for_each(vectorOfPeople_.begin(),vectorOfPeople_.end(),
                                                                     [&surname,&findCorrectSurname](std::shared_ptr<Person> person)
@@ -53,6 +57,7 @@ std::vector<std::shared_ptr<Person>> Database::findBySurname(const std::string& 
 }
 
 std::shared_ptr<Person> Database::findByPesel(const std::string& pesel){
+
     std::shared_ptr<Person> foundPerson;
     auto it = std::find_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),[&pesel](std::shared_ptr<Person> Student){return Student->getPesel() == pesel; });
     if(it!=vectorOfPeople_.end()){
@@ -63,6 +68,7 @@ std::shared_ptr<Person> Database::findByPesel(const std::string& pesel){
 }
 
 void Database::sortBySurname(const Order& order){
+
     switch(order){
         case Order::Ascending:
         std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
@@ -79,6 +85,7 @@ void Database::sortBySurname(const Order& order){
 }
 
 void Database::sortBySalary(const Order& order){
+
     switch(order){
         case Order::Ascending:
         std::sort(vectorOfPeople_.begin(),vectorOfPeople_.end(),[](const std::shared_ptr<Person>& lhs, const std::shared_ptr<Person>& rhs)
@@ -94,13 +101,13 @@ void Database::sortBySalary(const Order& order){
     }
 }
 
-// POPRAWIC
+
 void Database::sortByPesel(const Order& order){
 
     std::string month;
   
 
-     auto it = std::partition(vectorOfPeople_.begin(),vectorOfPeople_.end(),[&month](const std::shared_ptr<Person>& person)
+    auto it = std::partition(vectorOfPeople_.begin(),vectorOfPeople_.end(),[&month](const std::shared_ptr<Person>& person)
                                                                     {   
                                                                         month= person->getPesel()[2];
                                                                         month+= person->getPesel()[3];
@@ -143,15 +150,16 @@ void Database::sortByPesel(const Order& order){
 void Database::removeByIndex(const size_t index){
 
     vectorOfPeople_.erase(remove_if(vectorOfPeople_.begin(),vectorOfPeople_.end(),
-                                                                                        [&index](const std::shared_ptr<Person>& lhs)
-                                                                                        {
-                                                                                            return lhs->getIndex() == index;  
-                                                                                        })
-                                                                                        ,vectorOfPeople_.end());
+                                                                                [&index](const std::shared_ptr<Person>& lhs)
+                                                                                {
+                                                                                    return lhs->getIndex() == index;  
+                                                                                })
+                                                                                ,vectorOfPeople_.end());
 }
 
 
 std::stringstream Database::formatPrint(){
+
     std::stringstream stream;
 
     stream<<"----------------------------------------------DATABASE-------------------------------------------------\n";
@@ -192,6 +200,7 @@ void Database::saveDatabaseToFile(const std::string& fileName){
 }
 
 void Database::saveDatabaseToFile(){
+
     this->saveDatabaseToFile("DatabaseOfStudents");
 }
 
@@ -224,6 +233,7 @@ void Database::generateRandomPeople(const size_t& numberOfPeopleToGenerate){
 }
 
 void Database::generateSelectedProffesion(const size_t& numberOfPeopleToGenerate, const Proffesion& proffesion){
+
     std::string pesel ="00000000000";
 
     for(int i = 0;i<numberOfPeopleToGenerate; i++){
@@ -237,7 +247,8 @@ void Database::generateSelectedProffesion(const size_t& numberOfPeopleToGenerate
                 vectorOfPeople_.push_back(std::make_shared<Student>(generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel));         
             break;
         case Proffesion::Employee:
-                vectorOfPeople_.push_back(std::make_shared<Employee>(generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel,generate::generateEarnings()));
+                vectorOfPeople_.push_back(std::make_shared<Employee>
+                                        (generate::generateName(pesel),generate::generateSurname(),generate::generateAdress(),pesel,generate::generateEarnings()));
             break;
         
         default:

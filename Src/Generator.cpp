@@ -1,7 +1,8 @@
 #include <algorithm>
-#include <numeric>
 #include <iostream>
+#include <numeric>
 #include <vector>
+
 #include "../Include/Generator.hpp"
 #include "../Include/validatePesel.hpp"
 
@@ -22,6 +23,7 @@ std::array<std::string,10> postCode_{"21-233","62-200","34-250","62-700","62-826
 std::array<std::string,10> cities_ ={"Warszawa","Krakow","Szczecin","Lodz","Wroclaw","Mistrzejow","Gdansk","Poznan","Sopot","Torun"};
 
 int generate::generateRandomNumber(const int& first, const int& second){
+
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> random(first,second);
@@ -50,7 +52,6 @@ std::string generate::generateDay(const std::string& yearAndMonth){
                         reverse(day.begin(),day.end());
                     }
             }
-
     
     if((ENUMmonth == Month::April         ||
             ENUMmonth == Month::June      ||
@@ -86,7 +87,6 @@ std::string generate::generateDay(const std::string& yearAndMonth){
     return day;
 }
 
-
 std::string generate::generatePesel(){
     std::string year,month,day,digits,pesel;
     int controlDigit;
@@ -120,7 +120,6 @@ std::string generate::generatePesel(){
         }
     }
     
-
     //Generate day
     day = generate::generateDay(year+month);
         
@@ -145,19 +144,23 @@ std::string generate::generatePesel(){
 }
 
 std::string generate::generateName(const std::string& pesel){
+
     if((int(pesel[9])-48) % 2 == 0)
         return femaleName_[generate::generateRandomNumber(0,39)];
     else return maleName_[generate::generateRandomNumber(0,39)];
 }
 
 std::string generate::generateSurname(){
+
         return surname_[generate::generateRandomNumber(0,9)];
 }
 
 std::string generate::generateAdress(){
+
         return cities_[generate::generateRandomNumber(0,9)] + " " + postCode_[generate::generateRandomNumber(0,9)];
 }
 
 int generate::generateEarnings(){
+
         return (generate::generateRandomNumber(2600,9000) / 100)*100;
 }

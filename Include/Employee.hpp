@@ -13,24 +13,20 @@ class Employee : public Person{
                                 earnings_ = earnings;
                             }
         Employee(){};
-        
-    //Functions
-    void print(std::ostream& os) const override;
-
+    
     //Getters
-    size_t getIndex()    const override {return INT_MAX;};
+    size_t getIndex()       const override {return INT_MAX;};
     size_t getEarnings()    const override {return earnings_;};
+
     //Setters
     void setEarnings(const size_t& earnigns) override {earnings_ = earnigns;};
-     
+
+    //Functions
+    void print(std::ostream& os) const override;
+    
     //Operators 
     friend std::ostream& operator<<(std::ostream& os,  Employee& Employee);
     bool operator==(const Person& other) override;
 
-    //Setters
-
     private:
-        
-        
-
 };

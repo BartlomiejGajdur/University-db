@@ -1,7 +1,8 @@
 #pragma once
+#include <iostream>
 #include <ostream>
 #include <string>
-#include <iostream>
+
 #include "../Include/Person.hpp"
 
 class Student : public Person{
@@ -17,24 +18,22 @@ class Student : public Person{
                             }
         Student(){};
         
-    //Functions
-    void print(std::ostream& os) const override;
-
     //Getters
     size_t getIndex()  const override {return index_;};
     size_t getEarnings()  const override {return 0;};
+
+    //Setters
+    void setEarnings(const size_t& earnigns) override {std::cout<<"ERROR! Cannot modify student earnings!\n";};
+
+    //Functions
+    void print(std::ostream& os) const override;
 
     //Operators 
     friend std::ostream& operator<<(std::ostream& os,  Student& student);
     bool operator==(const Person& other) override;
 
-    //Setters
-    void setEarnings(const size_t& earnigns) override {std::cout<<"ERROR! Cannot modify student earnings!\n";};
-
     private:
-        
         size_t index_;
         static size_t counter;
-
 };
 
