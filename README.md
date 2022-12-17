@@ -3,45 +3,50 @@
 
 **Requirements:**
 
-- [x]  Przechowywanie rekordów studentów o strukturze: Imię, nazwisko, adres, nr indeksu, PESEL, płeć
+- [x] Store records of students with the structure: First name, last name, address, index number, PESEL, gender
+
+- [x] Store records of university employees with the structure: first name, last name, PESEL, gender, address, salary
+
+- [x] All people, whether employees or students, should be kept in one container
               
-- [x]  Dodawanie nowych studentów
+- [x] Add new student/employee
        
-- [x]  Wyświetlanie całej bazy danych
-       
-- [x]  Wyszukiwanie po nazwisku
-       
-- [x]  Wyszukiwanie po numerze PESEL
-       
-- [x]  Sortowanie po numerze PESEL
+- [x] Display the entire database
 
-- [x]  Sortowanie po nazwisku
-       
-- [x]  Usuwanie po numerze indeksu
+- [x] Search by last name
 
-- [x]  Walidacja czy numer PESEL jest poprawny Wiki - poprawność PESEL
+- [x] Search by PESEL number
 
-- [x]  Przechowywanie rekordów pracowników uczelni o strukturze: imię, nazwisko, PESEL, płeć, adres, zarobki
+- [x] Sort by PESEL number
 
-- [x]  Wszystkie osoby niezależnie czy będą to pracownicy, czy studenci mają być trzymani w jednym kontenerze
-  
-- [x]  Zapis całej bazy danych do pliku
+- [x] Sort by last name
 
-- [x]  Odczyt danych z pliku
+- [x] Sort by salary
 
-- [x]  Wypełnianie bazy danych sztucznymi danymi (generowanie danych)
+- [x] Delete by index number
 
-- [x]  Sortowanie po zarobkach 
+- [x] Modify salary by searching for a person by PESEL number
 
-- [x]  Modyfikacja zarobków wyszukując osobę po numerze PESEL 
+- [x] Delete duplicates
 
-- [x] Usuwanie duplikatów
+- [x] Validate whether the PESEL number is correct (Wiki - PESEL correctness)
+
+- [x] Fill the database with artificial data (data generation)
+
+- [x] Save the entire database to a file
+
+- [x] Read data from a file
 
 **In progress:**
 
 - [ ] Update tests -> PeselValidator
 
 **ToDo**
+
+
+
+ 
+
 
 
 
