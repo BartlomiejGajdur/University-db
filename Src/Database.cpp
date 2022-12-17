@@ -6,13 +6,13 @@
 #include <vector>
 #include <memory>
 
-
 #include "../Include/Database.hpp"
 #include "../Include/ValidatePesel.hpp"
 
 Database::Database(){};
 
 void Database::add(const std::shared_ptr<Person>& person){
+
     auto it = std::find_if(vectorOfPeople_.begin(), vectorOfPeople_.end(),[&person](const std::shared_ptr<Person>& lhs)
                                                                             {return *person==*lhs;});
     if(it == vectorOfPeople_.end() && PeselValidator::validatePesel(person->getPesel())){
@@ -22,7 +22,6 @@ void Database::add(const std::shared_ptr<Person>& person){
     }else{
         std::cout<<"ERROR! Given Pesel is not correct!\n";
     }
-    
 }
 
 void Database::add(const Student& person){
@@ -330,7 +329,7 @@ void Database::loadDataFromFile(const std::string& fileName){
                     this->add(std::make_shared<Employee>(vec[i],vec[i+1],vec[i+2],vec[i+3],std::stoi(vec[i+4])));
                     ++i;
                 }
-            }catch(...)
+            }catch(std::invalid_argument const& ex)
             {
                 this->add(std::make_shared<Student>(vec[i],vec[i+1],vec[i+2],vec[i+3]));
             }

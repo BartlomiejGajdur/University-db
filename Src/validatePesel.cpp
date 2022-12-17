@@ -14,10 +14,15 @@ bool PeselValidator::checkLeapYear(const std::string& Pesel){
 
     std::string yearSTRING{Pesel.begin(),Pesel.begin()+2};
     size_t yearINT;
-    if(Pesel[2] == '3' || Pesel[2] == '2')
+    try{
+        if(Pesel[2] == '3' || Pesel[2] == '2')
         yearINT = 2000 + std::stoi(yearSTRING);  
-    else
+        else
         yearINT = 1900 + std::stoi(yearSTRING);
+    }catch(std::invalid_argument const & ex){
+        return false;
+    }
+    
 
     return (yearINT % 4 == 0 && yearINT % 100 != 0) || 
            (yearINT % 4 == 0 && yearINT % 100 == 0 && yearINT % 400 == 0);
@@ -28,8 +33,12 @@ bool PeselValidator::checkDate(const std::string& Pesel){
     //Extract from given Pesel date  M-Month | D-Day
     std::string month{Pesel.begin()+2,Pesel.begin()+4};
     std::string day{Pesel.begin()+4,Pesel.begin()+6};
-
-    Month ENUMmonth = static_cast<Month>(std::stoi(month) % 20);
+    Month ENUMmonth;
+    try{
+        ENUMmonth = static_cast<Month>(std::stoi(month) % 20);
+    }catch(std::invalid_argument const & ex){
+        return false;
+    }
 
 
     return ((ENUMmonth == Month::January  ||

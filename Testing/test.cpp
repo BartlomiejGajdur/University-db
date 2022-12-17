@@ -7,6 +7,10 @@
 
 #include "gtest/gtest.h"
 
+
+// TEST(class,jakisnazwatestu){
+//     ASSERT_EQ(1,1);
+// }
 // struct DatabaseUnderTestFixture : public ::testing::Test{
 //     Student Adam{
 //         "Adam",

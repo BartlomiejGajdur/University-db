@@ -49,7 +49,7 @@ int main(){
     db.sortBySurname(Order::Ascending);
     db.printDatabase();
 
-    
+
 
     return 0;
 }
