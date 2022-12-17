@@ -27,18 +27,21 @@
   
 - [x]  Zapis całej bazy danych do pliku
 
+- [x]  Odczyt danych z pliku
+
 - [x]  Wypełnianie bazy danych sztucznymi danymi (generowanie danych)
 
 - [x]  Sortowanie po zarobkach 
 
 - [x]  Modyfikacja zarobków wyszukując osobę po numerze PESEL 
 
+- [x] Usuwanie duplikatów
+
 **In progress:**
-
-- [ ] Odczyt danych z pliku
-
-**ToDo**
 
 - [ ] Update tests -> PeselValidator
 
-Remove duplicates -> sortowanie po nazwisku i wtedy chyba funckja unique.
+**ToDo**
+
+
+
