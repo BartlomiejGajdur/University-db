@@ -1,20 +1,25 @@
-#University Database
+## University Database
+
 This is a database application for storing records of students and employees at a university. The following features are included:
 
 **Student Records**
-First name
-Last name
-Address
-Index number
-PESEL (Polish Electronic System for Registration of the Population) number
-Gender
+
+ - First name 
+ - Last name
+ -  Address
+ -  Index
+ -  number PESEL 
+ - Gender
+
 **Employee Records**
-First name
-Last name
-PESEL number
-Gender
-Address
-Salary
+
+ - First name 
+ - Last name 
+ - PESEL number 
+ - Gender 
+ - Address 
+ - Salary
+
 **Features**
 - [x] Add new students and employees
 - [x] Display the entire database
@@ -31,12 +36,3 @@ Salary
 
 **In Progress**
 Update tests for PESEL validity checks
-
-
-
-
- 
-
-
-
-
