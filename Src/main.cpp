@@ -49,7 +49,12 @@ int main(){
     db.sortBySurname(Order::Ascending);
     db.printDatabase();
 
+    char zn{'1'};
 
+    std::cout<<zn<<"      "<<int(zn)<<"\n";
+    char zn1{'x'};
+
+    std::cout<<zn1<<"      "<<int(zn1)<<"\n";
 
     return 0;
 }

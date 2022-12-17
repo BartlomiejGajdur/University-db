@@ -14,14 +14,26 @@ bool PeselValidator::checkLeapYear(const std::string& Pesel){
 
     std::string yearSTRING{Pesel.begin(),Pesel.begin()+2};
     size_t yearINT;
+    auto it = std::find_if(yearSTRING.begin(),yearSTRING.end(),[](char zn){
+                                                                             return int(zn)<48 || int(zn)>=58;
+                                                                            });
+
+    if(it!=yearSTRING.end()){
+        return false;
+    }
+
     try{
         if(Pesel[2] == '3' || Pesel[2] == '2')
-        yearINT = 2000 + std::stoi(yearSTRING);  
-        else
-        yearINT = 1900 + std::stoi(yearSTRING);
+            yearINT = 2000 + std::stoi(yearSTRING);  
+        else if(Pesel[2] == '0' || Pesel[2] == '1')
+            yearINT = 1900 + std::stoi(yearSTRING);
+        else{
+            return false;
+        }
     }catch(std::invalid_argument const & ex){
         return false;
     }
+
     
 
     return (yearINT % 4 == 0 && yearINT % 100 != 0) || 
