@@ -13,8 +13,14 @@
 Database::Database(){};
 
 void Database::add(const std::shared_ptr<Person>& person){
-
-    vectorOfPeople_.push_back(person);
+    auto it = std::find_if(vectorOfPeople_.begin(), vectorOfPeople_.end(),[&person](const std::shared_ptr<Person>& lhs)
+                                                                            {return *person==*lhs;});
+    if(it == vectorOfPeople_.end()){
+        vectorOfPeople_.push_back(person);
+    }else{
+        std::cout<<"ERROR! Database already contains the given person! -> "<<person->getName()<<" "<<person->getSurname()<<"\n";
+    }
+    
 }
 
 void Database::add(const Student& person){
@@ -298,10 +304,20 @@ void Database::loadDataFromFile(const std::string& fileName){
             vec.push_back(linia);
             linia.clear();
             plik.seekg(1,std::ios::cur);
+           
            }   
         }
-
         plik.close();
+
+    
+    plik.open(fileName_, plik.out);
+    
+    if(plik.is_open())
+    {
+        plik.clear();
+        plik.close();   
+    }
+
         
         for(int i = 0;i<vec.size();i+=4){
             try
