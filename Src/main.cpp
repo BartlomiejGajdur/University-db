@@ -45,6 +45,9 @@ int main(){
     db.loadDataFromFile();
     db.saveDatabaseToFile();
     db.printDatabase();
+    
+    db.sortBySurname(Order::Ascending);
+    db.printDatabase();
 
     
 

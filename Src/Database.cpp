@@ -15,10 +15,12 @@ Database::Database(){};
 void Database::add(const std::shared_ptr<Person>& person){
     auto it = std::find_if(vectorOfPeople_.begin(), vectorOfPeople_.end(),[&person](const std::shared_ptr<Person>& lhs)
                                                                             {return *person==*lhs;});
-    if(it == vectorOfPeople_.end()){
+    if(it == vectorOfPeople_.end() && PeselValidator::validatePesel(person->getPesel())){
         vectorOfPeople_.push_back(person);
-    }else{
+    }else if(it != vectorOfPeople_.end()){
         std::cout<<"ERROR! Database already contains the given person! -> "<<person->getName()<<" "<<person->getSurname()<<"\n";
+    }else{
+        std::cout<<"ERROR! Given Pesel is not correct!\n";
     }
     
 }
