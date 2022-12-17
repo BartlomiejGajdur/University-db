@@ -19,7 +19,7 @@ project(UNIVERSITY-DB)
 enable_testing()
 
 add_executable(${PROJECT_NAME} Src/main.cpp Src/Database.cpp Src/Student.cpp Src/validatePesel.cpp Src/Person.cpp Src/Employee.cpp Src/Generator.cpp)
-add_executable(${PROJECT_NAME}-ut Testing/test.cpp Src/Database.cpp Src/Student.cpp Src/validatePesel.cpp Src/Person.cpp Src/Employee.cpp Src/Generator.cpp)
+add_executable(${PROJECT_NAME}-ut Testing/test.cpp Testing/ValidatePeselTESTS.cpp Src/Database.cpp Src/Student.cpp Src/validatePesel.cpp Src/Person.cpp Src/Employee.cpp Src/Generator.cpp)
 
 target_link_libraries(${PROJECT_NAME}-ut gtest_main)
 
