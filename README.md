@@ -29,6 +29,8 @@
 
 - [x] Delete duplicates
 
+- [x] Delete range
+
 - [x] Validate whether the PESEL number is correct (Wiki - PESEL correctness)
 
 - [x] Fill the database with artificial data (data generation)
@@ -38,8 +40,6 @@
 - [x] Read data from a file
 
 **In progress:**
-
-- [ ] Update tests -> PeselValidator
 
 **ToDo**
 
