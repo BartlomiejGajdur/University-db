@@ -1,52 +1,39 @@
-# University-db
+## University Database
 
+This is a database application for storing records of students and employees at a university. The following features are included:
 
-**Requirements:**
+**Student Records**
 
-- [x] Store records of students with the structure: First name, last name, address, index number, PESEL, gender
+ - First name 
+ - Last name
+ -  Address
+ -  Index
+ -  number PESEL 
+ - Gender
 
-- [x] Store records of university employees with the structure: first name, last name, PESEL, gender, address, salary
+**Employee Records**
 
-- [x] All people, whether employees or students, should be kept in one container
-              
-- [x] Add new student/employee
-       
+ - First name 
+ - Last name 
+ - PESEL number 
+ - Gender 
+ - Address 
+ - Salary
+
+**Features**
+- [x] Add new students and employees
 - [x] Display the entire database
-
-- [x] Search by last name
-
-- [x] Search by PESEL number
-
-- [x] Sort by PESEL number
-
-- [x] Sort by last name
-
-- [x] Sort by salary
-
+- [x] Search by last name or PESEL number
+- [x] Sort by PESEL number or last name
 - [x] Delete by index number
-
+- [x] Delete range of people
+- [x] Validate the correctness of a PESEL number (using the Wiki - PESEL correctness guidelines)
+- [x] Save the entire database to a file
+- [x] Read data from a file
+- [x] Generate artificial data to fill the database
+- [x] Sort by salary
 - [x] Modify salary by searching for a person by PESEL number
-
 - [x] Delete duplicates
 
-- [x] Delete range
-
-- [x] Validate whether the PESEL number is correct (Wiki - PESEL correctness)
-
-- [x] Fill the database with artificial data (data generation)
-
-- [x] Save the entire database to a file
-
-- [x] Read data from a file
-
-**In progress:**
-
-**ToDo**
-
-
-
- 
-
-
-
-
+**In Progress**
+Update tests for PESEL validity checks
