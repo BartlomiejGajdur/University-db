@@ -32,6 +32,7 @@ class Database{
         void sortByPesel(const Order& order);
         void sortBySalary(const Order& order);
         void removeByIndex(const size_t index);
+        void removeRange(const size_t& lhs, const size_t& rhs);
         void modifyEarnings(const std::string& pesel,const size_t& earnings);
 
         void generateRandomPeople(const size_t& numberOfPeopleToGenerate);

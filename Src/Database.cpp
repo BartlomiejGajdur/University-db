@@ -341,3 +341,19 @@ void Database::loadDataFromFile(){
 
     this->loadDataFromFile( "DatabaseOfStudentsINPUT.txt");
 }
+
+void Database::removeRange(const size_t& lhs, const size_t& rhs){
+    
+    int ToWhatNumberCount = rhs - lhs +1;
+    int counter = 1;
+    if(rhs<lhs){
+        std::cout<<"ERROR! Wrong range!\n";
+        return;
+    }
+   
+    vectorOfPeople_.erase(std::remove_if(vectorOfPeople_.begin()+lhs-1,vectorOfPeople_.end(),[&]
+                                                        (std::shared_ptr<Person> p)
+                                                        {
+                                                            return counter++<=ToWhatNumberCount;
+                                                        }),vectorOfPeople_.end());
+}
