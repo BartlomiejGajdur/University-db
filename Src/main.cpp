@@ -30,6 +30,6 @@ int main(){
 
     //@@@MENU@@@
     Menu m;
-    m.printMENU();
+    m.runMenu();
     return 0;
 }

@@ -280,13 +280,17 @@ void Database::modifyEarnings(const std::string& pesel,const size_t& earnings){
 
 void Database::loadDataFromFile(const std::string& fileName){
 
-    std::string linia,fileName_;
+    std::string linia;
     char znak; 
     std::fstream plik;
     std::vector<std::string> vec;
     int liczba;
-
-    fileName_="../"+fileName;
+    std::string fileName_ = fileName;
+    if(std::equal(fileName_.rbegin(),fileName_.rbegin()+4,"txt.")){
+        fileName_ = "../"+fileName_;
+    }else{
+        fileName_ = "../"+fileName_ + ".txt";
+    }
 
     plik.open(fileName_, plik.in);
     
