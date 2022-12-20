@@ -28,9 +28,16 @@ int main(){
     };
 
     Database db;
+    std::string a{"Configuracja1"};
+    db.generateRandomPeople(5);
+    db.saveConfiguration(a);
+    db.printDatabase();
+    db.clearVectorOfPeople();
+    
+    db.loadDataFromFile("config/Configuracja1");
 
-    db.generateRandomPeople(20);
-    std::cout<<db.formatPrintToLoad().str();
+
+    db.printDatabase();
     //@@@MENU@@@
     // Menu m;
     // m.runMenu();

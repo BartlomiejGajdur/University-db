@@ -19,6 +19,9 @@ class Database{
         //Getters
         std::vector<std::shared_ptr<Person>> getVectorOfPeople() const {return vectorOfPeople_;};
 
+        //Setters
+        void clearVectorOfPeople() {vectorOfPeople_.clear();};
+
         //Functions
         void add(const std::shared_ptr<Person>& person);
         void add(const Student& person);
@@ -44,11 +47,14 @@ class Database{
         void loadDataFromFile(const std::string& fileName);
         void loadDataFromFile();
         //dodac usuwanie zakresu, np podaj liczbe od ktorej powinno usuwac ludzi do ktorego i ne moga te liczby przekroczyc zakresu
-        std::stringstream formatPrintToLoad();
-
+        
+        void saveConfiguration(std::string& fileName);
     private:
         std::vector<std::shared_ptr<Person>> vectorOfPeople_;
+        std::vector<std::string> fileNames;
 
         std::stringstream formatPrint();
+        std::stringstream formatPrintToLoad();
+        void saveNamesToConfigFiles();
         
 };

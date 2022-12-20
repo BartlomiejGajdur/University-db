@@ -20,7 +20,7 @@ void Database::add(const std::shared_ptr<Person>& person){
     }else if(it != vectorOfPeople_.end()){
         std::cout<<"ERROR! Database already contains the given person! -> "<<person->getName()<<" "<<person->getSurname()<<"\n";
     }else{
-        std::cout<<"ERROR! Given Pesel is not correct!\n";
+        std::cout<<"ERROR! Given Pesel is not correct!:  "<<person->getName()<<" "<<person->getSurname()<<" "<<person->getAdress()<<" "<<person->getPesel()<<" "<<person->getPesel().size()<<"\n";
     }
 }
 
@@ -217,9 +217,9 @@ void Database::saveDatabaseToFile(const std::string& fileName){
     std::stringstream stream = formatPrint();
     std::string fileName_ = fileName;
     if(std::equal(fileName_.rbegin(),fileName_.rbegin()+4,"txt.")){
-        fileName_ = "../"+fileName_;
+        fileName_ = fileName_;
     }else{
-        fileName_ = "../"+fileName_ + ".txt";
+        fileName_ = fileName_ + ".txt";
     }
     
     std::fstream database(fileName_, database.out | database.trunc);
@@ -308,18 +308,26 @@ void Database::modifyEarnings(const std::string& pesel,const size_t& earnings){
     
 }
 
+void RemoveWhiteSpaces(std::vector<std::string>& vec){
+    
+      for (auto& str : vec)
+    {
+        str.erase(std::remove_if(str.begin(), str.end(), [](unsigned char c) { return std::isspace(c); }), str.end());
+    }
+}
+
 void Database::loadDataFromFile(const std::string& fileName){
 
-    std::string linia;
+    std::string linia,removeFirstLetter;
     char znak; 
     std::fstream plik;
     std::vector<std::string> vec;
     int liczba;
     std::string fileName_ = fileName;
     if(std::equal(fileName_.rbegin(),fileName_.rbegin()+4,"txt.")){
-        fileName_ = "../"+fileName_;
+        fileName_ = fileName_;
     }else{
-        fileName_ = "../"+fileName_ + ".txt";
+        fileName_ = fileName_ + ".txt";
     }
 
     plik.open(fileName_, plik.in);
@@ -335,15 +343,15 @@ void Database::loadDataFromFile(const std::string& fileName){
            {
             linia+=znak;
            }else
-           {
+           {    
             vec.push_back(linia);
             linia.clear();
-            plik.seekg(1,std::ios::cur);
-           
+            
            }   
         }
         plik.close();
 
+    RemoveWhiteSpaces(vec);
     
     plik.open(fileName_, plik.out);
     
@@ -390,4 +398,43 @@ void Database::removeRange(const size_t& lhs, const size_t& rhs){
                                                         {
                                                             return counter++<=ToWhatNumberCount;
                                                         }),vectorOfPeople_.end());
+}
+
+void Database::saveNamesToConfigFiles(){
+    std::fstream config("config/config.txt", config.out | config.trunc);
+
+    if(config.is_open()){
+        std::for_each(fileNames.begin(),fileNames.end(),[&config](const std::string& fileName)
+                                                            {
+                                                                config<<fileName;
+                                                            });
+        std::cout<<"Config saved corectlly! :)\n";
+        config.close();
+    }else
+        std::cout<<"Config not saved! Error :(\n";
+}
+
+void Database::saveConfiguration(std::string& fileName){
+
+    std::stringstream stream = formatPrintToLoad();
+
+    if(std::equal(fileName.rbegin(),fileName.rbegin()+4,"txt.")){
+        fileName = "config/"+fileName;
+    }else{
+        fileName = "config/"+fileName + ".txt";
+    }
+
+
+    std::fstream database(fileName, database.out | database.trunc);
+
+    if(database.is_open()){
+        database<<stream.str();
+        std::cout<<"Configuration saved corectlly! :)\n";
+        database.close();
+    }else
+        std::cout<<"Configuration not saved! Error :(\n";
+
+    fileNames.push_back(fileName);
+    saveNamesToConfigFiles();
+    
 }
