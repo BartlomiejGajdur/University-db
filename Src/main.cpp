@@ -27,9 +27,12 @@ int main(){
         4800
     };
 
+    Database db;
 
+    db.generateRandomPeople(20);
+    std::cout<<db.formatPrintToLoad().str();
     //@@@MENU@@@
-    Menu m;
-    m.runMenu();
+    // Menu m;
+    // m.runMenu();
     return 0;
 }

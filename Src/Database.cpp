@@ -188,6 +188,30 @@ std::stringstream Database::formatPrint(){
     return stream;
 }
 
+std::stringstream Database::formatPrintToLoad(){
+    std::stringstream stream;
+
+    std::for_each(vectorOfPeople_.begin(),vectorOfPeople_.end(),
+                                                                [&stream](const std::shared_ptr<Person>& student)
+                                                                        {
+                                                                            if(student->getEarnings() == 0) {
+                                                                            stream<<student->getName()<<"; "
+                                                                                  <<student->getSurname()<<"; "
+                                                                                  <<student->getAdress()<<"; "
+                                                                                  <<student->getPesel()<<";\n";
+                                                                        }else{
+                                                                            stream<<student->getName()<<"; "
+                                                                                  <<student->getSurname()<<"; "
+                                                                                  <<student->getAdress()<<"; " 
+                                                                                  <<student->getPesel()<<"; " 
+                                                                                  <<student->getEarnings()<<";\n";
+                                                                        }      
+                                                                        });
+
+
+    return stream;
+}
+
 void Database::saveDatabaseToFile(const std::string& fileName){
 
     std::stringstream stream = formatPrint();
