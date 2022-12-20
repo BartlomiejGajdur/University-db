@@ -23,5 +23,8 @@ private:
     void Menu_SortBySalary();
     void Menu_FindBySurname();
     void Menu_FindByPesel();
+    void Menu_ModifyEarnings();  
+    void Menu_RemoveRangeOfPeople();        
+    void Menu_RemovePersonByIndex();
 
 };

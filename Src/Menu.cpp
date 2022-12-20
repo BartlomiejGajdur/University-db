@@ -439,6 +439,35 @@ void Menu::Menu_Add(){
 }
 }
 
+void Menu::Menu_ModifyEarnings(){
+
+}  
+
+void Menu::Menu_RemoveRangeOfPeople(){
+
+}        
+
+void Menu::Menu_RemovePersonByIndex(){
+    size_t index;
+    std::cout<<"Insert index to remove:\n>";
+    std::cin>>index;
+    size_t temp = db.getVectorOfPeople().size();
+
+
+    db.removeByIndex(index);
+
+    if(temp!=db.getVectorOfPeople().size()){
+        system("CLS");
+        std::cout<<"Student removed corectlly! :)\n";
+        system("PAUSE");
+    }else{
+        system("CLS");
+        std::cout<<"Can not find a student with a given index! :(\n";
+        system("PAUSE");
+    }
+
+}
+
 void Menu::runMenu(){
 
     size_t choice;
@@ -488,6 +517,15 @@ void Menu::runMenu(){
             break;
         case 12:
             Menu_SortBySalary();
+            break;
+        case 13:
+            Menu_ModifyEarnings();
+            break;
+        case 14:
+            Menu_RemoveRangeOfPeople();
+            break;
+        case 15:
+            Menu_RemovePersonByIndex();
             break;
         default:
             break;
