@@ -1,8 +1,11 @@
+#include <algorithm>
+#include <iomanip>
 #include <stdlib.h>
 #include <iostream>
 #include <string>
 
 #include "../Include/Menu.hpp"
+#include "../Include/validatePesel.hpp"
 
 void Menu::printMENU(){
 
@@ -237,6 +240,174 @@ void Menu::Menu_SortBySalary(){
     }
 }
 
+void Menu::Menu_FindBySurname(){
+    system("CLS");
+    std::vector<std::shared_ptr<Person>> peopleFound;
+    std::string surname;
+    std::cout<<">Insert a surname to find<\n>";
+    std::cin>>surname;
+
+    peopleFound=db.findBySurname(surname);
+
+    if(peopleFound.size()==0){
+        std::cout<<"No people found for given surname >"<<surname<<"<\n";
+        system("PAUSE");
+    }else{
+        system("CLS");
+        std::cout<<"----------------------------------------------DATABASE-------------------------------------------------\n";
+    std::cout<<std::setw(14)<<std::left<<"Name"
+      <<std::setw(14)<<std::left<<"|Surname"
+      <<std::setw(17)<<std::left<<" |Adress"
+      <<std::setw(14)<<std::left<<"  |Index"
+      <<std::setw(14)<<std::left<<"   |Pesel"
+      <<std::setw(14)<<std::left<<"    |Gender"
+      <<std::setw(14)<<std::left<<"     |Earnings"<<"\n";
+
+    std::cout<<"_______________________________________________________________________________________________________\n";
+        std::for_each(peopleFound.begin(),peopleFound.end(),[](std::shared_ptr<Person> people)
+                                                                                        {std::cout<<*people<<"\n";});
+        std::cout<<"-------------------------------------------------------------------------------------------------------\n";                                                                               
+        system("PAUSE");
+    }
+}
+
+void Menu::Menu_Add(){
+    std::string name_,surname_,adress_,pesel_;
+    size_t earnings_;
+    bool ValidatePesel;
+
+    size_t choice=1;
+    char c;
+   
+
+    std::cout<<">1. Add student \n";
+    std::cout<<">2. Add employee \n";
+    std::cout<<">0. EXIT\n";
+    
+
+    while(choice!=0){
+        std::cout<<"\nInsert a number between 0 - 2\n>";
+        std::cin>>choice;
+        switch (choice)
+        {
+        case 1:
+            system("CLS");
+                std::cout<<"Name: ";
+                std::cin>>name_;
+                system("CLS");
+                std::cout<<"Surame: ";
+                std::cin>>surname_;
+                system("CLS");
+                std::cout<<"Adress: ";
+                std::getline(std::cin, adress_);
+                std::getline(std::cin, adress_);
+                system("CLS");
+            
+            do{
+                std::cout<<"Pesel: ";
+                std::cin>>pesel_;
+                ValidatePesel = PeselValidator::validatePesel(pesel_);
+
+                if(PeselValidator::validatePesel(pesel_)==false){
+                    system("CLS");
+                    std::cout<<"You entered a incorrect pesel! Try again.\n";
+                    std::cout<<"Do you want to try again? [Y] - yes | [N] - no\n>";
+                    std::cin>>c;
+
+                    switch (c)
+                    {
+                    case 'y':
+                    case 'Y':
+                        break;
+                    case 'N':
+                    case 'n':
+                        ValidatePesel = true;
+                        choice = 0;
+                        break;
+                    default:
+                        std::cout<<"U Entered wrong char!\n";
+                        ValidatePesel = true;
+                        choice = 0;
+                        system("PAUSE");
+                        break;
+                    }
+                    
+                }
+            }while(!ValidatePesel);
+
+            if(PeselValidator::validatePesel(pesel_)){
+                db.add(std::make_shared<Student>(name_,surname_,adress_,pesel_));
+                std::cout<<"Student saved correctly! :)\n";
+                system("PAUSE");
+                choice = 0;
+            }else{
+                choice = 0;
+            }
+
+            break;
+            case 2:
+                system("CLS");
+                std::cout<<"Name: ";
+                std::cin>>name_;
+                system("CLS");
+                std::cout<<"Surame: ";
+                std::cin>>surname_;
+                system("CLS");
+                std::cout<<"Adress: ";
+                std::getline(std::cin, adress_);
+                std::getline(std::cin, adress_);
+                system("CLS");
+                std::cout<<"Earnings: ";
+                std::cin>>earnings_;
+                system("CLS");
+                
+                do{
+                    std::cout<<"Pesel: ";
+                    std::cin>>pesel_;
+                    ValidatePesel = PeselValidator::validatePesel(pesel_);
+
+                    if(PeselValidator::validatePesel(pesel_)==false){
+                        system("CLS");
+                        std::cout<<"You entered a incorrect pesel! Try again.\n";
+                        std::cout<<"Do you want to try again? [Y] - yes | [N] - no\n>";
+                        std::cin>>c;
+
+                        switch (c)
+                        {
+                        case 'y':
+                        case 'Y':
+                            break;
+                        case 'N':
+                        case 'n':
+                            ValidatePesel = true;
+                            choice = 0;
+                            break;
+                        default:
+                            std::cout<<"U Entered wrong char!\n";
+                            ValidatePesel = true;
+                            choice = 0;
+                            system("PAUSE");
+                            break;
+                        }   
+                    }
+                 }while(!ValidatePesel);
+
+                
+
+                if(PeselValidator::validatePesel(pesel_)){
+                    db.add(std::make_shared<Employee>(name_,surname_,adress_,pesel_,earnings_));
+                    std::cout<<"Employee saved correctly! :)\n";
+                    system("PAUSE");
+                    choice = 0;
+                }else{
+                    choice = 0;
+                }
+                break;
+                
+    }
+
+}
+}
 
 void Menu::runMenu(){
 
@@ -258,6 +429,9 @@ void Menu::runMenu(){
         case 2:
             Menu_SaveDatabaseToFile();
             break;
+        case 3:
+            Menu_Add();
+            break;
         case 4:
             Menu_GenerateRandomPeople();
             break;
@@ -269,6 +443,9 @@ void Menu::runMenu(){
             break;
         case 7:
             Menu_LoadDatabaseFromFile();
+            break;
+        case 8:
+            Menu_FindBySurname();
             break;
         case 10:
             Menu_SortBySurname();
