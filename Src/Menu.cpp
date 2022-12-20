@@ -271,6 +271,36 @@ void Menu::Menu_FindBySurname(){
     }
 }
 
+void Menu::Menu_FindByPesel(){
+    system("CLS");
+    std::shared_ptr<Person> peopleFound;
+    std::string Pesel;
+    std::cout<<">Insert a Pesel to find<\n>";
+    std::cin>>Pesel;
+
+    peopleFound=db.findByPesel(Pesel);
+
+    if(peopleFound == nullptr){
+        std::cout<<"No people found for given Pesel >"<<Pesel<<"<\n";
+        system("PAUSE");
+    }else{
+        system("CLS");
+        std::cout<<"----------------------------------------------DATABASE-------------------------------------------------\n";
+    std::cout<<std::setw(14)<<std::left<<"Name"
+      <<std::setw(14)<<std::left<<"|Surname"
+      <<std::setw(17)<<std::left<<" |Adress"
+      <<std::setw(14)<<std::left<<"  |Index"
+      <<std::setw(14)<<std::left<<"   |Pesel"
+      <<std::setw(14)<<std::left<<"    |Gender"
+      <<std::setw(14)<<std::left<<"     |Earnings"<<"\n";
+
+    std::cout<<"_______________________________________________________________________________________________________\n";
+        std::cout<<*peopleFound<<"\n";
+        std::cout<<"-------------------------------------------------------------------------------------------------------\n";                                                                               
+        system("PAUSE");
+    }
+}
+
 void Menu::Menu_Add(){
     std::string name_,surname_,adress_,pesel_;
     size_t earnings_;
@@ -446,6 +476,9 @@ void Menu::runMenu(){
             break;
         case 8:
             Menu_FindBySurname();
+            break;
+        case 9:
+            Menu_FindByPesel();
             break;
         case 10:
             Menu_SortBySurname();

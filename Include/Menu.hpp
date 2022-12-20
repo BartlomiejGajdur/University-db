@@ -22,5 +22,6 @@ private:
     void Menu_SortByPesel();
     void Menu_SortBySalary();
     void Menu_FindBySurname();
+    void Menu_FindByPesel();
 
 };
