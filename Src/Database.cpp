@@ -271,7 +271,13 @@ void Database::modifyEarnings(const std::string& pesel,const size_t& earnings){
 
     std::shared_ptr<Person> person = this->findByPesel(pesel);
     if(person != nullptr){
-        person->setEarnings(earnings);
+        if(person->getEarnings() > 0){
+            person->setEarnings(earnings);
+            std::cout<<"Earnings set corectlly! :)\n";
+        }else{
+            std::cout<<"You can not set earnings for students!\n";
+        }
+        
     }else{
         std::cout<<"Cannot find the person by the given pesel!\n";
     }

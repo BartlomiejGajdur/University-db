@@ -440,11 +440,40 @@ void Menu::Menu_Add(){
 }
 
 void Menu::Menu_ModifyEarnings(){
+    std::string pesel_;
+    size_t earnings_;
+    system("cls");
+    std::cout<<"For which pesel number to change earnings:\n>";
+    std::cin>>pesel_;
+    system("cls");
+    std::cout<<"Set earnings to:\n>";
+    std::cin>>earnings_;
+    system("cls");
+    db.modifyEarnings(pesel_,earnings_);
+    system("PAUSE");
 
 }  
 
 void Menu::Menu_RemoveRangeOfPeople(){
+    size_t lhs,rhs;
+    size_t temp = db.getVectorOfPeople().size();
 
+    system("cls");
+    std::cout<<"Remove people from the range > ";
+    std::cin>>lhs;
+    std::cout<<" to > ";
+    std::cin>>rhs;
+    
+    system("cls");
+    db.removeRange(lhs,rhs);
+
+    if(temp!=db.getVectorOfPeople().size()){
+        system("cls");
+        std::cout<<"Data removed corectlly! :) \n";
+        system("PAUSE");
+    }else{
+        system("PAUSE");
+    }
 }        
 
 void Menu::Menu_RemovePersonByIndex(){
