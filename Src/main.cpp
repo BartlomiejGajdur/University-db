@@ -35,17 +35,17 @@ int main(){
         4800
     };
     //Load config -> pobiera z pliku config.txt odpowiednia date czyli do vectora w sb przypisuje dobre wartosic plikow 
-    // Database db;
-    // std::string a{"Configuracja1"};
-    // db.generateRandomPeople(5);
-    // db.saveConfiguration(a);
-    // db.printDatabase();
-    // db.clearVectorOfPeople();
-    // db.loadDataFromFile("DatabaseOfStudentsINPUT");
-    // db.loadDataFromFile("config/Configuracja1");
-    // db.generateRandomPeople(5);
-    // db.saveDatabaseToFile("DatabaseOfStudentsOUTPUT");
-    // db.printDatabase();
+//     Database db;
+//     std::string a{"Configuracja1"};
+//     db.generateRandomPeople(5);
+//     db.saveConfiguration(a);
+//     db.printDatabase();
+//     db.clearVectorOfPeople();
+//     db.loadDataFromFile("DatabaseOfStudentsINPUT");
+//    // db.loadDataFromFile("config/Configuracja1");
+//     db.generateRandomPeople(5);
+//     db.saveDatabaseToFile("DatabaseOfStudentsOUTPUT");
+//     db.printDatabase();
 
     // db.printDatabase();
     //@@@MENU@@@

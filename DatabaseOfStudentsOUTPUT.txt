@@ -1,14 +1,9 @@
 ----------------------------------------------DATABASE-------------------------------------------------
 Name          |Surname       |Adress            |Index         |Pesel         |Gender        |Earnings
 _______________________________________________________________________________________________________
-Oliwia         Lewandowski    Poznan 41-321       -            14251177682    Female         6000 PLN       
-Tomasz         Kowalski       Szczecin 34-250     2            13320133895    Male           -N/N-          
-Maciej         Szymanski      Mistrzejow 21-233   -            88012267273    Male           2600 PLN       
-Igor           Zielinski      Gdansk 66-211       -            75062073730    Male           6100 PLN       
-Paulina        Nowak          Mistrzejow 69-999   -            18242408702    Female         3900 PLN       
-Justyna        Kaminski       Gdansk 41-321       3            24090330364    Female         -N/N-          
-Urszula        Nowak          Mistrzejow 41-321   -            62020795827    Female         2600 PLN       
-Joanna         Kowalczyk      Sopot 62-700        -            09241672106    Female         7600 PLN       
-Natalia        Wozniak        Poznan 77-151       -            15220359601    Female         5100 PLN       
-Maja           Zielinski      Mistrzejow 66-211   -            95072693805    Female         6000 PLN       
+Krzysztof      Wozniak        Gdansk 69-999       5            68020198530    Male           -N/N-          
+Justyna        Kaminski       Lodz 77-151         -            06301105804    Female         5800 PLN       
+Maksymilian    Zielinski      Lodz 41-321         -            89060546172    Male           3800 PLN       
+Alicja         Kowalski       Wroclaw 69-999      6            12312970203    Female         -N/N-          
+Monika         Szymanski      Sopot 77-151        7            68021593822    Female         -N/N-          
 -------------------------------------------------------------------------------------------------------

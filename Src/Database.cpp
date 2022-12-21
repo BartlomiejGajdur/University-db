@@ -415,7 +415,7 @@ void Database::saveNamesToConfigFiles(){
     if(config.is_open()){
         std::for_each(fileNames.begin(),fileNames.end(),[&config](const std::string& fileName)
                                                             {
-                                                                config<<fileName;
+                                                                config<<fileName+";";
                                                             });
         std::cout<<"Config saved corectlly! :)\n";
         config.close();
@@ -423,18 +423,18 @@ void Database::saveNamesToConfigFiles(){
         std::cout<<"Config not saved! Error :(\n";
 }
 
-void Database::saveConfiguration(std::string& fileName){
+void Database::saveConfiguration(const std::string& fileName){
 
     std::stringstream stream = formatPrintToLoad();
-
-    if(std::equal(fileName.rbegin(),fileName.rbegin()+4,"txt.")){
-        fileName = "../config/"+fileName;
+    std::string fileName_ = fileName;
+    if(std::equal(fileName_.rbegin(),fileName_.rbegin()+4,"txt.")){
+        fileName_ = "../config/"+fileName_;
     }else{
-        fileName = "../config/"+fileName + ".txt";
+        fileName_ = "../config/"+fileName_ + ".txt";
     }
 
 
-    std::fstream database(fileName, database.out | database.trunc);
+    std::fstream database(fileName_, database.out | database.trunc);
 
     if(database.is_open()){
         database<<stream.str();
@@ -443,7 +443,7 @@ void Database::saveConfiguration(std::string& fileName){
     }else
         std::cout<<"Configuration not saved! Error :(\n";
 
-    fileNames.push_back(fileName);
+    fileNames.push_back(fileName_);
     saveNamesToConfigFiles();
     
 }

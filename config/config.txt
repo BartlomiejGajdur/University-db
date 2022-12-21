@@ -1,1 +1,1 @@
-../config/Configuracja1.txt
+../config/CiekaweCzyDoConfiguZapisze.txt;../config/tenDrugiTest.txt;

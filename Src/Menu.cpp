@@ -94,7 +94,7 @@ void Menu::Menu_SaveDatabaseToFile(){
             system("CLS");
             std::cout<<"Insert a fileName and press ENTER\n>";
             std::cin>>fileName;
-            db.saveDatabaseToFile(fileName);
+            db.saveConfiguration(fileName);
             system("PAUSE");
             choice = 0;
             break;
@@ -497,11 +497,38 @@ void Menu::Menu_RemovePersonByIndex(){
 
 }
 
+void Menu::Menu_LoadSave(){
+
+    std::vector<std::string> fileNames = db.getFIleNames();
+    system("cls");
+
+    if(fileNames.size() == 0){
+        std::cout<<"You have no saved databases!\n";
+        std::cout<<"Let me create new database for you :)\n";
+        system("PAUSE");
+    }else{
+        showSavedFileName();
+    }
+
+}
+
+void Menu::showSavedFileName(){
+
+    std::vector<std::string> fileNames = db.getFIleNames();
+    std::for_each(fileNames.begin(),fileNames.end(),[i{1}](const std::string& fileName) mutable
+                                                                                            {
+                                                                                                std::cout<<i++<<"> "<<fileName<<"\n";
+                                                                                            });
+    system("PAUSE");
+
+}
+
 void Menu::runMenu(){
 
     size_t choice;
-    //
+    //tutaj odczyt z pliku i przypisanie do filename
     do{
+        
         system("CLS");
         std::cout<<"1. Create new database\n";
         std::cout<<"2. Load Database\n";
@@ -517,6 +544,7 @@ void Menu::runMenu(){
             system("PAUSE");
             break;
         case 2:
+            Menu_LoadSave();
             break;
         case 0:
             system("cls");

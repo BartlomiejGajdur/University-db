@@ -1,7 +1,7 @@
 # Pointed by administrator
 build
 .vscode
-DatabaseOfStudents.txt
+*.txt
 
 # Prerequisites
 *.d

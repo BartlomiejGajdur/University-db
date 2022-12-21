@@ -27,4 +27,7 @@ private:
     void Menu_RemoveRangeOfPeople();        
     void Menu_RemovePersonByIndex();
 
+    void Menu_LoadSave();
+    void showSavedFileName();
+
 };
