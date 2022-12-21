@@ -500,6 +500,39 @@ void Menu::Menu_RemovePersonByIndex(){
 void Menu::runMenu(){
 
     size_t choice;
+    //
+    do{
+        system("CLS");
+        std::cout<<"1. Create new database\n";
+        std::cout<<"2. Load Database\n";
+        std::cout<<"0. EXIT\n";
+        std::cout<<"\nInsert a number between 0 - 2\n>";
+        std::cin>>choice;
+
+        switch (choice)
+        {
+        case 1:
+            system("cls");
+            std::cout<<"New database created!\n";
+            system("PAUSE");
+            break;
+        case 2:
+            break;
+        case 0:
+            system("cls");
+            std::cout<<"EXIT!\n";
+            system("PAUSE");
+            break;
+        default:
+            system("cls");
+            std::cout<<"You entered a wrong char!\n";
+            system("PAUSE");
+            break;
+        }
+    }while(choice<0 || choice>2);
+        
+
+    //
    
     while(choice!=0){
 
@@ -511,6 +544,11 @@ void Menu::runMenu(){
         
         switch (choice)
         {
+        case 0:
+            system("cls");
+            std::cout<<"EXIT!\n";
+            system("PAUSE");
+            break;
         case 1:
             Menu_PrintDatabase();
             break;
@@ -557,6 +595,9 @@ void Menu::runMenu(){
             Menu_RemovePersonByIndex();
             break;
         default:
+            system("cls");
+            std::cout<<"You entered a wrong char!\n";
+            system("PAUSE");
             break;
         }
 
