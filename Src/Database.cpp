@@ -217,9 +217,9 @@ void Database::saveDatabaseToFile(const std::string& fileName){
     std::stringstream stream = formatPrint();
     std::string fileName_ = fileName;
     if(std::equal(fileName_.rbegin(),fileName_.rbegin()+4,"txt.")){
-        fileName_ = fileName_;
+        fileName_ = "../"+ fileName_;
     }else{
-        fileName_ = fileName_ + ".txt";
+        fileName_ = "../"+ fileName_ + ".txt";
     }
     
     std::fstream database(fileName_, database.out | database.trunc);
@@ -316,18 +316,25 @@ void RemoveWhiteSpaces(std::vector<std::string>& vec){
     }
 }
 
+void insertWhiteSpaceInAdress(std::string& adress){
+    auto it = std::count_if(adress.begin(),adress.end(),[](char zn){
+                                                                return !std::isdigit(zn);
+                                                                    });
+    adress.insert(adress.begin()+(--it),' ');
+}
+
 void Database::loadDataFromFile(const std::string& fileName){
 
     std::string linia,removeFirstLetter;
     char znak; 
-    std::fstream plik;
+    std::fstream plik,plik2;
     std::vector<std::string> vec;
     int liczba;
     std::string fileName_ = fileName;
     if(std::equal(fileName_.rbegin(),fileName_.rbegin()+4,"txt.")){
-        fileName_ = fileName_;
+        fileName_ = "../"+ fileName_;
     }else{
-        fileName_ = fileName_ + ".txt";
+        fileName_ = "../"+ fileName_ + ".txt";
     }
 
     plik.open(fileName_, plik.in);
@@ -353,12 +360,12 @@ void Database::loadDataFromFile(const std::string& fileName){
 
     RemoveWhiteSpaces(vec);
     
-    plik.open(fileName_, plik.out);
+    plik2.open(fileName_, plik2.out);
     
-    if(plik.is_open())
+    if(plik2.is_open())
     {
-        plik.clear();
-        plik.close();   
+        plik2.clear();
+        plik2.close();   
     }
 
         
@@ -367,12 +374,14 @@ void Database::loadDataFromFile(const std::string& fileName){
             {
                 liczba = std::stoi(vec[i + 4]);
                 if(liczba > 1 && liczba < 200000)
-                {
+                {   
+                    insertWhiteSpaceInAdress(vec[i+2]);
                     this->add(std::make_shared<Employee>(vec[i],vec[i+1],vec[i+2],vec[i+3],std::stoi(vec[i+4])));
                     ++i;
                 }
             }catch(std::invalid_argument const& ex)
-            {
+            {   
+                insertWhiteSpaceInAdress(vec[i+2]);
                 this->add(std::make_shared<Student>(vec[i],vec[i+1],vec[i+2],vec[i+3]));
             }
         }    
@@ -401,7 +410,7 @@ void Database::removeRange(const size_t& lhs, const size_t& rhs){
 }
 
 void Database::saveNamesToConfigFiles(){
-    std::fstream config("config/config.txt", config.out | config.trunc);
+    std::fstream config("../config/config.txt", config.out | config.trunc);
 
     if(config.is_open()){
         std::for_each(fileNames.begin(),fileNames.end(),[&config](const std::string& fileName)
@@ -419,9 +428,9 @@ void Database::saveConfiguration(std::string& fileName){
     std::stringstream stream = formatPrintToLoad();
 
     if(std::equal(fileName.rbegin(),fileName.rbegin()+4,"txt.")){
-        fileName = "config/"+fileName;
+        fileName = "../config/"+fileName;
     }else{
-        fileName = "config/"+fileName + ".txt";
+        fileName = "../config/"+fileName + ".txt";
     }
 
 
