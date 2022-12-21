@@ -1,0 +1,15 @@
+----------------------------------------------DATABASE-------------------------------------------------
+Name          |Surname       |Adress            |Index         |Pesel         |Gender        |Earnings
+_______________________________________________________________________________________________________
+Ddsa           Wisniewski     Torun 69-999        6            99110103633    Male           -N/N-          
+Bruno          Nowak          Warszawa 69-999     7            08312181235    Male           -N/N-          
+Mateusz        Szymanski      Szczecin 66-211     8            09222029554    Male           -N/N-          
+Agata          Szymanski      Szczecin 41-321     9            09022206805    Female         -N/N-          
+Oliwier        Kowalczyk      Mistrzejow 62-700   10           09251342695    Male           -N/N-          
+Justyna        Nowak          Poznan 69-999       11           54070363101    Female         -N/N-          
+Justyna        Wozniak        Krakow 77-151       -            03260293762    Female         6500 PLN       
+Kajeta         Lewandowski    Poznan 62-700       -            16320136875    Male           3200 PLN       
+Julia          Nowak          Warszawa 62-700     12           02292402427    Female         -N/N-          
+Nikodem        Szymanski      Mistrzejow 34-250   -            18292134350    Male           5700 PLN       
+Stanislaw      Nowak          Mistrzejow 62-200   -            01122582377    Male           7800 PLN       
+-------------------------------------------------------------------------------------------------------

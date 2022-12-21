@@ -1,6 +1,5 @@
 # Pointed by administrator
 build
-*.txt
 .vscode
 DatabaseOfStudents.txt
 

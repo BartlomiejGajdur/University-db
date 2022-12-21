@@ -1,0 +1,1 @@
+../config/Configuracja1.txt
