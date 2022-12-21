@@ -18,6 +18,7 @@ class Database{
         
         //Getters
         std::vector<std::shared_ptr<Person>> getVectorOfPeople() const {return vectorOfPeople_;};
+        std::vector<std::string> getFIleNames() const {return fileNames;};
 
         //Setters
         void clearVectorOfPeople() {vectorOfPeople_.clear();};
