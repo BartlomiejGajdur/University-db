@@ -1,5 +1,5 @@
 
-# University Database
+<h1 align="center"> University Database </h1>
 
 This is a database application for storing records of students and employees at a university. The following features are included:
 
@@ -39,8 +39,8 @@ This is a database application for storing records of students and employees at 
 - [x] Menu for users
 - [x] Load previous saved databases
 
+<h1 align="center">How to use</h1>
 
-# How to use
 
 ### Building project
     mkdir build
@@ -71,7 +71,8 @@ This is a database application for storing records of students and employees at 
 *Do not modify these files!*
 
 ---
-# How it looks
+<h1 align="center"> How it looks </h1>
+
 ### Welcome menu
 ![image](https://user-images.githubusercontent.com/85802542/209230961-c7707b53-d761-4372-924b-49497b58a7d8.png)
 
