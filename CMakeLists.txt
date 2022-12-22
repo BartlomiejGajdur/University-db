@@ -18,8 +18,8 @@ FetchContent_MakeAvailable(googletest)
 project(UNIVERSITY-DB)
 enable_testing()
 
-add_executable(${PROJECT_NAME} Src/main.cpp Src/Database.cpp Src/Student.cpp Src/validatePesel.cpp Src/Person.cpp Src/Employee.cpp Src/Generator.cpp Src/Menu.cpp)
-add_executable(${PROJECT_NAME}-ut Testing/test.cpp Testing/ValidatePeselTESTS.cpp Src/Database.cpp Src/Student.cpp Src/validatePesel.cpp Src/Person.cpp Src/Employee.cpp Src/Generator.cpp Src/Menu.cpp)
+add_executable(${PROJECT_NAME} Src/main.cpp Src/Database.cpp Src/Student.cpp Src/Validate.cpp Src/Person.cpp Src/Employee.cpp Src/Generator.cpp Src/Menu.cpp)
+add_executable(${PROJECT_NAME}-ut Testing/test.cpp Testing/ValidatePeselTESTS.cpp Src/Database.cpp Src/Student.cpp Src/Validate.cpp Src/Person.cpp Src/Employee.cpp Src/Generator.cpp Src/Menu.cpp)
 
 target_link_libraries(${PROJECT_NAME}-ut gtest_main)
 

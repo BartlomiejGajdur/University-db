@@ -5,7 +5,7 @@
 #include <string>
 
 #include "../Include/Menu.hpp"
-#include "../Include/validatePesel.hpp"
+#include "../Include/Validate.hpp"
 
 void Menu::printMENU(){
 
@@ -318,24 +318,24 @@ void Menu::Menu_Add(){
     while(choice!=0){
         std::cout<<"\nInsert a number between 0 - 2\n>";
         std::cin>>choice;
+        std::cin.ignore();
         switch (choice)
         {
         case 1:
             system("CLS");
                 std::cout<<"Name: ";
-                std::cin>>name_;
+                std::getline(std::cin, name_);
                 system("CLS");
                 std::cout<<"Surame: ";
-                std::cin>>surname_;
+                std::getline(std::cin, surname_);
                 system("CLS");
                 std::cout<<"Adress: ";
-                std::getline(std::cin, adress_);
                 std::getline(std::cin, adress_);
                 system("CLS");
             
             do{
                 std::cout<<"Pesel: ";
-                std::cin>>pesel_;
+                std::getline(std::cin, pesel_);
                 ValidatePesel = PeselValidator::validatePesel(pesel_);
 
                 if(PeselValidator::validatePesel(pesel_)==false){
@@ -498,7 +498,7 @@ void Menu::Menu_RemovePersonByIndex(){
 }
 
 void Menu::Menu_LoadSave(){
-
+    size_t choice;
     std::vector<std::string> fileNames = db.getFIleNames();
     system("cls");
 
@@ -507,9 +507,28 @@ void Menu::Menu_LoadSave(){
         std::cout<<"Let me create new database for you :)\n";
         system("PAUSE");
     }else{
+        do{
+        system("cls");
         showSavedFileName();
+        std::cout<<"0> EXIT!\n";
+        std::cout<<"\nChoose a Database to load!\n>";
+        
+        //zrobic funkcje do validacji std::cina
+                while (!(std::cin >> choice)) {
+                std::cout << "Please enter numbers only." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(10000,'\n');
+                 }
+            
+        
+        }while(choice<0 || choice>db.getFIleNames().size() );
     }
-
+        if(choice != 0)
+            std::cout<<fileNames[choice-1];
+        system("PAUSE");
+    //{
+        //loaddatafromfile(filenames_[choice-1]); np cos takiego
+    
 }
 
 void Menu::showSavedFileName(){
@@ -519,8 +538,6 @@ void Menu::showSavedFileName(){
                                                                                             {
                                                                                                 std::cout<<i++<<"> "<<fileName<<"\n";
                                                                                             });
-    system("PAUSE");
-
 }
 
 void Menu::runMenu(){

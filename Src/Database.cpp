@@ -7,7 +7,7 @@
 #include <memory>
 
 #include "../Include/Database.hpp"
-#include "../Include/ValidatePesel.hpp"
+#include "../Include/Validate.hpp"
 
 Database::Database(){};
 

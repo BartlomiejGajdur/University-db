@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "../Include/Generator.hpp"
-#include "../Include/validatePesel.hpp"
+#include "../Include/Validate.hpp"
 
 std::array<std::string,40> femaleName_{"Joanna","Zofia","Aleksandra","Monika","Teresa","Danuta","Natalia","Karolina","Marta","Beata",
                                         "Julia","Dorota","Janina","Jadwiga","alina","Jolanta","Irena","Alicja","Grazyna","Iwona","Paulina",

@@ -7,7 +7,7 @@
 #include "../Include/Menu.hpp"
 #include "../Include/Person.hpp"
 #include "../Include/Student.hpp"
-#include "../Include/validatePesel.hpp"
+#include "../Include/Validate.hpp"
 
 
 
@@ -15,6 +15,6 @@ int main(){
 
     Menu m;
     m.runMenu();
-    
+
     return 0;
 }

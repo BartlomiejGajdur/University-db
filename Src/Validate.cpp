@@ -3,7 +3,7 @@
 #include <numeric>
 #include <vector>
 
-#include "../Include/validatePesel.hpp"
+#include "../Include/Validate.hpp"
 
 bool PeselValidator::checkLength(const std::string& Pesel){
     return Pesel.size() == peselLength;

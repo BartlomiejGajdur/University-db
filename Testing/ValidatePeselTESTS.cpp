@@ -3,7 +3,7 @@
 #include <string>
 #include <utility>
 
-#include "../Include/validatePesel.hpp"
+#include "../Include/Validate.hpp"
 #include "gtest/gtest.h"
 
 
