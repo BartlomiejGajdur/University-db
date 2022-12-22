@@ -47,7 +47,7 @@ void Menu::Menu_LoadDatabaseFromFile(){
 
     while(choice!=0){
         std::cout<<"\nInsert a number between 0 - 2\n>";
-        std::cin>>choice;
+        Validate::userInput(choice);
         switch (choice)
         {
         case 1:
@@ -82,7 +82,7 @@ void Menu::Menu_SaveDatabaseToFile(){
 
     while(choice!=0){
         std::cout<<"\nInsert a number between 0 - 2\n>";
-        std::cin>>choice;
+        Validate::userInput(choice);
         switch (choice)
         {
         case 1:
@@ -143,7 +143,7 @@ void Menu::Menu_SortBySurname(){
 
     while(choice!=0){
         std::cout<<"\nInsert a number between 0 - 2\n>";
-        std::cin>>choice;
+        Validate::userInput(choice);
         switch (choice)
         {
         case 1:
@@ -178,7 +178,7 @@ void Menu::Menu_SortByPesel(){
 
     while(choice!=0){
         std::cout<<"\nInsert a number between 0 - 2\n>";
-        std::cin>>choice;
+        Validate::userInput(choice);
         switch (choice)
         {
         case 1:
@@ -215,7 +215,7 @@ void Menu::Menu_SortBySalary(){
 
     while(choice!=0){
         std::cout<<"\nInsert a number between 0 - 2\n>";
-        std::cin>>choice;
+        Validate::userInput(choice);
         switch (choice)
         {
         case 1:
@@ -317,7 +317,7 @@ void Menu::Menu_Add(){
 
     while(choice!=0){
         std::cout<<"\nInsert a number between 0 - 2\n>";
-        std::cin>>choice;
+        Validate::userInput(choice);
         std::cin.ignore();
         switch (choice)
         {
@@ -510,17 +510,11 @@ void Menu::Menu_LoadSave(){
         do{
         system("cls");
         showSavedFileName();
-        std::cout<<"0> EXIT!\n";
+        std::cout<<"0> Create new Database!\n";
         std::cout<<"\nChoose a Database to load!\n>";
         
-        //zrobic funkcje do validacji std::cina
-                while (!(std::cin >> choice)) {
-                std::cout << "Please enter numbers only." << std::endl;
-                std::cin.clear();
-                std::cin.ignore(10000,'\n');
-                 }
-            
-        
+        Validate::userInput(choice);
+
         }while(choice<0 || choice>db.getFIleNames().size() );
     }
         if(choice != 0)
@@ -551,7 +545,7 @@ void Menu::runMenu(){
         std::cout<<"2. Load Database\n";
         std::cout<<"0. EXIT\n";
         std::cout<<"\nInsert a number between 0 - 2\n>";
-        std::cin>>choice;
+        Validate::userInput(choice);
 
         switch (choice)
         {
@@ -584,7 +578,7 @@ void Menu::runMenu(){
         system("CLS");
         printMENU();
         std::cout<<"\nInsert a number between 0 - 15\n>";
-        std::cin>>choice;
+        Validate::userInput(choice);
         system("CLS");
         
         switch (choice)

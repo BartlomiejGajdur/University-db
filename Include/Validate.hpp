@@ -14,3 +14,7 @@ namespace PeselValidator{
     
     bool validatePesel(const std::string& Pesel);
 }
+
+namespace Validate{
+    void userInput(size_t& choice);
+}
