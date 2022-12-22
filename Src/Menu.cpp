@@ -42,11 +42,12 @@ void Menu::Menu_LoadDatabaseFromFile(){
 
     std::cout<<">1. Load Database from default file\n";
     std::cout<<">2. Load Database from given file name\n";
+    std::cout<<">3. Load saved database\n";
     std::cout<<">0. EXIT\n";
     
 
     while(choice!=0){
-        std::cout<<"\nInsert a number between 0 - 2\n>";
+        std::cout<<"\nInsert a number between 0 - 3\n>";
         Validate::userInput(choice);
         switch (choice)
         {
@@ -59,6 +60,25 @@ void Menu::Menu_LoadDatabaseFromFile(){
             std::cout<<"Insert a fileName and press ENTER\n>";
             std::cin>>fileName;
             db.loadDataFromFile(fileName);
+            choice = 0;
+            break;
+        case 3:
+            do{ 
+                system("cls");
+                showSavedFileName();
+                std::cout<<"0> Create new Database!\n";
+                std::cout<<"\nChoose a Database to load!\n>";
+                
+                Validate::userInput(choice);
+
+                }while(choice<0 || choice>db.getFIleNames().size() );
+                if(choice != 0)
+                {
+                    db.clearVectorOfPeople();
+                    db.loadSavedDatabase(db.getFIleNames()[choice-1]);
+                }
+                    
+            system("PAUSE");
             choice = 0;
             break;
         case 0:
@@ -76,7 +96,7 @@ void Menu::Menu_SaveDatabaseToFile(){
     std::string fileName;
 
     std::cout<<">1. Save Database to default file\n";
-    std::cout<<">2. Load Database to given file name\n";
+    std::cout<<">2. Save Database to given file name\n";
     std::cout<<">0. EXIT\n";
     
 
@@ -516,12 +536,16 @@ void Menu::Menu_LoadSave(){
         Validate::userInput(choice);
 
         }while(choice<0 || choice>db.getFIleNames().size() );
-    }
+
         if(choice != 0)
-            std::cout<<fileNames[choice-1];
+                {
+                    db.clearVectorOfPeople();
+                    db.loadSavedDatabase(db.getFIleNames()[choice-1]);
+                }
         system("PAUSE");
-    //{
-        //loaddatafromfile(filenames_[choice-1]); np cos takiego
+    }
+        
+ 
     
 }
 
@@ -571,7 +595,7 @@ void Menu::runMenu(){
     }while(choice<0 || choice>2);
         
 
-    //
+    choice = 100;
    
     while(choice!=0){
 

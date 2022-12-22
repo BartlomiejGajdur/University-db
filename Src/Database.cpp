@@ -323,9 +323,64 @@ void insertWhiteSpaceInAdress(std::string& adress){
     adress.insert(adress.begin()+(--it),' ');
 }
 
+void Database::loadSavedDatabase(std::string& fileName){
+    std::string linia;
+    char znak; 
+    std::fstream plik;
+    std::vector<std::string> vec;
+    int liczba;
+
+    if(std::equal(fileName.rbegin(),fileName.rbegin()+4,"txt.")){
+        fileName = fileName;
+    }else{
+        fileName = fileName + ".txt";
+    }
+
+    plik.open(fileName, plik.in);
+    
+    if(plik.is_open())
+    {
+        
+        while(!plik.eof())
+        {       
+           znak = plik.get();
+           
+           if(znak!=';')
+           {
+            linia+=znak;
+           }else
+           {    
+            vec.push_back(linia);
+            linia.clear();
+            
+           }   
+        }
+        plik.close();
+
+    
+        RemoveWhiteSpaces(vec);
+        for(int i = 0;i<vec.size();i+=4){
+            try
+            {
+                liczba = std::stoi(vec[i + 4]);
+                if(liczba > 1 && liczba < 200000)
+                {   
+                    insertWhiteSpaceInAdress(vec[i+2]);
+                    this->add(std::make_shared<Employee>(vec[i],vec[i+1],vec[i+2],vec[i+3],std::stoi(vec[i+4])));
+                    ++i;
+                }
+            }catch(std::invalid_argument const& ex)
+            {   
+                insertWhiteSpaceInAdress(vec[i+2]);
+                this->add(std::make_shared<Student>(vec[i],vec[i+1],vec[i+2],vec[i+3]));
+            }
+        }  
+    }  
+}
+
 void Database::loadDataFromFile(const std::string& fileName){
 
-    std::string linia,removeFirstLetter;
+    std::string linia;
     char znak; 
     std::fstream plik,plik2;
     std::vector<std::string> vec;
@@ -413,6 +468,7 @@ void Database::saveNamesToConfigFiles(){
     std::fstream config("../config/config.txt", config.out | config.trunc);
 
     if(config.is_open()){
+        config.clear();
         std::for_each(fileNames.begin(),fileNames.end(),[&config](const std::string& fileName)
                                                             {
                                                                 config<<fileName+";";
@@ -432,7 +488,7 @@ void Database::saveConfiguration(const std::string& fileName){
     }else{
         fileName_ = "../config/"+fileName_ + ".txt";
     }
-
+//
 
     std::fstream database(fileName_, database.out | database.trunc);
 
@@ -474,5 +530,7 @@ void Database::loadSavedDatabaseNames(){
         }
         plik.close();
     }
-
+    
+    std::sort(fileNames.begin(),fileNames.end());
+    fileNames.erase(std::unique(fileNames.begin(),fileNames.end()),fileNames.end());  
 }

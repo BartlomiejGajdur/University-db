@@ -93,7 +93,7 @@ bool PeselValidator::validatePesel(const std::string& Pesel){
 
 void Validate::userInput(size_t& choice){
     while (!(std::cin >> choice)) {
-                std::cout << "Please enter numbers only." << std::endl;
+                std::cout << "Please enter numbers only.\n>";
                 std::cin.clear();
                 std::cin.ignore(10000,'\n');
                  }

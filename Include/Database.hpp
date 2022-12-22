@@ -50,6 +50,7 @@ class Database{
         
         void saveConfiguration(const std::string& fileName);
         void loadSavedDatabaseNames();
+        void loadSavedDatabase(std::string& fileName);
     private:
         std::vector<std::shared_ptr<Person>> vectorOfPeople_;
         std::vector<std::string> fileNames;
