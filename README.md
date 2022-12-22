@@ -1,8 +1,9 @@
-## University Database
+
+# University Database
 
 This is a database application for storing records of students and employees at a university. The following features are included:
 
-**Student Records**
+### Student Records
 
  - First name 
  - Last name
@@ -11,7 +12,7 @@ This is a database application for storing records of students and employees at 
  -  number PESEL 
  - Gender
 
-**Employee Records**
+### Employee Records
 
  - First name 
  - Last name 
@@ -20,7 +21,8 @@ This is a database application for storing records of students and employees at 
  - Address 
  - Salary
 
-**Features**
+### Features
+
 - [x] Add new students and employees
 - [x] Display the entire database
 - [x] Search by last name or PESEL number
@@ -37,3 +39,37 @@ This is a database application for storing records of students and employees at 
 - [x] Menu for users
 - [x] Load previous saved databases
 
+
+# How to use
+
+    mkdir build
+    cd build
+    cmake ..
+    make -j
+    .\UNIVERSITY-DB.exe
+
+### Reading data from file
+*Add to file called DatabaseOfStudentsINPUT.txt a person like this:*
+
+***Student:**
+
+    
+    Name; Surname; Address; Pesel;
+    OtherName; OtherSurname; OtherAddress; OtherPesel;
+***Employee:**
+
+    Name; Surname; Address; Pesel; Earnings;
+    OtherName; OtherSurname; OtherAddress; OtherPesel; OtherEarnings;
+*You can also add several Students and Staff at the same time without worrying about their order.*
+
+*Main menu -> 7. Load poeple from file -> 1. Load Database from default file.*
+
+# How it looks
+### Welcome menu
+![image](https://user-images.githubusercontent.com/85802542/209230961-c7707b53-d761-4372-924b-49497b58a7d8.png)
+
+### Main menu
+![image](https://user-images.githubusercontent.com/85802542/209231009-1d9eae05-8763-4e27-a782-5ae51606ffff.png)
+
+### Example of database
+![image](https://user-images.githubusercontent.com/85802542/209231036-92c21352-f2a8-4dc0-b331-6a785de8566c.png)
