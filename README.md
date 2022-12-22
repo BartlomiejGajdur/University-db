@@ -34,6 +34,6 @@ This is a database application for storing records of students and employees at 
 - [x] Sort by salary
 - [x] Modify salary by searching for a person by PESEL number
 - [x] Delete duplicates
+- [x] Menu for users added
+- [x] Load previous saved databases
 
-**In Progress**
-Update tests for PESEL validity checks
