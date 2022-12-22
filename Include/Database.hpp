@@ -50,6 +50,7 @@ class Database{
         //dodac usuwanie zakresu, np podaj liczbe od ktorej powinno usuwac ludzi do ktorego i ne moga te liczby przekroczyc zakresu
         
         void saveConfiguration(const std::string& fileName);
+        void loadSavedDatabaseNames();
     private:
         std::vector<std::shared_ptr<Person>> vectorOfPeople_;
         std::vector<std::string> fileNames;

@@ -526,7 +526,7 @@ void Menu::showSavedFileName(){
 void Menu::runMenu(){
 
     size_t choice;
-    //tutaj odczyt z pliku i przypisanie do filename
+    db.loadSavedDatabaseNames();
     do{
         
         system("CLS");

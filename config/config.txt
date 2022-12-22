@@ -1,1 +1,1 @@
-../config/CiekaweCzyDoConfiguZapisze.txt;../config/tenDrugiTest.txt;
+../config/Test.txt;../config/Newone.txt;

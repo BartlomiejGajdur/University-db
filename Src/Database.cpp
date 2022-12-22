@@ -447,3 +447,32 @@ void Database::saveConfiguration(const std::string& fileName){
     saveNamesToConfigFiles();
     
 }
+
+void Database::loadSavedDatabaseNames(){
+    
+    std::string linia;
+    char znak; 
+    std::fstream plik;
+
+    plik.open("../config/config.txt", plik.in);
+    
+    if(plik.is_open())
+    {
+        
+        while(!plik.eof())
+        {       
+           znak = plik.get();
+           
+           if(znak!=';')
+           {
+            linia+=znak;
+           }else
+           {    
+            fileNames.push_back(linia);
+            linia.clear();
+           }   
+        }
+        plik.close();
+    }
+
+}
