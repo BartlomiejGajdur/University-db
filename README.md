@@ -47,7 +47,9 @@ This is a database application for storing records of students and employees at 
     cd build
     cmake ..
     make -j
-    .\UNIVERSITY-DB.exe
+    .\UNIVERSITY-DB.exe (app)
+    .\UNIVERSITY-DB-ut.exe (tests)
+    
 ---
 ### Reading data from file
 *Add to file called DatabaseOfStudentsINPUT.txt a person like this:*
