@@ -42,12 +42,13 @@ This is a database application for storing records of students and employees at 
 
 # How to use
 
+### Building project
     mkdir build
     cd build
     cmake ..
     make -j
     .\UNIVERSITY-DB.exe
-
+---
 ### Reading data from file
 *Add to file called DatabaseOfStudentsINPUT.txt a person like this:*
 
@@ -64,6 +65,12 @@ This is a database application for storing records of students and employees at 
 
 *Main menu -> 7. Load poeple from file -> 1. Load Database from default file.*
 
+---
+### Directory named Config
+
+*Do not modify these files!*
+
+---
 # How it looks
 ### Welcome menu
 ![image](https://user-images.githubusercontent.com/85802542/209230961-c7707b53-d761-4372-924b-49497b58a7d8.png)
