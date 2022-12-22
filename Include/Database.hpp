@@ -47,7 +47,6 @@ class Database{
 
         void loadDataFromFile(const std::string& fileName);
         void loadDataFromFile();
-        //dodac usuwanie zakresu, np podaj liczbe od ktorej powinno usuwac ludzi do ktorego i ne moga te liczby przekroczyc zakresu
         
         void saveConfiguration(const std::string& fileName);
         void loadSavedDatabaseNames();
@@ -57,6 +56,5 @@ class Database{
 
         std::stringstream formatPrint();
         std::stringstream formatPrintToLoad();
-        void saveNamesToConfigFiles();
-        
+        void saveNamesToConfigFiles();     
 };

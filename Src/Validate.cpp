@@ -90,3 +90,11 @@ bool PeselValidator::validatePesel(const std::string& Pesel){
     
     return PeselValidator::checkLength(Pesel) && PeselValidator::checkDate(Pesel) && PeselValidator::checkDigit(Pesel);
 }
+
+void Validate::userInput(size_t& choice){
+    while (!(std::cin >> choice)) {
+                std::cout << "Please enter numbers only." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(10000,'\n');
+                 }
+}
