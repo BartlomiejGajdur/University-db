@@ -9,9 +9,8 @@
 #include "../Include/Student.hpp"
 #include "../Include/Validate.hpp"
 
-
-
-int main(){ 
+int main()
+{
 
     Menu m;
     m.runMenu();

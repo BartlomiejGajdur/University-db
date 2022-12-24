@@ -1,13 +1,13 @@
 #include "Database.hpp"
 
-class Menu{
+class Menu
+{
 
 public:
     Menu(){};
     void runMenu();
 
 private:
-
     Database db;
 
     void printMENU();
@@ -23,11 +23,10 @@ private:
     void Menu_SortBySalary();
     void Menu_FindBySurname();
     void Menu_FindByPesel();
-    void Menu_ModifyEarnings();  
-    void Menu_RemoveRangeOfPeople();        
+    void Menu_ModifyEarnings();
+    void Menu_RemoveRangeOfPeople();
     void Menu_RemovePersonByIndex();
 
     void Menu_LoadSave();
     void showSavedFileName();
-
 };

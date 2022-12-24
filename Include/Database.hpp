@@ -9,53 +9,59 @@
 #include "Person.hpp"
 #include "Student.hpp"
 
-enum class Order {Ascending, Descending};
+enum class Order
+{
+    Ascending,
+    Descending
+};
 
-class Database{
-    public:
-        Database();
-        Database(const std::vector<std::shared_ptr<Person>>& vectorOfPeople): vectorOfPeople_(vectorOfPeople){};
-        
-        //Getters
-        std::vector<std::shared_ptr<Person>> getVectorOfPeople() const {return vectorOfPeople_;};
-        std::vector<std::string> getFIleNames() const {return fileNames;};
+class Database
+{
+public:
+    Database();
+    Database(const std::vector<std::shared_ptr<Person>> &vectorOfPeople) : vectorOfPeople_(vectorOfPeople){};
 
-        //Setters
-        void clearVectorOfPeople() {vectorOfPeople_.clear();};
+    // Getters
+    std::vector<std::shared_ptr<Person>> getVectorOfPeople() const { return vectorOfPeople_; };
+    std::vector<std::string> getFIleNames() const { return fileNames; };
 
-        //Functions
-        void add(const std::shared_ptr<Person>& person);
-        void add(const Student& person);
-        void add(const Employee& person);
+    // Setters
+    void clearVectorOfPeople() { vectorOfPeople_.clear(); };
 
-        void printDatabase();
+    // Functions
+    void add(const std::shared_ptr<Person> &person);
+    void add(const Student &person);
+    void add(const Employee &person);
 
-        std::vector<std::shared_ptr<Person>> findBySurname(const std::string& surname);
-        std::shared_ptr<Person> findByPesel(const std::string& pesel);
-        void sortBySurname(const Order& order);
-        void sortByPesel(const Order& order);
-        void sortBySalary(const Order& order);
-        void removeByIndex(const size_t index);
-        void removeRange(const size_t& lhs, const size_t& rhs);
-        void modifyEarnings(const std::string& pesel,const size_t& earnings);
+    void printDatabase();
 
-        void generateRandomPeople(const size_t& numberOfPeopleToGenerate);
-        void generateSelectedProffesion(const size_t& numberOfPeopleToGenerate, const Proffesion& proffesion);
+    std::vector<std::shared_ptr<Person>> findBySurname(const std::string &surname);
+    std::shared_ptr<Person> findByPesel(const std::string &pesel);
+    void sortBySurname(const Order &order);
+    void sortByPesel(const Order &order);
+    void sortBySalary(const Order &order);
+    void removeByIndex(const size_t index);
+    void removeRange(const size_t &lhs, const size_t &rhs);
+    void modifyEarnings(const std::string &pesel, const size_t &earnings);
 
-        void saveDatabaseToFile(const std::string& fileName);
-        void saveDatabaseToFile();
+    void generateRandomPeople(const size_t &numberOfPeopleToGenerate);
+    void generateSelectedProffesion(const size_t &numberOfPeopleToGenerate, const Proffesion &proffesion);
 
-        void loadDataFromFile(const std::string& fileName);
-        void loadDataFromFile();
-        
-        void saveConfiguration(const std::string& fileName);
-        void loadSavedDatabaseNames();
-        void loadSavedDatabase(std::string& fileName);
-    private:
-        std::vector<std::shared_ptr<Person>> vectorOfPeople_;
-        std::vector<std::string> fileNames;
+    void saveDatabaseToFile(const std::string &fileName);
+    void saveDatabaseToFile();
 
-        std::stringstream formatPrint();
-        std::stringstream formatPrintToLoad();
-        void saveNamesToConfigFiles();     
+    void loadDataFromFile(const std::string &fileName);
+    void loadDataFromFile();
+
+    void saveConfiguration(const std::string &fileName);
+    void loadSavedDatabaseNames();
+    void loadSavedDatabase(std::string &fileName);
+
+private:
+    std::vector<std::shared_ptr<Person>> vectorOfPeople_;
+    std::vector<std::string> fileNames;
+
+    std::stringstream formatPrint();
+    std::stringstream formatPrintToLoad();
+    void saveNamesToConfigFiles();
 };

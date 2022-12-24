@@ -7,7 +7,6 @@
 
 #include "gtest/gtest.h"
 
-
 // TEST(class,jakisnazwatestu){
 //     ASSERT_EQ(1,1);
 // }
@@ -16,7 +15,7 @@
 //         "Adam",
 //         "cwalski",
 //         "Krakow 21",
-//         "980000000"   
+//         "980000000"
 //         };
 
 //     Student Kasia{
@@ -30,17 +29,17 @@
 //         "Bartek",
 //         "aalkowski",
 //         "Markowska 21",
-//         "010220000"   
+//         "010220000"
 //         };
-    
+
 //     std::vector<std::shared_ptr<Student>> vectorOfStudents{std::make_shared<Student>(Adam),
-//                                                            std::make_shared<Student>(Kasia),   
+//                                                            std::make_shared<Student>(Kasia),
 //                                                            std::make_shared<Student>(Bartek)};
 //     Database db{vectorOfStudents};
 // };
 
 // TEST_F(DatabaseUnderTestFixture, CanAddStudentToDb){
-    
+
 //     size_t sizeBeforeAdd = db.getVectorOfStudents().size();
 //     db.add(std::make_shared<Student>(Adam));
 //     size_t sizeAfterAdd = db.getVectorOfStudents().size();
@@ -57,7 +56,7 @@
 // }
 
 // TEST_F(DatabaseUnderTestFixture, FindByPesel_INCLUDE){
-    
+
 //     Student expected{Bartek};
 //     Student findByPesel = db.findByPesel("010220000");
 
