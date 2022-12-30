@@ -6,7 +6,10 @@
 #include "../Include/Validate.hpp"
 #include "gtest/gtest.h"
 
-std::vector<std::pair<std::string, bool>> PeselsWithThierResponse = {
+using PeselResponse = std::pair<std::string, bool>;
+
+
+std::vector<PeselResponse> PeselsWithThierResponse = {
     {"90090515836", true},
     {"92071314764", true},
     {"81100216357", true},
@@ -22,7 +25,7 @@ std::vector<std::pair<std::string, bool>> PeselsWithThierResponse = {
     {"47040885491", false},
     {"801105124678", false}};
 
-class CheckPesel : public testing::TestWithParam<std::pair<std::string, bool>>
+class CheckPesel : public testing::TestWithParam<PeselResponse>
 {
 };
 
@@ -37,7 +40,7 @@ INSTANTIATE_TEST_SUITE_P(Pesels,
                          CheckPesel,
                          testing::ValuesIn(PeselsWithThierResponse));
 
-std::vector<std::pair<std::string, bool>> LeapYearWithThierResponse = {
+std::vector<PeselResponse> LeapYearWithThierResponse = {
     {"48040885491", true},  // 1948
     {"80120512467", true},  // 1980
     {"0021", true},         // 2000
@@ -55,7 +58,7 @@ std::vector<std::pair<std::string, bool>> LeapYearWithThierResponse = {
     {"2921", false}  // 2029
 };
 
-class CheckLeapYear : public testing::TestWithParam<std::pair<std::string, bool>>
+class CheckLeapYear : public testing::TestWithParam<PeselResponse>
 {
 };
 

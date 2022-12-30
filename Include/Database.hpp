@@ -19,24 +19,24 @@ class Database
 {
 public:
     Database();
-    Database(const std::vector<std::shared_ptr<Person>> &vectorOfPeople) : vectorOfPeople_(vectorOfPeople){};
+    Database(const PersonVector &vectorOfPeople) : vectorOfPeople_(vectorOfPeople){};
 
     // Getters
-    std::vector<std::shared_ptr<Person>> getVectorOfPeople() const { return vectorOfPeople_; };
+    PersonVector getVectorOfPeople() const { return vectorOfPeople_; };
     std::vector<std::string> getFIleNames() const { return fileNames; };
 
     // Setters
     void clearVectorOfPeople() { vectorOfPeople_.clear(); };
 
     // Functions
-    void add(const std::shared_ptr<Person> &person);
+    void add(const PersonPtr &person);
     void add(const Student &person);
     void add(const Employee &person);
 
     void printDatabase();
 
-    std::vector<std::shared_ptr<Person>> findBySurname(const std::string &surname);
-    std::shared_ptr<Person> findByPesel(const std::string &pesel);
+    PersonVector findBySurname(const std::string &surname);
+    PersonPtr findByPesel(const std::string &pesel);
     void sortBySurname(const Order &order);
     void sortByPesel(const Order &order);
     void sortBySalary(const Order &order);
@@ -58,7 +58,7 @@ public:
     void loadSavedDatabase(std::string &fileName);
 
 private:
-    std::vector<std::shared_ptr<Person>> vectorOfPeople_;
+    PersonVector vectorOfPeople_;
     std::vector<std::string> fileNames;
 
     std::stringstream formatPrint();
