@@ -187,3 +187,23 @@ TEST_F(DatabaseTestFixture, Check_Remove_By_Index_works_correctly){
     
     ASSERT_TRUE(compareTwoVectors(result,expected));
 }
+
+TEST_F(DatabaseTestFixture, Check_Remove_By_Range_works_correctly){
+    addAll();
+    db.removeRange(1,3);
+
+    PersonVector result = db.getVectorOfPeople();
+
+    PersonVector expected = { 
+                            std::make_shared<Student>(Alicja),
+                            std::make_shared<Student>(Monika),
+    };
+    // for(auto& c : result){
+    //     std::cout<<*c<<"\n";
+    // }
+    // for(auto& c : expected){
+    //     std::cout<<*c<<"\n";
+    // }
+
+    ASSERT_TRUE(compareTwoVectors(result,expected));
+}
