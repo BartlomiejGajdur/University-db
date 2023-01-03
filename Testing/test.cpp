@@ -103,3 +103,37 @@ TEST_F(DatabaseTestFixture, Check_Sort_By_Surname_works_correctly_DESCENDING){
 
     ASSERT_TRUE(compareTwoVectors(expected,result));
 }
+
+TEST_F(DatabaseTestFixture, Check_Sort_By_Pesel_works_correctly_ASCENDING){
+    addAll();
+    db.sortByPesel(Order::Ascending);
+
+    PersonVector expected = db.getVectorOfPeople();
+
+    PersonVector result = { 
+                            std::make_shared<Student>(Krzysztof),
+                            std::make_shared<Student>(Monika),
+                            std::make_shared<Employee>(Maksymilian),
+                            std::make_shared<Employee>(Justyna),
+                            std::make_shared<Student>(Alicja),
+    };
+
+    ASSERT_TRUE(compareTwoVectors(expected,result));
+}
+
+TEST_F(DatabaseTestFixture, Check_Sort_By_Pesel_works_correctly_DESCENDING){
+    addAll();
+    db.sortByPesel(Order::Descending);
+
+    PersonVector expected = db.getVectorOfPeople();
+
+    PersonVector result = { 
+                            std::make_shared<Student>(Alicja),
+                            std::make_shared<Employee>(Justyna),
+                            std::make_shared<Employee>(Maksymilian),
+                            std::make_shared<Student>(Monika),
+                            std::make_shared<Student>(Krzysztof),
+    };
+
+    ASSERT_TRUE(compareTwoVectors(expected,result));
+}
