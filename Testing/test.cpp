@@ -22,6 +22,14 @@ struct DatabaseTestFixture : public ::testing::Test{
         db.add(Alicja);
         db.add(Monika);
     }
+
+    bool compareTwoVectors(const PersonVector& lhs, const PersonVector& rhs){
+        return std::equal(lhs.begin(),lhs.end(),rhs.begin(),rhs.end(),[](const std::shared_ptr<Person>& lhs,const std::shared_ptr<Person>& rhs)
+                                                                                {
+                                                                                    return *lhs == *rhs;
+                                                                                }
+                                                                                );
+    }
   
 };
 
@@ -29,4 +37,17 @@ TEST_F(DatabaseTestFixture, Check_if_people_added_correctly){
     addAll();
     
     EXPECT_EQ(db.getVectorOfPeople().size(),5);
+}
+
+TEST_F(DatabaseTestFixture, Check_if_find_by_surname_wroks_correctly){
+    addAll();
+    PersonVector expected = {
+                            std::make_shared<Employee>(Justyna),
+                            std::make_shared<Student>(Monika)
+                            };
+
+    PersonVector peopleFound = db.findBySurname("Kaminski");
+
+
+    ASSERT_TRUE(compareTwoVectors(expected,peopleFound));
 }
