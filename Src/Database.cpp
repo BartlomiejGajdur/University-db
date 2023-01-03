@@ -9,8 +9,7 @@
 #include "../Include/Database.hpp"
 #include "../Include/Validate.hpp"
 
-using PersonPtr = std::shared_ptr<Person>;
-using PersonVector = std::vector<PersonPtr>;
+
 
 Database::Database(){};
 

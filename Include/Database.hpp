@@ -9,6 +9,9 @@
 #include "Person.hpp"
 #include "Student.hpp"
 
+using PersonPtr = std::shared_ptr<Person>;
+using PersonVector = std::vector<PersonPtr>;
+
 enum class Order
 {
     Ascending,
