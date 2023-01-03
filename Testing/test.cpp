@@ -33,13 +33,13 @@ struct DatabaseTestFixture : public ::testing::Test{
   
 };
 
-TEST_F(DatabaseTestFixture, Check_if_people_added_correctly){
+TEST_F(DatabaseTestFixture, Check_people_added_correctly){
     addAll();
     
     EXPECT_EQ(db.getVectorOfPeople().size(),5);
 }
 
-TEST_F(DatabaseTestFixture, Check_if_find_by_surname_wroks_correctly){
+TEST_F(DatabaseTestFixture, Check_find_by_surname_works_correctly){
     addAll();
     PersonVector expected = {
                             std::make_shared<Employee>(Justyna),
@@ -52,7 +52,7 @@ TEST_F(DatabaseTestFixture, Check_if_find_by_surname_wroks_correctly){
     ASSERT_TRUE(compareTwoVectors(expected,peopleFound));
 }
 
-TEST_F(DatabaseTestFixture, Check_if_find_by_Pesel_wroks_correctly){
+TEST_F(DatabaseTestFixture, Check_find_by_Pesel_works_correctly){
     addAll();
     PersonPtr expected = {std::make_shared<Employee>(Maksymilian)};
 
@@ -60,4 +60,46 @@ TEST_F(DatabaseTestFixture, Check_if_find_by_Pesel_wroks_correctly){
 
 
     ASSERT_TRUE(*expected == *peopleFound);
+}
+
+TEST_F(DatabaseTestFixture, Check_Sort_By_Surname_works_correctly_ASCENDING){
+    addAll();
+    db.sortBySurname(Order::Ascending);
+
+    PersonVector expected = db.getVectorOfPeople();
+    
+    PersonVector result = { 
+                            std::make_shared<Employee>(Justyna),
+                            std::make_shared<Student>(Monika),
+                            std::make_shared<Student>(Alicja),
+                            std::make_shared<Student>(Krzysztof),
+                            std::make_shared<Employee>(Maksymilian),
+    };
+
+    ASSERT_TRUE(compareTwoVectors(expected,result));
+}
+
+TEST_F(DatabaseTestFixture, Check_Sort_By_Surname_works_correctly_DESCENDING){
+    addAll();
+    db.sortBySurname(Order::Descending);
+
+    PersonVector expected = db.getVectorOfPeople();
+
+    PersonVector result = { 
+                            std::make_shared<Employee>(Maksymilian),
+                            std::make_shared<Student>(Krzysztof),
+                            std::make_shared<Student>(Alicja),
+                            std::make_shared<Employee>(Justyna),
+                            std::make_shared<Student>(Monika),
+    };
+
+
+    // for(auto& c : expected){
+    //     std::cout<<*c<<"\n";
+    // }
+    // for(auto& c : result){
+    //     std::cout<<*c<<"\n";
+    // }
+
+    ASSERT_TRUE(compareTwoVectors(expected,result));
 }
