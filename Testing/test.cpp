@@ -41,7 +41,7 @@ TEST_F(DatabaseTestFixture, Check_people_added_correctly){
 
 TEST_F(DatabaseTestFixture, Check_find_by_surname_works_correctly){
     addAll();
-    PersonVector expected = {
+    PersonVector result = {
                             std::make_shared<Employee>(Justyna),
                             std::make_shared<Student>(Monika)
                             };
@@ -49,26 +49,26 @@ TEST_F(DatabaseTestFixture, Check_find_by_surname_works_correctly){
     PersonVector peopleFound = db.findBySurname("Kaminski");
 
 
-    ASSERT_TRUE(compareTwoVectors(expected,peopleFound));
+    ASSERT_TRUE(compareTwoVectors(result,peopleFound));
 }
 
 TEST_F(DatabaseTestFixture, Check_find_by_Pesel_works_correctly){
     addAll();
-    PersonPtr expected = {std::make_shared<Employee>(Maksymilian)};
+    PersonPtr result = {std::make_shared<Employee>(Maksymilian)};
 
     PersonPtr peopleFound = db.findByPesel("89060546172");
 
 
-    ASSERT_TRUE(*expected == *peopleFound);
+    ASSERT_TRUE(*result == *peopleFound);
 }
 
 TEST_F(DatabaseTestFixture, Check_Sort_By_Surname_works_correctly_ASCENDING){
     addAll();
     db.sortBySurname(Order::Ascending);
 
-    PersonVector expected = db.getVectorOfPeople();
+    PersonVector result = db.getVectorOfPeople();
     
-    PersonVector result = { 
+    PersonVector expected = { 
                             std::make_shared<Employee>(Justyna),
                             std::make_shared<Student>(Monika),
                             std::make_shared<Student>(Alicja),
@@ -76,16 +76,16 @@ TEST_F(DatabaseTestFixture, Check_Sort_By_Surname_works_correctly_ASCENDING){
                             std::make_shared<Employee>(Maksymilian),
     };
 
-    ASSERT_TRUE(compareTwoVectors(expected,result));
+    ASSERT_TRUE(compareTwoVectors(result,expected));
 }
 
 TEST_F(DatabaseTestFixture, Check_Sort_By_Surname_works_correctly_DESCENDING){
     addAll();
     db.sortBySurname(Order::Descending);
 
-    PersonVector expected = db.getVectorOfPeople();
+    PersonVector result = db.getVectorOfPeople();
 
-    PersonVector result = { 
+    PersonVector expected = { 
                             std::make_shared<Employee>(Maksymilian),
                             std::make_shared<Student>(Krzysztof),
                             std::make_shared<Student>(Alicja),
@@ -93,24 +93,16 @@ TEST_F(DatabaseTestFixture, Check_Sort_By_Surname_works_correctly_DESCENDING){
                             std::make_shared<Student>(Monika),
     };
 
-
-    // for(auto& c : expected){
-    //     std::cout<<*c<<"\n";
-    // }
-    // for(auto& c : result){
-    //     std::cout<<*c<<"\n";
-    // }
-
-    ASSERT_TRUE(compareTwoVectors(expected,result));
+    ASSERT_TRUE(compareTwoVectors(result,expected));
 }
 
 TEST_F(DatabaseTestFixture, Check_Sort_By_Pesel_works_correctly_ASCENDING){
     addAll();
     db.sortByPesel(Order::Ascending);
 
-    PersonVector expected = db.getVectorOfPeople();
+    PersonVector result = db.getVectorOfPeople();
 
-    PersonVector result = { 
+    PersonVector expected = { 
                             std::make_shared<Student>(Krzysztof),
                             std::make_shared<Student>(Monika),
                             std::make_shared<Employee>(Maksymilian),
@@ -118,16 +110,16 @@ TEST_F(DatabaseTestFixture, Check_Sort_By_Pesel_works_correctly_ASCENDING){
                             std::make_shared<Student>(Alicja),
     };
 
-    ASSERT_TRUE(compareTwoVectors(expected,result));
+    ASSERT_TRUE(compareTwoVectors(result,expected));
 }
 
 TEST_F(DatabaseTestFixture, Check_Sort_By_Pesel_works_correctly_DESCENDING){
     addAll();
     db.sortByPesel(Order::Descending);
 
-    PersonVector expected = db.getVectorOfPeople();
+    PersonVector result = db.getVectorOfPeople();
 
-    PersonVector result = { 
+    PersonVector expected = { 
                             std::make_shared<Student>(Alicja),
                             std::make_shared<Employee>(Justyna),
                             std::make_shared<Employee>(Maksymilian),
@@ -135,16 +127,16 @@ TEST_F(DatabaseTestFixture, Check_Sort_By_Pesel_works_correctly_DESCENDING){
                             std::make_shared<Student>(Krzysztof),
     };
 
-    ASSERT_TRUE(compareTwoVectors(expected,result));
+    ASSERT_TRUE(compareTwoVectors(result,expected));
 }
 
 TEST_F(DatabaseTestFixture, Check_Sort_By_Salary_works_correctly_ASCENDING){
     addAll();
     db.sortBySalary(Order::Ascending);
 
-    PersonVector expected = db.getVectorOfPeople();
+    PersonVector result = db.getVectorOfPeople();
 
-    PersonVector result = { 
+    PersonVector expected = { 
                             std::make_shared<Student>(Krzysztof),
                             std::make_shared<Student>(Alicja),
                             std::make_shared<Student>(Monika),
@@ -152,22 +144,16 @@ TEST_F(DatabaseTestFixture, Check_Sort_By_Salary_works_correctly_ASCENDING){
                             std::make_shared<Employee>(Justyna),
     };
 
-     for(auto& c : expected){
-        std::cout<<*c<<"\n";
-    }
-    for(auto& c : result){
-        std::cout<<*c<<"\n";
-    }
-    ASSERT_TRUE(compareTwoVectors(expected,result));
+    ASSERT_TRUE(compareTwoVectors(result,expected));
 }
 
 TEST_F(DatabaseTestFixture, Check_Sort_By_Salary_works_correctly_DESCENDING){
     addAll();
     db.sortBySalary(Order::Descending);
 
-    PersonVector expected = db.getVectorOfPeople();
+    PersonVector result = db.getVectorOfPeople();
 
-    PersonVector result = { 
+    PersonVector expected = { 
                             std::make_shared<Employee>(Justyna),
                             std::make_shared<Employee>(Maksymilian),
                             std::make_shared<Student>(Krzysztof),
@@ -175,5 +161,29 @@ TEST_F(DatabaseTestFixture, Check_Sort_By_Salary_works_correctly_DESCENDING){
                             std::make_shared<Student>(Monika),
     };
     
-    ASSERT_TRUE(compareTwoVectors(expected,result));
+    ASSERT_TRUE(compareTwoVectors(result,expected));
+}
+
+TEST_F(DatabaseTestFixture, Check_Remove_By_Index_works_correctly){
+    addAll();
+    db.removeByIndex(28);
+
+    PersonVector result = db.getVectorOfPeople();
+
+    PersonVector expected = { 
+                            std::make_shared<Student>(Krzysztof),
+                            std::make_shared<Employee>(Justyna),
+                            std::make_shared<Employee>(Maksymilian),
+                            std::make_shared<Student>(Monika)
+    };
+
+    // for(auto& c : result){
+    //     std::cout<<*c<<"\n";
+    // }
+    // for(auto& c : expected){
+    //     std::cout<<*c<<"\n";
+    // }
+
+    
+    ASSERT_TRUE(compareTwoVectors(result,expected));
 }
