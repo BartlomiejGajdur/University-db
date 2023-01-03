@@ -51,3 +51,13 @@ TEST_F(DatabaseTestFixture, Check_if_find_by_surname_wroks_correctly){
 
     ASSERT_TRUE(compareTwoVectors(expected,peopleFound));
 }
+
+TEST_F(DatabaseTestFixture, Check_if_find_by_Pesel_wroks_correctly){
+    addAll();
+    PersonPtr expected = {std::make_shared<Employee>(Maksymilian)};
+
+    PersonPtr peopleFound = db.findByPesel("89060546172");
+
+
+    ASSERT_TRUE(*expected == *peopleFound);
+}
