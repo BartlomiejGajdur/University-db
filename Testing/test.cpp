@@ -177,14 +177,6 @@ TEST_F(DatabaseTestFixture, Check_Remove_By_Index_works_correctly){
                             std::make_shared<Student>(Monika)
     };
 
-    // for(auto& c : result){
-    //     std::cout<<*c<<"\n";
-    // }
-    // for(auto& c : expected){
-    //     std::cout<<*c<<"\n";
-    // }
-
-    
     ASSERT_TRUE(compareTwoVectors(result,expected));
 }
 
@@ -206,4 +198,11 @@ TEST_F(DatabaseTestFixture, Check_Remove_By_Range_works_correctly){
     // }
 
     ASSERT_TRUE(compareTwoVectors(result,expected));
+}
+
+TEST_F(DatabaseTestFixture, Check_Modify_Earnings_works_correctly){
+    addAll();
+    db.modifyEarnings("06301105804", 1000);
+
+    ASSERT_EQ(db.findByPesel("06301105804")->getEarnings(), 1000);
 }
