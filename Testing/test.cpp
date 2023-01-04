@@ -206,3 +206,9 @@ TEST_F(DatabaseTestFixture, Check_Modify_Earnings_works_correctly){
 
     ASSERT_EQ(db.findByPesel("06301105804")->getEarnings(), 1000);
 }
+
+TEST_F(DatabaseTestFixture, Check_Generate_Random_People_works_correctly){
+    db.generateRandomPeople(10);
+
+    ASSERT_EQ(db.getVectorOfPeople().size(), 10);
+}
